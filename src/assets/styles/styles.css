@@ -1237,6 +1237,10 @@ body[data-page="legal"] h5 {
   letter-spacing: 0.05em;
 }
 
-ul { list-style-position: inside; margin-left: 1.4rem; }
-li { list-style: disc; margin-bottom: .4rem; }
-li::marker { color: var(--c-text) }
+body[data-page="legal"] ul { list-style-position: inside; margin-left: 1.4rem; }
+body[data-page="legal"] li { list-style: disc; margin-bottom: .4rem; }
+body[data-page="legal"] li::marker { color: var(--c-text) }
+
+body[data-page="legal"] main {
+  padding-bottom: 3rem;
+}
