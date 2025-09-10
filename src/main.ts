@@ -1,7 +1,7 @@
 import "leaflet/dist/leaflet.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import L from "leaflet";
-import "./styles.css";
+import "./assets/styles/styles.css";
 
 function initMap(): void {
     const el = document.getElementById("map");
