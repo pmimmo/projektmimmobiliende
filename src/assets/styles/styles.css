@@ -6,8 +6,7 @@
   font-stretch: 75% 100%;
   font-style: normal;
   font-weight: 300 800;
-  src: url('./assets/fonts/OpenSans/OpenSans-VariableFont_wdth-wght.woff2') format('woff2-variations'),
-      url('./assets/fonts/OpenSans/OpenSans-VariableFont_wdth-wght.ttf') format('truetype-variations');
+  src: url('../fonts/OpenSans/OpenSans-VariableFont_wdth-wght.woff2') format('woff2-variations');
   font-display: swap;
 }
 
