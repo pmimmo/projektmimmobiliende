@@ -16,7 +16,7 @@ const meta = {
         description: "Projekt M Immobilien erstellt zertifizierte Immobiliengutachten, verkauft Immobilien mit Herz und vermittelt in Konflikten mit Fachverstand. Jetzt beraten lassen!",
         keywords: "Immobilien, München, Immobilienmakler, Gutachten, Immobiliengutachten, Mediation, Immobilienbewertung, Projekt M, Rüdiger Neuer, Wohnung verkaufen, Haus verkaufen",
         canonical: "https://projektmimmobilien.de/",
-        image: "https://projektmimmobilien.de/img/portrait-neuer.jpg",
+        image: "https://projektmimmobilien.de/img/openGraph.jpg",
         og: { type: "website" },
     },
     datenschutz: {
