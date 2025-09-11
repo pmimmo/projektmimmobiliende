@@ -1194,6 +1194,13 @@ html[data-theme="dark"] #toggle-dark i.fa-sun { display: inline; }
   .button, a.button { transition: none; }
 }
 
+/* Unter 600px: Bild weiter nach rechts schieben */
+@media (max-width: 600px) {
+  #kontakt-team-poster {
+    background-position: 25% center;
+  }
+}
+
 /* --------------------------------------------------
    Integrations
 -------------------------------------------------- */
