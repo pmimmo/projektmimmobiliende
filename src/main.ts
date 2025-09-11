@@ -1,51 +1,52 @@
-import "leaflet/dist/leaflet.css";
+/** import "leaflet/dist/leaflet.css"; */
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import L from "leaflet";
+/** import L from "leaflet"; */
 import "./assets/styles/styles.css";
 
-// function initMap(): void {
-//     const el = document.getElementById("map");
-//     if (!el) return;
+/** function initMap(): void {
+    const el = document.getElementById("map");
+    if (!el) return;
 
-//     const lat = 48.158335;
-//     const lng = 11.566951;
-//     const zoom = 15;
+    const lat = 48.158335;
+    const lng = 11.566951;
+    const zoom = 15;
 
-//     const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
-//     const map = L.map("map", {
-//         center: [lat, lng],
-//         zoom,
-//         dragging: !isTouch,
-//         scrollWheelZoom: false,
-//         touchZoom: false,
-//         doubleClickZoom: false,
-//         boxZoom: false,
-//         keyboard: true,
-//         zoomControl: true,
-//     });
+    const map = L.map("map", {
+        center: [lat, lng],
+        zoom,
+        dragging: !isTouch,
+        scrollWheelZoom: false,
+        touchZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        keyboard: true,
+        zoomControl: true,
+    });
 
-//     map.attributionControl.setPrefix(false);
+    map.attributionControl.setPrefix(false);
 
-//     L.Icon.Default.mergeOptions({
-//         iconRetinaUrl: "/leaflet/marker-icon-2x.png",
-//         iconUrl: "/leaflet/marker-icon.png",
-//         shadowUrl: "/leaflet/marker-shadow.png",
-//     });
+    L.Icon.Default.mergeOptions({
+        iconRetinaUrl: "/leaflet/marker-icon-2x.png",
+        iconUrl: "/leaflet/marker-icon.png",
+        shadowUrl: "/leaflet/marker-shadow.png",
+    });
 
-//     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-//         maxZoom: 19,
-//         detectRetina: true,
-//         updateWhenIdle: true,
-//         keepBuffer: 1,
-//         crossOrigin: true,
-//         attribution: '© <a href="https://www.openstreetmap.de/copyright">OpenStreetMap</a>',
-//     }).addTo(map);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        detectRetina: true,
+        updateWhenIdle: true,
+        keepBuffer: 1,
+        crossOrigin: true,
+        attribution: '© <a href="https://www.openstreetmap.de/copyright">OpenStreetMap</a>',
+    }).addTo(map);
 
-//     L.marker([lat, lng]).addTo(map).bindPopup("<img src='/img/logo_pmi_web.svg' alt='Projekt M Immobilien GmbH – Logo' style='width:120px' />", { closeButton: false, maxWidth: 500, autoPan: true }).openPopup();
+    L.marker([lat, lng]).addTo(map).bindPopup("<img src='/img/logo_pmi_web.svg' alt='Projekt M Immobilien GmbH – Logo' style='width:120px' />", { closeButton: false, maxWidth: 500, autoPan: true }).openPopup();
 
-//     map.whenReady(() => map.invalidateSize());
-// }
+    map.whenReady(() => map.invalidateSize());
+}
+    */
 
 function initFlipCards(): void {
     document.querySelectorAll(".kacheln .flip_container").forEach((card) => {

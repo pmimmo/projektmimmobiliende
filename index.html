@@ -373,47 +373,71 @@
                 </div>
             </section>
             <aside id="provenExpertFull">
+                <div id="pewl" class="pewl">
+                    <div class="map-placeholder">
+                        <p>Das Proven Expert Bewertungssiegel ist blockiert, da Sie den externen Inhalten nicht zugestimmt haben.</p>
+                    </div>
+                </div>
                 <!-- ProvenExpert Bewertungssiegel -->
                 <div id="pewl"></div>
                 <script type="text/javascript" src="https://www.provenexpert.com/widget/landing_projekt-m-immobilien-gmbh.js?feedback=1&avatar=1&competence=1&style=white" async></script>
                 <link rel="stylesheet" type="text/css" href="https://www.provenexpert.com/css/widget_landing.css" media="screen,print" />
                 <!-- ProvenExpert Bewertungssiegel Ende -->
             </aside>
-            <section id="map"></section>
-            <script>
-                const lat = 48.158335;
-                const lng = 11.566951;
-                const zoom = 15;
+            <section id="map" class="blueprint-grid">
+                <div class="map-placeholder">
+                    <p>Die interaktive Karte ist blockiert, da Sie den externen Inhalten nicht zugestimmt haben.</p>
+                </div>
+            </section>
 
-                const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+            <script type="text/x-ccm-loader" data-ccm-loader-src="/leaflet/leaflet.js"></script>
+            <script type="text/x-ccm-loader">
+                (function(){
+                  var lat = 48.158335;
+                  var lng = 11.566951;
+                  var zoom = 15;
 
-                const map = L.map("map", {
-                    center: [lat, lng],
-                    zoom,
-                    dragging: !isTouch,
-                    scrollWheelZoom: false,
-                    touchZoom: false,
-                    doubleClickZoom: false,
-                    boxZoom: false,
-                    keyboard: true,
-                    zoomControl: true,
-                });
+                  function ready(fn){ if(document.readyState!=='loading'){ fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }
 
-                map.attributionControl.setPrefix(false);
+                  function init(){
+                    if (!window.L) return false;
+                    var isTouch = 'ontouchstart' in window || (navigator.maxTouchPoints||0) > 0;
+                    var map = L.map('map', {
+                      center: [lat, lng],
+                      zoom: zoom,
+                      dragging: !isTouch,
+                      scrollWheelZoom: false,
+                      touchZoom: false,
+                      doubleClickZoom: false,
+                      boxZoom: false,
+                      keyboard: true,
+                      zoomControl: true
+                    });
+                    map.attributionControl.setPrefix(false);
+                    L.tileLayer('https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png', {
+                      maxZoom: 19,
+                      detectRetina: true,
+                      updateWhenIdle: true,
+                      keepBuffer: 1,
+                      crossOrigin: true,
+                      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    }).addTo(map);
+                    L.marker([lat, lng]).addTo(map)
+                      .bindPopup("<img src='/img/logo_pmi_web.svg' alt='Projekt M Immobilien GmbH – Logo' style='width:120px' />", { closeButton: false, maxWidth: 500, autoPan: true })
+                      .openPopup();
+                    map.whenReady(function(){ map.invalidateSize(); });
+                    return true;
+                  }
 
-                L.tileLayer("https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png", {
-                    maxZoom: 19,
-                    detectRetina: true,
-                    updateWhenIdle: true,
-                    keepBuffer: 1,
-                    crossOrigin: true,
-                    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-                }).addTo(map);
-
-                L.marker([lat, lng]).addTo(map).bindPopup("<img src='/img/logo_pmi_web.svg' alt='Projekt M Immobilien GmbH – Logo' style='width:120px' />", { closeButton: false, maxWidth: 500, autoPan: true }).openPopup();
-
-                map.whenReady(() => map.invalidateSize());
+                  ready(function(){
+                    var tries = 0, maxTries = 100; // ~5s bei 50ms Intervall
+                    var t = setInterval(function(){
+                      if (init() || ++tries >= maxTries) clearInterval(t);
+                    }, 50);
+                  });
+                })();
             </script>
+            <link rel="stylesheet" href="/leaflet/leaflet.css" />
             <aside>
                 <!-- ProvenExpert Bewertungssiegel -->
                 <style type="text/css">
