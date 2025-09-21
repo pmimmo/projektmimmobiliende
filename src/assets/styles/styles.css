@@ -978,6 +978,24 @@ footer:after {
   background-size: 20px 20px;
 }
 
+#error-404 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  height: calc(100vh - 74.8px);
+  min-height: 30rem;
+  margin-top: -96px;
+  text-align: center;
+  gap: 4rem;
+}
+#error-404 i {
+  font-size: 4rem;
+  color: orangered;
+}
+
 /* --------------------------------------------------
    Highlight / Trust boxes
 -------------------------------------------------- */

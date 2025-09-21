@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <title>Fehler 404 – Diese Seite wurde nicht gefunden</title>
+
+        <!-- Favicon -->
+        <link rel="icon" href="/img/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png" />
+        <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    </head>
+    <body>
+        {{> topNavigation}}
+        <main>
+            <div id="error-404" class="container">
+                <div>
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <h2>Fehler 404<br />Diese Seite wurde nicht gefunden</h2>
+                    <p>Die von Ihnen aufgerufene Seite existiert nicht oder wurde verschoben. <br />Bitte nutzen Sie unser Menü oder den folgenden Button, um zur Startseite zu gelangen.</p>
+                </div>
+                <div>
+                    <a class="button" href="/index.html" aria-label="Zurück zur Startseite">Zur Startseite</a>
+                </div>
+            </div>
+        </main>
+        {{> footer}}
+        <script type="module" src="/src/main.ts"></script>
+    </body>
+</html>
