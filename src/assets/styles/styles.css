@@ -645,9 +645,8 @@ header.hero .hero-sub {
 }
 
 .front {
-  background-color: var(--c-primary);
-  background: var(--c-background-primary-gradient-linear);
-  color: var(--c-text-light);
+  background: #ededed;
+  color: var(--c-text);
   border-radius: 1rem;
 }
 
@@ -677,7 +676,7 @@ header.hero .hero-sub {
   width: 150px;
   aspect-ratio: 1 / 1;
   background: #FFF;
-  background: linear-gradient(240deg, rgba(255, 255, 255, .3) 50%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(240deg, rgba(106, 151, 38, .3) 50%, rgba(106, 151, 38, 0) 100%);
   border-radius: 50%;
 }
 
@@ -687,11 +686,12 @@ header.hero .hero-sub {
   left: -20px;
   font-size: 4rem;
   opacity: .7;
+  color: var(--c-primary);
 }
 
 .f_subline,
 .f_headline {
-  color: var(--c-text-light);
+  color: var(--c-text);
 }
 .f_headline {
   line-height: 98%;
@@ -700,7 +700,8 @@ header.hero .hero-sub {
 }
 
 .back {
-  background-color: #eee;
+  background-color: var(--c-background);
+  border: 2px solid var(--c-primary);
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -ms-transform: rotateY(180deg);
@@ -789,13 +790,13 @@ ul.b_text li::marker {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background-color: var(--c-accent);
+  background-color: var(--c-primary);
   transition: all 0.2s linear;
 }
 
 .b_round {
   opacity: 0;
-  background-color: var(--c-accent);
+  background-color: var(--c-primary);
 }
 
 .b_round_hover {
@@ -804,7 +805,7 @@ ul.b_text li::marker {
 }
 
 .b_round_back_hover {
-  background-color: var(--c-accent);
+  background-color: var(--c-primary);
 }
 
 .s_round_click {
@@ -812,7 +813,7 @@ ul.b_text li::marker {
 }
 
 .s_round_back {
-  background-color: var(--c-accent);
+  background-color: var(--c-primary);
 }
 
 .s_arrow {
