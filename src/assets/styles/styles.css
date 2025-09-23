@@ -731,30 +731,44 @@ ul.b_text li::marker {
 }
 
 /* Badge/Siegel-Leiste: feste bzw. responsive Höhe */
+/* Einheitliches, flexibles Grid für Logos */
 .b_siegel {
-  --siegel-h: clamp(62px, 8vw, 80px);
-  display: flex;
-  flex-wrap: wrap;
+  /* Einheitliches, flexibles Grid für Logos */
+  --logo-size: clamp(56px, 8vw, 84px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 2rem 1rem;
   align-items: center;
-  gap: .75rem;
-  height: var(--siegel-h);
+  justify-items: center;
+  margin-top: 1.5rem;
+}
+
+.b_siegel:has(img:only-child) {
+  justify-items: start;
 }
 
 .b_siegel img {
-  height: 100%;
+  height: var(--logo-size);
+  width: auto;
+  max-width: 100%;
   object-fit: contain;
-  max-height: none;
-  transition: all .5s ease;
+  transition: transform .2s ease, filter .2s ease, box-shadow .2s ease, background-color .2s ease;
+  filter: grayscale(0) contrast(1) saturate(1);
 }
 
-.b_siegel img:hover{
-  transform: scale(2.5);
-  padding: .5rem;
-  background-color: white;
-  z-index: 1000;
+.b_siegel img:hover,
+.b_siegel img:focus-visible {
+  transform: scale(1.5);
+  background-color: #fafafa;
+  padding: .55rem;
   border-radius: .25rem;
-  box-shadow: 0 0 4px rgba(0,0,0,.5);
+  box-shadow: 0 0 0 2px var(--c-background), 0 6px 12px rgba(0,0,0,.18);
+  z-index: 1;
 }
+
+/* Optional: einheitliche, monochrome Darstellung aktivieren, indem der Container die Klasse "-mono" erhält */
+.b_siegel.-mono img { filter: grayscale(1) contrast(1.05) brightness(.95); }
+.b_siegel.-mono img:hover, .b_siegel.-mono img:focus-visible { filter: none; }
 
 .b_button {
   position: relative;
@@ -1188,7 +1202,8 @@ html[data-theme="dark"] #toggle-dark i.fa-sun { display: inline; }
   .flip-box,
   .front,
   .back {
-    aspect-ratio: 1 / 1;
+    aspect-ratio: auto;
+    min-height: 450px; /* Sicherheitsnetz, damit es nicht zu flach wird */
   }
 }
 
@@ -1207,6 +1222,7 @@ html[data-theme="dark"] #toggle-dark i.fa-sun { display: inline; }
 
 @media (prefers-reduced-motion: reduce) {
   .button, a.button { transition: none; }
+  .b_siegel img { transition: none; }
 }
 
 /* Unter 600px: Bild weiter nach rechts schieben */
