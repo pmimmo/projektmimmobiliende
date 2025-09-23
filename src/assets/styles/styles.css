@@ -804,7 +804,7 @@ ul.b_text li::marker {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background-color: var(--c-primary);
+  background: var(--c-background-primary-gradient-linear);
   transition: all 0.2s linear;
 }
 
