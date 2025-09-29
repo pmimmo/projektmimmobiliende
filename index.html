@@ -312,8 +312,8 @@
                             <p class="lead">Projekt M Immobilien ist Mitglied im IVD.<br />Wir sind offizieller Partner der IVD-Marktforschung und bilden uns regelmäßig&nbsp;fort.</p>
                         </div>
                         <div class="ivd-logos">
-                            <img src="/img/IVD_2025.png" alt="IVD Siegel 2025" />
-                            <img src="/img/2025 - Siegel Partner-Marktforschung ivd schmal.png" alt="Partner der IVD-Marktforschung 2025" />
+                            <img src="/img/IVD_2025.png" alt="IVD Immobilien-Weiterbildungssiegel" class="seal-logo" data-seal="ivd-weiterbildung" />
+                            <img src="/img/2025 - Siegel Partner-Marktforschung ivd schmal.png" alt="Partner der IVD-Marktforschung" class="seal-logo" data-seal="ivd-marktforschung" />
                         </div>
                     </div>
                 </div>
@@ -458,11 +458,11 @@
             <!-- Logo popover for seals -->
             <div id="logo-popover" popover="auto" role="dialog" aria-labelledby="lp-title" aria-describedby="lp-desc">
                 <button type="button" class="lp-close" popovertarget="logo-popover" popovertargetaction="hide" aria-label="Schließen"><i class="fa-solid fa-xmark"></i></button>
+                <h4 id="lp-title"></h4>
                 <div class="lp-body">
                     <img id="lp-img" alt="" />
                     <div class="lp-text">
                         <div>
-                            <h4 id="lp-title"></h4>
                             <p id="lp-desc"></p>
                             <p id="lp-certificateHolder"></p>
                         </div>
@@ -474,156 +474,6 @@
             </div>
         </main>
         {{> footer}}
-        <script type="module">
-            function $(sel, ctx = document) {
-                return ctx.querySelector(sel);
-            }
-            const pop = $("#logo-popover");
-            const imgEl = $("#lp-img");
-            const titleEl = $("#lp-title");
-            const descEl = $("#lp-desc");
-            const holderEl = $("#lp-certificateHolder");
-            const linkWrap = $("#lp-link-wrap");
-            const linkEl = $("#lp-link");
-
-            // Nutzung: <img class="seal-logo" data-seal="<key>">
-            const SEALS = {
-                din15733: {
-                    title: "Immobilienmakler zertifiziert nach DIN EN 15733",
-                    desc: "DIN EN 15733 ist die europaweit gültige Norm für Immobilienmakler. Sie bestätigt Mindestqualifikation, regelt Informationspflichten und verpflichtet zu einem Moralkodex inkl. Versicherung und Beschwerdemanagement. Zertifizierung freiwillig.",
-                    link: "",
-                },
-                "dekra-d1": {
-                    title: "DEKRA Sachverständige/r Immobilienbewertung D1",
-                    desc: "Das D1-Zertifikat bestätigt die besondere Fachkompetenz für die Bewertung von Standard-Einfamilien- und Zweifamilienhäusern. Geprüfte Sachverständige verfügen über fundiertes Fachwissen, rechtliche Kenntnisse und Praxiserfahrung in der Wertermittlung. Sie sind verpflichtet, ihr Wissen regelmäßig durch Fortbildungen und Rezertifizierungen nachzuweisen. Das Siegel schafft Vertrauen, dass Markt- und Verkehrswerte neutral, nachvollziehbar und nach anerkannten Standards ermittelt werden.",
-                    holder: "Rüdiger Neuer",
-                    link: "",
-                },
-                "sprengnetter-immowert": {
-                    title: "SPRENGNETTER Gesicherter ImmoWert",
-                    desc: "Dieses Qualitätssiegel bestätigt, dass die Wertermittlung auf geprüften Verfahren und aktueller Marktkenntnis basiert. Nur Sachverständige mit nachgewiesener Fachkompetenz und regelmäßiger Weiterbildung dürfen es führen.",
-                    link: "",
-                },
-                "sprengnetter-immomediator": {
-                    title: "SPRENGNETTER ImmoMediator",
-                    desc: "Das Siegel steht für geprüfte Kompetenz in Mediation und Konfliktlösung im Immobilienbereich. Zertifizierte Mediatoren helfen dabei, Streitigkeiten – zum Beispiel bei Erbe, Scheidung oder Bauprojekten – außergerichtlich, neutral und fair zu lösen.",
-                    link: "",
-                },
-                "sprengnetter-immobesichtiger": {
-                    title: "SPRENGNETTER ImmoBesichtiger – Schadenerkennung",
-                    desc: "Dieses Siegel weist die Qualifikation nach, bei Objektbesichtigungen Bauschäden und Risiken zuverlässig zu erkennen und korrekt zu dokumentieren. Damit wird sichergestellt, dass Immobilien sachgerecht bewertet und Folgekosten vermieden werden können.",
-                    link: "",
-                },
-                "dia-absolvent": {
-                    title: "Absolvent/in der Deutschen Immobilien-Akademie (DIA)",
-                    desc: "…",
-                    link: "",
-                },
-                "dia-zert-s": {
-                    title: "Zertifizierter Immobileingutachter S (DIAZert)",
-                    desc: "Zertifizierter Gutachter für die Markt- und Beleihungswertermittlung gemäß ImmoWertV und BelWertV von Standardimmobilien (S). Die Überprüfung erfolgte auf Basis des Programms Gutachter für Immobilienbewertung  und den normativen Grundlagen der DIA Consulting AG und unter Einhaltung der DIN EN ISO/IEC 17024.",
-                    holder: "Rüdiger Neuer",
-                    link: "https://www.diaconsulting.de/de/140/?credential=f2930293-be2a-4652-8850-f588d017f5fb",
-                },
-                "dia-zert-din15733": {
-                    title: "DIA Zert - Zertifiziert durch DIA Consulting AG nach EU-Norm DIN EN 15733",
-                    desc: "…",
-                    link: "",
-                },
-                "dia-zert-dipl-sach": {
-                    title: "Diplom-Sachverständiger (DIA)",
-                    desc: "Diplom-Sachverständiger (DIA) für die Bewertung von bebauten und unbebauten Grundstücken,für Mieten und Pachten",
-                    holder: "Rüdiger Neuer",
-                    link: "https://www.dia.de/de/657/?credential=6b8e7a13-3e59-4930-a8ee-e2c27078db58",
-                },
-                "hypzert-s": {
-                    title: "HypZert S – Real Estate Valuer",
-                    desc: "Zertifizierung für Immobiliengutachter:innen in der Finanzwirtschaft.",
-                    link: "",
-                },
-                "hypzert-gutachter": {
-                    title: "Wir beschäftigen HypZert Gutachter",
-                    desc: "HypZert ist die führende Zertifizierungsstelle für Immobiliengutachter:innen in der Finanzwirtschaft.",
-                    link: "",
-                },
-                ivd: {
-                    title: "Mitglied im IVD",
-                    desc: "Der Immobilienverband Deutschland e.V. (IVD) ist der Bundesverband der Immobilienberater:innen, Makler:innen, Verwalter:innen und Sachverständigen.",
-                    link: "",
-                },
-                vdiv: {
-                    title: "vdiv – Die Immobilienverwalter Bayern",
-                    desc: "Der Verband der Immobilienverwalter Deutschland e. V. ist der Spitzenverband der Haus- und Immobilienverwalter:innen in der Bundesrepublik Deutschland. Er wurde 1988 gegründet und vertritt die Interessen von derzeit rund 3.600 Unternehmen in Deutschland.",
-                    link: "",
-                },
-                "immoscout24-silber": {
-                    title: "ImmoScout24 Silber Partner seit 2025",
-                    desc: "Immoscout24 ist die führende Online-Plattform für Wohn- und Gewerbeimmobilien in Deutschland.",
-                    link: "",
-                },
-                "immowelt-premium": {
-                    title: "immowelt Premium Partner",
-                    desc: "Immowelt ist der Betreiber der Immobilienportale Immowelt.de, Immonet.de und Immowelt.at sowie des Portals bauen.de und bietet eine hohe Reichweite für Anzeigen.",
-                    link: "",
-                },
-                "haus+grund": {
-                    title: "HAUS+GRUND MÜNCHEN – HAUS- UND GRUNDBESITZERVEREIN MÜNCHEN und Umgebung e.V.",
-                    desc: "Seit 1879 die Interessentenvertretung für Haus-, Wohnungs- und Grundeigentümer:innen.",
-                    link: "",
-                },
-            };
-
-            function openPopoverFrom(el) {
-                if (!pop) return;
-                const key = el.dataset.seal || "";
-                const meta = key && SEALS[key] ? SEALS[key] : {};
-                const title = el.getAttribute("data-title") || meta.title || el.getAttribute("alt") || "Siegel";
-                const desc = el.getAttribute("data-desc") || meta.desc || "";
-                const holder = el.getAttribute("data-holder") || meta.holder || "";
-                const href = el.getAttribute("data-link") || meta.link || "";
-
-                imgEl.src = el.currentSrc || el.src;
-                imgEl.alt = title;
-                titleEl.textContent = title;
-                descEl.textContent = desc;
-                if (holder) {
-                    holderEl.textContent = "Ausgestellt für: " + holder;
-                    holderEl.hidden = false;
-                } else {
-                    holderEl.hidden = true;
-                }
-
-                if (href) {
-                    linkEl.href = href;
-                    linkWrap.hidden = false;
-                } else {
-                    linkWrap.hidden = true;
-                    linkEl.removeAttribute("href");
-                }
-
-                pop.showPopover();
-                // move focus to close button for accessibility
-                const closeBtn = pop.querySelector(".lp-close");
-                if (closeBtn) closeBtn.focus();
-            }
-
-            function onKeyActivate(ev) {
-                if (ev.key === "Enter" || ev.key === " ") {
-                    ev.preventDefault();
-                    openPopoverFrom(ev.currentTarget);
-                }
-            }
-
-            // document.querySelectorAll(".b_siegel img").forEach((el) => {
-            document.querySelectorAll(".seal-logo").forEach((el) => {
-                el.classList.add("seal-logo");
-                if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "0");
-                if (!el.hasAttribute("role")) el.setAttribute("role", "button");
-                el.setAttribute("aria-haspopup", "dialog");
-                el.addEventListener("click", (e) => openPopoverFrom(el));
-                el.addEventListener("keydown", onKeyActivate);
-            });
-        </script>
         <script type="module" src="/src/main.ts"></script>
     </body>
 </html>
