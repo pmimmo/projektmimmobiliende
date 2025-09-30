@@ -185,10 +185,10 @@ function initNav(): void {
 
 // ================== Popover: Siegel-Logik ==================
 // Optional typing for the Popover API on HTMLElement
-interface PopoverEl extends HTMLElement {
+type PopoverApi = {
   showPopover?: () => void;
   hidePopover?: () => void;
-}
+};
 
 type SealMeta = { title: string; desc: string; link?: string; holder?: string };
 
@@ -288,7 +288,7 @@ const SEALS: Record<string, SealMeta> = {
 };
 
 function initSealsPopover(): void {
-  const pop = document.getElementById("logo-popover") as PopoverEl | null;
+  const pop = document.getElementById("logo-popover") as (HTMLElement & PopoverApi) | null;
   if (!pop) return;
 
   const imgEl = document.getElementById("lp-img") as HTMLImageElement | null;
