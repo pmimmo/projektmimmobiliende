@@ -186,155 +186,168 @@ function initNav(): void {
 // ================== Popover: Siegel-Logik ==================
 // Optional typing for the Popover API on HTMLElement
 type PopoverApi = {
-  showPopover?: () => void;
-  hidePopover?: () => void;
+    showPopover?: () => void;
+    hidePopover?: () => void;
 };
 
 type SealMeta = { title: string; desc: string; link?: string; holder?: string };
 
 // Zentrale Registry für Siegeltexte. Nutzung: <img class="seal-logo" data-seal="<key>">
 const SEALS: Record<string, SealMeta> = {
-  din15733: {
-    title: "Immobilienmakler zertifiziert nach DIN EN 15733",
-    desc: "DIN EN 15733 ist die europaweit gültige Norm für Immobilienmakler. Sie bestätigt Mindestqualifikation, regelt Informationspflichten und verpflichtet zu einem Moralkodex inkl. Versicherung und Beschwerdemanagement. Zertifizierung freiwillig.",
-    link: "",
-  },
-  "dekra-d1": {
-    title: "DEKRA Sachverständige/r Immobilienbewertung D1",
-    desc: "Das D1-Zertifikat bestätigt die besondere Fachkompetenz für die Bewertung von Standard-Einfamilien- und Zweifamilienhäusern. Geprüfte Sachverständige verfügen über fundiertes Fachwissen, rechtliche Kenntnisse und Praxiserfahrung in der Wertermittlung. Sie sind verpflichtet, ihr Wissen regelmäßig durch Fortbildungen und Rezertifizierungen nachzuweisen. Das Siegel schafft Vertrauen, dass Markt- und Verkehrswerte neutral, nachvollziehbar und nach anerkannten Standards ermittelt werden.",
-    holder: "Rüdiger Neuer",
-    link: "",
-  },
-  "sprengnetter-immowert": {
-    title: "SPRENGNETTER Gesicherter ImmoWert",
-    desc: "Dieses Qualitätssiegel bestätigt, dass die Wertermittlung auf geprüften Verfahren und aktueller Marktkenntnis basiert. Nur Sachverständige mit nachgewiesener Fachkompetenz und regelmäßiger Weiterbildung dürfen es führen.",
-    link: "",
-  },
-  "sprengnetter-immomediator": {
-    title: "SPRENGNETTER ImmoMediator",
-    desc: "Das Siegel steht für geprüfte Kompetenz in Mediation und Konfliktlösung im Immobilienbereich. Zertifizierte Mediatoren helfen dabei, Streitigkeiten – zum Beispiel bei Erbe, Scheidung oder Bauprojekten – außergerichtlich, neutral und fair zu lösen.",
-    link: "",
-  },
-  "sprengnetter-immobesichtiger": {
-    title: "SPRENGNETTER ImmoBesichtiger – Schadenerkennung",
-    desc: "Dieses Siegel weist die Qualifikation nach, bei Objektbesichtigungen Bauschäden und Risiken zuverlässig zu erkennen und korrekt zu dokumentieren. Damit wird sichergestellt, dass Immobilien sachgerecht bewertet und Folgekosten vermieden werden können.",
-    link: "",
-  },
-  "dia-absolvent": {
-    title: "Absolvent/in der Deutschen Immobilien-Akademie (DIA)",
-    desc: "…",
-    link: "",
-  },
-  "dia-zert-s": {
-    title: "Zertifizierter Immobileingutachter S (DIAZert)",
-    desc: "Zertifizierter Gutachter für die Markt- und Beleihungswertermittlung gemäß ImmoWertV und BelWertV von Standardimmobilien (S). Die Überprüfung erfolgte auf Basis des Programms Gutachter für Immobilienbewertung  und den normativen Grundlagen der DIA Consulting AG und unter Einhaltung der DIN EN ISO/IEC 17024.",
-    holder: "Rüdiger Neuer",
-    link: "https://www.diaconsulting.de/de/140/?credential=f2930293-be2a-4652-8850-f588d017f5fb",
-  },
-  "dia-zert-din15733": {
-    title: "DIA Zert - Zertifiziert durch DIA Consulting AG nach EU-Norm DIN EN 15733",
-    desc: "…",
-    link: "",
-  },
-  "dia-zert-dipl-sach": {
-    title: "Diplom-Sachverständiger (DIA)",
-    desc: "Diplom-Sachverständiger (DIA) für die Bewertung von bebauten und unbebauten Grundstücken,für Mieten und Pachten",
-    holder: "Rüdiger Neuer",
-    link: "https://www.dia.de/de/657/?credential=6b8e7a13-3e59-4930-a8ee-e2c27078db58",
-  },
-  "hypzert-s": {
-    title: "HypZert S – Real Estate Valuer",
-    desc: "Zertifizierung für Immobiliengutachter:innen in der Finanzwirtschaft.",
-    link: "",
-  },
-  "hypzert-gutachter": {
-    title: "Wir beschäftigen HypZert Gutachter",
-    desc: "HypZert ist die führende Zertifizierungsstelle für Immobiliengutachter:innen in der Finanzwirtschaft.",
-    link: "",
-  },
-  ivd: {
-    title: "Mitglied im IVD",
-    desc: "Der Immobilienverband Deutschland e.V. (IVD) ist der Bundesverband der Immobilienberater:innen, Makler:innen, Verwalter:innen und Sachverständigen.",
-    link: "",
-  },
-  "ivd-weiterbildung": {
-    title: "IVD Immobilen-Weiterbildungssiegel",
-    desc: "Das Siegel bestätigt die kontinuierliche Qualifizierung durch mindestens 15 Stunden anerkannte Fortbildung pro Jahr. Es steht für aktuelles Fachwissen, rechtliche Sicherheit und den Anspruch, Kundinnen und Kunden stets mit geprüfter Kompetenz zu begleiten.",
-  },
-  "ivd-marktforschung": {
-    title: "Partner der IVD-Marktforschung",
-    desc: "Das Siegel kennzeichnet Unternehmen, die aktiv an der Datenerhebung und Analyse des Immobilienmarktes mitwirken. Damit tragen sie zu belastbaren Marktberichten bei und erhalten selbst frühzeitig fundierte Informationen – ein Mehrwert für Kundinnen und Kunden.",
-  },
-  vdiv: {
-    title: "vdiv – Die Immobilienverwalter Bayern",
-    desc: "Der Verband der Immobilienverwalter Deutschland e. V. ist der Spitzenverband der Haus- und Immobilienverwalter:innen in der Bundesrepublik Deutschland. Er wurde 1988 gegründet und vertritt die Interessen von derzeit rund 3.600 Unternehmen in Deutschland.",
-    link: "",
-  },
-  "immoscout24-silber": {
-    title: "ImmoScout24 Silber Partner seit 2025",
-    desc: "Immoscout24 ist die führende Online-Plattform für Wohn- und Gewerbeimmobilien in Deutschland.",
-    link: "",
-  },
-  "immowelt-premium": {
-    title: "immowelt Premium Partner",
-    desc: "Immowelt ist der Betreiber der Immobilienportale Immowelt.de, Immonet.de und Immowelt.at sowie des Portals bauen.de und bietet eine hohe Reichweite für Anzeigen.",
-    link: "",
-  },
-  "haus+grund": {
-    title: "HAUS+GRUND MÜNCHEN – HAUS- UND GRUNDBESITZERVEREIN MÜNCHEN und Umgebung e.V.",
-    desc: "Seit 1879 die Interessentenvertretung für Haus-, Wohnungs- und Grundeigentümer:innen.",
-    link: "",
-  },
+    din15733: {
+        title: "Immobilienmakler zertifiziert nach DIN EN 15733",
+        desc: "DIN EN 15733 ist die europaweit gültige Norm für Immobilienmakler. Sie bestätigt Mindestqualifikation, regelt Informationspflichten und verpflichtet zu einem Moralkodex inkl. Versicherung und Beschwerdemanagement. Zertifizierung freiwillig.",
+        link: "",
+    },
+    "dekra-d1": {
+        title: "DEKRA Sachverständige/r Immobilienbewertung D1",
+        desc: "Das D1-Zertifikat bestätigt die besondere Fachkompetenz für die Bewertung von Standard-Einfamilien- und Zweifamilienhäusern. Geprüfte Sachverständige verfügen über fundiertes Fachwissen, rechtliche Kenntnisse und Praxiserfahrung in der Wertermittlung. Sie sind verpflichtet, ihr Wissen regelmäßig durch Fortbildungen und Rezertifizierungen nachzuweisen. Das Siegel schafft Vertrauen, dass Markt- und Verkehrswerte neutral, nachvollziehbar und nach anerkannten Standards ermittelt werden.",
+        holder: "Rüdiger Neuer",
+        link: "",
+    },
+    "sprengnetter-immowert": {
+        title: "SPRENGNETTER Gesicherter ImmoWert",
+        desc: "Dieses Qualitätssiegel bestätigt, dass die Wertermittlung auf geprüften Verfahren und aktueller Marktkenntnis basiert. Nur Sachverständige mit nachgewiesener Fachkompetenz und regelmäßiger Weiterbildung dürfen es führen.",
+        link: "",
+    },
+    "sprengnetter-immomediator": {
+        title: "SPRENGNETTER ImmoMediator",
+        desc: "Das Siegel steht für geprüfte Kompetenz in Mediation und Konfliktlösung im Immobilienbereich. Zertifizierte Mediatoren helfen dabei, Streitigkeiten – zum Beispiel bei Erbe, Scheidung oder Bauprojekten – außergerichtlich, neutral und fair zu lösen.",
+        link: "",
+    },
+    "sprengnetter-immobesichtiger": {
+        title: "SPRENGNETTER ImmoBesichtiger – Schadenerkennung",
+        desc: "Dieses Siegel weist die Qualifikation nach, bei Objektbesichtigungen Bauschäden und Risiken zuverlässig zu erkennen und korrekt zu dokumentieren. Damit wird sichergestellt, dass Immobilien sachgerecht bewertet und Folgekosten vermieden werden können.",
+        link: "",
+    },
+    "dia-absolvent": {
+        title: "Absolvent/in der Deutschen Immobilien-Akademie (DIA)",
+        desc: "…",
+        link: "",
+    },
+    "dia-zert-s": {
+        title: "Zertifizierter Immobileingutachter S (DIAZert)",
+        desc: "Zertifizierter Gutachter für die Markt- und Beleihungswertermittlung gemäß ImmoWertV und BelWertV von Standardimmobilien (S). Die Überprüfung erfolgte auf Basis des Programms Gutachter für Immobilienbewertung  und den normativen Grundlagen der DIA Consulting AG und unter Einhaltung der DIN EN ISO/IEC 17024.",
+        holder: "Rüdiger Neuer",
+        link: "https://www.diaconsulting.de/de/140/?credential=f2930293-be2a-4652-8850-f588d017f5fb",
+    },
+    "dia-zert-din15733": {
+        title: "DIA Zert - Zertifiziert durch DIA Consulting AG nach EU-Norm DIN EN 15733",
+        desc: "…",
+        link: "",
+    },
+    "dia-zert-dipl-sach": {
+        title: "Diplom-Sachverständiger (DIA)",
+        desc: "Diplom-Sachverständiger (DIA) für die Bewertung von bebauten und unbebauten Grundstücken,für Mieten und Pachten",
+        holder: "Rüdiger Neuer",
+        link: "https://www.dia.de/de/657/?credential=6b8e7a13-3e59-4930-a8ee-e2c27078db58",
+    },
+    "hypzert-s": {
+        title: "HypZert S – Real Estate Valuer",
+        desc: "Zertifizierung für Immobiliengutachter:innen in der Finanzwirtschaft.",
+        link: "",
+    },
+    "hypzert-gutachter": {
+        title: "Wir beschäftigen HypZert Gutachter",
+        desc: "HypZert ist die führende Zertifizierungsstelle für Immobiliengutachter:innen in der Finanzwirtschaft.",
+        link: "",
+    },
+    ivd: {
+        title: "Mitglied im IVD",
+        desc: "Der Immobilienverband Deutschland e.V. (IVD) ist der Bundesverband der Immobilienberater:innen, Makler:innen, Verwalter:innen und Sachverständigen.",
+        link: "",
+    },
+    "ivd-weiterbildung": {
+        title: "IVD Immobilen-Weiterbildungssiegel",
+        desc: "Das Siegel bestätigt die kontinuierliche Qualifizierung durch mindestens 15 Stunden anerkannte Fortbildung pro Jahr. Es steht für aktuelles Fachwissen, rechtliche Sicherheit und den Anspruch, Kundinnen und Kunden stets mit geprüfter Kompetenz zu begleiten.",
+    },
+    "ivd-marktforschung": {
+        title: "Partner der IVD-Marktforschung",
+        desc: "Das Siegel kennzeichnet Unternehmen, die aktiv an der Datenerhebung und Analyse des Immobilienmarktes mitwirken. Damit tragen sie zu belastbaren Marktberichten bei und erhalten selbst frühzeitig fundierte Informationen – ein Mehrwert für Kundinnen und Kunden.",
+    },
+    vdiv: {
+        title: "vdiv – Die Immobilienverwalter Bayern",
+        desc: "Der Verband der Immobilienverwalter Deutschland e. V. ist der Spitzenverband der Haus- und Immobilienverwalter:innen in der Bundesrepublik Deutschland. Er wurde 1988 gegründet und vertritt die Interessen von derzeit rund 3.600 Unternehmen in Deutschland.",
+        link: "",
+    },
+    "immoscout24-silber": {
+        title: "ImmoScout24 Silber Partner seit 2025",
+        desc: "Immoscout24 ist die führende Online-Plattform für Wohn- und Gewerbeimmobilien in Deutschland.",
+        link: "",
+    },
+    "immowelt-premium": {
+        title: "immowelt Premium Partner",
+        desc: "Immowelt ist der Betreiber der Immobilienportale Immowelt.de, Immonet.de und Immowelt.at sowie des Portals bauen.de und bietet eine hohe Reichweite für Anzeigen.",
+        link: "",
+    },
+    "haus+grund": {
+        title: "HAUS+GRUND MÜNCHEN – HAUS- UND GRUNDBESITZERVEREIN MÜNCHEN und Umgebung e.V.",
+        desc: "Seit 1879 die Interessentenvertretung für Haus-, Wohnungs- und Grundeigentümer:innen.",
+        link: "",
+    },
 };
 
 function initSealsPopover(): void {
-  const pop = document.getElementById("logo-popover") as (HTMLElement & PopoverApi) | null;
-  if (!pop) return;
+    const pop = document.getElementById("logo-popover") as (HTMLElement & PopoverApi) | null;
+    if (!pop) return;
 
-  const imgEl = document.getElementById("lp-img") as HTMLImageElement | null;
-  const titleEl = document.getElementById("lp-title") as HTMLElement | null;
-  const descEl = document.getElementById("lp-desc") as HTMLElement | null;
-  const holderEl = document.getElementById("lp-certificateHolder") as HTMLElement | null;
-  const linkWrap = document.getElementById("lp-link-wrap") as HTMLElement | null;
-  const linkEl = document.getElementById("lp-link") as HTMLAnchorElement | null;
+    const imgEl = document.getElementById("lp-img") as HTMLImageElement | null;
+    const titleEl = document.getElementById("lp-title") as HTMLElement | null;
+    const descEl = document.getElementById("lp-desc") as HTMLElement | null;
+    const holderEl = document.getElementById("lp-certificateHolder") as HTMLElement | null;
+    const linkWrap = document.getElementById("lp-link-wrap") as HTMLElement | null;
+    const linkEl = document.getElementById("lp-link") as HTMLAnchorElement | null;
 
-  function openPopoverFrom(el: HTMLElement): void {
-    if (!pop || !imgEl || !titleEl || !descEl || !linkWrap || !linkEl) return;
-    const key = (el as HTMLElement).dataset.seal || "";
-    const meta = (key && SEALS[key]) ? SEALS[key] : ({} as SealMeta);
-    const title = el.getAttribute("data-title") || meta.title || el.getAttribute("alt") || "Siegel";
-    const desc  = el.getAttribute("data-desc")  || meta.desc  || "";
-    const holder= el.getAttribute("data-holder")|| meta.holder || "";
-    const href  = el.getAttribute("data-link")  || meta.link   || "";
+    function openPopoverFrom(el: HTMLElement): void {
+        if (!pop || !imgEl || !titleEl || !descEl || !linkWrap || !linkEl) return;
+        const key = (el as HTMLElement).dataset.seal || "";
+        const meta = key && SEALS[key] ? SEALS[key] : ({} as SealMeta);
+        const title = el.getAttribute("data-title") || meta.title || el.getAttribute("alt") || "Siegel";
+        const desc = el.getAttribute("data-desc") || meta.desc || "";
+        const holder = el.getAttribute("data-holder") || meta.holder || "";
+        const href = el.getAttribute("data-link") || meta.link || "";
 
-    const img = el as HTMLImageElement;
-    imgEl.src = (img.currentSrc || img.src || "");
-    imgEl.alt = title;
-    titleEl.textContent = title;
-    descEl.textContent = desc;
-    if (holderEl) {
-      if (holder) { holderEl.textContent = "Ausgestellt für: " + holder; holderEl.hidden = false; }
-      else { holderEl.hidden = true; }
+        const img = el as HTMLImageElement;
+        imgEl.src = img.currentSrc || img.src || "";
+        imgEl.alt = title;
+        titleEl.textContent = title;
+        descEl.textContent = desc;
+        if (holderEl) {
+            if (holder) {
+                holderEl.textContent = "Ausgestellt für: " + holder;
+                holderEl.hidden = false;
+            } else {
+                holderEl.hidden = true;
+            }
+        }
+        if (href) {
+            linkEl.href = href;
+            linkWrap.hidden = false;
+        } else {
+            linkWrap.hidden = true;
+            linkEl.removeAttribute("href");
+        }
+
+        pop.showPopover?.();
+        const closeBtn = pop.querySelector<HTMLElement>(".lp-close");
+        closeBtn?.focus();
     }
-    if (href) { linkEl.href = href; linkWrap.hidden = false; } else { linkWrap.hidden = true; linkEl.removeAttribute("href"); }
 
-    pop.showPopover?.();
-    const closeBtn = pop.querySelector<HTMLElement>(".lp-close");
-    closeBtn?.focus();
-  }
-
-  // Event-Delegation für Klick und Tastatur
-  document.addEventListener("click", (e) => {
-    const el = (e.target as HTMLElement | null)?.closest<HTMLElement>(".seal-logo");
-    if (el) openPopoverFrom(el);
-  });
-  document.addEventListener("keydown", (e) => {
-    const target = e.target as HTMLElement | null;
-    if (!target) return;
-    const el = target.closest<HTMLElement>(".seal-logo");
-    if (!el) return;
-    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openPopoverFrom(el); }
-  });
+    // Event-Delegation für Klick und Tastatur
+    document.addEventListener("click", (e) => {
+        const el = (e.target as HTMLElement | null)?.closest<HTMLElement>(".seal-logo");
+        if (el) openPopoverFrom(el);
+    });
+    document.addEventListener("keydown", (e) => {
+        const target = e.target as HTMLElement | null;
+        if (!target) return;
+        const el = target.closest<HTMLElement>(".seal-logo");
+        if (!el) return;
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openPopoverFrom(el);
+        }
+    });
 }
 
 // --- Init bei DOM-Ready ---
