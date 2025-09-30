@@ -227,7 +227,7 @@ const SEALS: Record<string, SealMeta> = {
     },
     "dia-zert-s": {
         title: "Zertifizierter Immobileingutachter S (DIAZert)",
-        desc: "Zertifizierter Gutachter für die Markt- und Beleihungswertermittlung gemäß ImmoWertV und BelWertV von Standardimmobilien (S). Die Überprüfung erfolgte auf Basis des Programms Gutachter für Immobilienbewertung  und den normativen Grundlagen der DIA Consulting AG und unter Einhaltung der DIN EN ISO/IEC 17024.",
+        desc: "Zertifizierter Gutachter für die Markt- und Beleihungswertermittlung gemäß ImmoWertV und BelWertV von Standardimmobilien (S). Die Überprüfung erfolgte auf Basis des Programms Gutachter für Immobilienbewertung und den normativen Grundlagen der DIA Consulting AG und unter Einhaltung der DIN EN ISO/IEC 17024.",
         holder: "Rüdiger Neuer",
         link: "https://www.diaconsulting.de/de/140/?credential=f2930293-be2a-4652-8850-f588d017f5fb",
     },
@@ -238,7 +238,7 @@ const SEALS: Record<string, SealMeta> = {
     },
     "dia-zert-dipl-sach": {
         title: "Diplom-Sachverständiger (DIA)",
-        desc: "Diplom-Sachverständiger (DIA) für die Bewertung von bebauten und unbebauten Grundstücken,für Mieten und Pachten",
+        desc: "Diplom-Sachverständiger (DIA) für die Bewertung von bebauten und unbebauten Grundstücken, für Mieten und Pachten",
         holder: "Rüdiger Neuer",
         link: "https://www.dia.de/de/657/?credential=6b8e7a13-3e59-4930-a8ee-e2c27078db58",
     },
@@ -258,7 +258,7 @@ const SEALS: Record<string, SealMeta> = {
         link: "",
     },
     "ivd-weiterbildung": {
-        title: "IVD Immobilen-Weiterbildungssiegel",
+        title: "IVD-Immobilen-Weiterbildungssiegel",
         desc: "Das Siegel bestätigt die kontinuierliche Qualifizierung durch mindestens 15 Stunden anerkannte Fortbildung pro Jahr. Es steht für aktuelles Fachwissen, rechtliche Sicherheit und den Anspruch, Kundinnen und Kunden stets mit geprüfter Kompetenz zu begleiten.",
     },
     "ivd-marktforschung": {
