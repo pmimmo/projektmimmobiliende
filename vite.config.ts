@@ -34,6 +34,9 @@ const meta = {
 };
 
 export default defineConfig({
+    server: {
+        host: true, // oder '0.0.0.0'
+    },
     build: { rollupOptions: { input: pages } },
     plugins: [
         handlebars({
