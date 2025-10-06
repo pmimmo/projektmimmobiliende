@@ -222,7 +222,7 @@ const SEALS: Record<string, SealMeta> = {
     },
     "dia-absolvent": {
         title: "Absolvent/in der Deutschen Immobilien-Akademie (DIA)",
-        desc: "…",
+        desc: "Die Deutsche Immobilien-Akademie an der Universität Freiburg (DIA) gilt als führende Institution für die Weiterbildung in der Immobilienwirtschaft. Absolventinnen und Absolventen verfügen über fundierte Kenntnisse in Immobilienbewertung, Recht, Bauwesen und Marktanalyse. Die Ausbildung ist praxisnah, anerkannt und bildet die Grundlage für qualifizierte Gutachtertätigkeiten.",
         link: "",
     },
     "dia-zert-s": {
@@ -233,7 +233,7 @@ const SEALS: Record<string, SealMeta> = {
     },
     "dia-zert-din15733": {
         title: "DIA Zert - Zertifiziert durch DIA Consulting AG nach EU-Norm DIN EN 15733",
-        desc: "…",
+        desc: "Das Zertifikat der DIA Consulting AG nach DIN EN 15733 bestätigt die Einhaltung der europäischen Qualitätsnorm für Immobilienmakler. Es steht für geprüfte Fachkunde, Transparenz, Ethik und ein dokumentiertes Beschwerdemanagementsystem. Kundinnen und Kunden erhalten dadurch ein verlässliches Qualitätsversprechen.",
         link: "",
     },
     "dia-zert-dipl-sach": {
