@@ -63,6 +63,13 @@ html {
 
 }
 
+::selection {
+  background-color: color-mix(in oklch, var(--c-primary) 80%, white);
+  color: white;
+}
+
+::marker { color: var(--c-primary) }
+
 body {
   background-color: white;
   color: var(--c-text);
@@ -140,7 +147,6 @@ p { margin-bottom: .5em; }
 
 ul { list-style-position: inside; margin-left: 2rem; }
 li { list-style: disc; margin-bottom: .4rem; }
-li::marker { color: var(--c-primary) }
 
 .lead { font-size: clamp(1.2rem, 0.9529rem + 1.1294vw, 1.8rem); font-weight: 200; }
 
@@ -641,10 +647,6 @@ ul.b_text {
 
 ul.b_text li {
   margin-bottom: .5em;
-}
-
-ul.b_text li::marker {
-  color: var(--c-primary);
 }
 
 /* Badge/Siegel-Leiste: feste bzw. responsive Höhe */
