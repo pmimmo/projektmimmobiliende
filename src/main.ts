@@ -196,93 +196,110 @@ type SealMeta = { title: string; desc: string; link?: string; holder?: string };
 const SEALS: Record<string, SealMeta> = {
     din15733: {
         title: "Immobilienmakler zertifiziert nach DIN EN 15733",
-        desc: "DIN EN 15733 ist die europaweit gültige Norm für Immobilienmakler. Sie bestätigt Mindestqualifikation, regelt Informationspflichten und verpflichtet zu einem Moralkodex inkl. Versicherung und Beschwerdemanagement. Zertifizierung freiwillig.",
+        desc: "DIN EN 15733 ist die europaweit gültige Norm für Immobilienmakler. Sie bestätigt Mindestqualifikation, regelt Informationspflichten und verpflichtet zu einem Moralkodex inklusive Versicherung und Beschwerdemanagement. Die Zertifizierung erfolgt auf freiwilliger Basis.",
         link: "",
     },
+
     "dekra-d1": {
         title: "DEKRA Sachverständige/r Immobilienbewertung D1",
-        desc: "Das D1-Zertifikat bestätigt die besondere Fachkompetenz für die Bewertung von Standard-Einfamilien- und Zweifamilienhäusern. Geprüfte Sachverständige verfügen über fundiertes Fachwissen, rechtliche Kenntnisse und Praxiserfahrung in der Wertermittlung. Sie sind verpflichtet, ihr Wissen regelmäßig durch Fortbildungen und Rezertifizierungen nachzuweisen. Das Siegel schafft Vertrauen, dass Markt- und Verkehrswerte neutral, nachvollziehbar und nach anerkannten Standards ermittelt werden.",
+        desc: "Das D1-Zertifikat bestätigt besondere Fachkompetenz bei der Bewertung von Standard-Ein- und Zweifamilienhäusern. Geprüfte Sachverständige verfügen über fundiertes Fachwissen, rechtliche Kenntnisse und praktische Erfahrung in der Wertermittlung. Sie müssen ihr Wissen regelmäßig durch Fortbildungen und Rezertifizierungen nachweisen. Das Siegel steht für transparente und nachvollziehbare Markt- und Verkehrswertermittlungen.",
         holder: "Rüdiger Neuer",
         link: "",
     },
+
     "sprengnetter-immowert": {
         title: "SPRENGNETTER Gesicherter ImmoWert",
-        desc: "Dieses Qualitätssiegel bestätigt, dass die Wertermittlung auf geprüften Verfahren und aktueller Marktkenntnis basiert. Nur Sachverständige mit nachgewiesener Fachkompetenz und regelmäßiger Weiterbildung dürfen es führen.",
+        desc: "Dieses Qualitätssiegel bestätigt, dass die Wertermittlung auf standardisierten, geprüften Verfahren und aktueller Marktkenntnis basiert. Nur Sachverständige mit nachgewiesener Fachkompetenz und regelmäßiger Weiterbildung dürfen es verwenden.",
         link: "",
     },
+
     "sprengnetter-immomediator": {
         title: "SPRENGNETTER ImmoMediator",
-        desc: "Das Siegel steht für geprüfte Kompetenz in Mediation und Konfliktlösung im Immobilienbereich. Zertifizierte Mediatoren helfen dabei, Streitigkeiten – zum Beispiel bei Erbe, Scheidung oder Bauprojekten – außergerichtlich, neutral und fair zu lösen.",
+        desc: "Dieses Siegel steht für geprüfte Kompetenz in Mediation und Konfliktlösung im Immobilienbereich. Zertifizierte Mediatoren unterstützen bei Streitigkeiten – z. B. bei Erbschaft, Scheidung oder Bauprojekten – außergerichtlich, neutral und fair.",
         link: "",
     },
+
     "sprengnetter-immobesichtiger": {
         title: "SPRENGNETTER ImmoBesichtiger – Schadenerkennung",
-        desc: "Dieses Siegel weist die Qualifikation nach, bei Objektbesichtigungen Bauschäden und Risiken zuverlässig zu erkennen und korrekt zu dokumentieren. Damit wird sichergestellt, dass Immobilien sachgerecht bewertet und Folgekosten vermieden werden können.",
+        desc: "Dieses Siegel bescheinigt die Qualifikation, bei Objektbesichtigungen Bau- und Instandhaltungsmängel zuverlässig zu erkennen und korrekt zu dokumentieren. Es trägt dazu bei, Folgekosten durch unerkannte Schäden zu vermeiden.",
         link: "",
     },
+
     "dia-absolvent": {
         title: "Absolvent/in der Deutschen Immobilien-Akademie (DIA)",
-        desc: "Die Deutsche Immobilien-Akademie an der Universität Freiburg (DIA) gilt als führende Institution für die Weiterbildung in der Immobilienwirtschaft. Absolventinnen und Absolventen verfügen über fundierte Kenntnisse in Immobilienbewertung, Recht, Bauwesen und Marktanalyse. Die Ausbildung ist praxisnah, anerkannt und bildet die Grundlage für qualifizierte Gutachtertätigkeiten.",
+        desc: "Die Deutsche Immobilien-Akademie (DIA) ist eine der führenden Bildungseinrichtungen in der Immobilienwirtschaft. Absolvent:innen verfügen über vertiefte Kenntnisse in Immobilienbewertung, Baurecht, Marktanalyse und Bewertungstechniken. Der DIA-Abschluss bildet eine solide Grundlage für qualifizierte Gutachter- und Beratertätigkeiten.",
         link: "",
     },
+
     "dia-zert-s": {
-        title: "Zertifizierter Immobileingutachter S (DIAZert)",
-        desc: "Zertifizierter Gutachter für die Markt- und Beleihungswertermittlung gemäß ImmoWertV und BelWertV von Standardimmobilien (S). Die Überprüfung erfolgte auf Basis des Programms Gutachter für Immobilienbewertung und den normativen Grundlagen der DIA Consulting AG und unter Einhaltung der DIN EN ISO/IEC 17024.",
+        title: "Zertifizierter Immobiliengutachter S (DIAZert)",
+        desc: "Zertifizierter Gutachter für Markt- und Beleihungswertermittlung von Standardimmobilien (S) gemäß ImmoWertV und BelWertV. Die Zertifizierung erfolgt nach den normativen Vorgaben der DIA Consulting AG unter Einhaltung der Anforderungen der DIN EN ISO/IEC 17024.",
         holder: "Rüdiger Neuer",
         link: "https://www.diaconsulting.de/de/140/?credential=f2930293-be2a-4652-8850-f588d017f5fb",
     },
+
     "dia-zert-din15733": {
-        title: "DIA Zert - Zertifiziert durch DIA Consulting AG nach EU-Norm DIN EN 15733",
-        desc: "Das Zertifikat der DIA Consulting AG nach DIN EN 15733 bestätigt die Einhaltung der europäischen Qualitätsnorm für Immobilienmakler. Es steht für geprüfte Fachkunde, Transparenz, Ethik und ein dokumentiertes Beschwerdemanagementsystem. Kundinnen und Kunden erhalten dadurch ein verlässliches Qualitätsversprechen.",
+        title: "DIA Zert – Zertifiziert nach EU-Norm DIN EN 15733",
+        desc: "Das DIA-Zertifikat nach DIN EN 15733 bestätigt die Einhaltung europäischer Qualitätsstandards für Immobilienmakler. Es steht für geprüfte Fachkunde, Transparenz, Ethik und ein dokumentiertes Beschwerdemanagementsystem. Damit erhalten Kund:innen ein verbindliches Qualitätskennzeichen.",
         link: "",
     },
+
     "dia-zert-dipl-sach": {
-        title: "Diplom-Sachverständiger (DIA)",
-        desc: "Diplom-Sachverständiger (DIA) für die Bewertung von bebauten und unbebauten Grundstücken, für Mieten und Pachten",
+        title: "Diplom-Sachverständige/r (DIA)",
+        desc: "Der Titel „Diplom-Sachverständige/r (DIA)“ steht für umfassende Fachkompetenz in der Bewertung bebauter und unbebauter Grundstücke sowie der Bewertung von Mieten und Pachten. Der Abschluss ist in der Branche anerkannt und dient als Grundlage für Zertifizierungen und öffentliche Bestellung.",
         holder: "Rüdiger Neuer",
         link: "https://www.dia.de/de/657/?credential=6b8e7a13-3e59-4930-a8ee-e2c27078db58",
     },
+
     "hypzert-s": {
-        title: "HypZert S – Real Estate Valuer",
-        desc: "Zertifizierung für Immobiliengutachter:innen in der Finanzwirtschaft.",
+        title: "HypZert S – Real Estate Valuer for Standard Properties",
+        desc: "Das HypZert S-Zertifikat bestätigt Qualifikation für Markt- und Beleihungswertermittlungen standardisierter Wohnimmobilien – insbesondere Ein- und Mehrfamilienhäuser. Die Zertifizierung orientiert sich an internationalen Standards und fordert regelmäßige Rezertifizierung.",
         link: "",
     },
+
     "hypzert-gutachter": {
-        title: "Wir beschäftigen HypZert Gutachter",
-        desc: "HypZert ist die führende Zertifizierungsstelle für Immobiliengutachter:innen in der Finanzwirtschaft.",
+        title: "Wir beschäftigen HypZert-zertifizierte Gutachter:innen",
+        desc: "HypZert ist eine führende Zertifizierungsstelle für Immobiliengutachter:innen in der Finanzwirtschaft. HypZert-Zertifikate stehen für strenge Prüfungsanforderungen, hohe Fachkompetenz und regelmäßige Überprüfung nach DIN EN ISO/IEC 17024.",
         link: "",
     },
+
     ivd: {
         title: "Mitglied im IVD",
-        desc: "Der Immobilienverband Deutschland e.V. (IVD) ist der Bundesverband der Immobilienberater:innen, Makler:innen, Verwalter:innen und Sachverständigen.",
+        desc: "Mitglieder im Immobilienverband Deutschland (IVD) verpflichten sich zu Berufs- und Wettbewerbsregeln, fortlaufender Weiterbildung und transparenter Kundenkommunikation. Der Verband vernetzt qualifizierte Makler:innen, Gutachter:innen und Verwalter:innen und fördert Qualität in der Immobilienwirtschaft.",
         link: "",
     },
+
     "ivd-weiterbildung": {
-        title: "IVD-Immobilen-Weiterbildungssiegel",
-        desc: "Das Siegel bestätigt die kontinuierliche Qualifizierung durch mindestens 15 Stunden anerkannte Fortbildung pro Jahr. Es steht für aktuelles Fachwissen, rechtliche Sicherheit und den Anspruch, Kundinnen und Kunden stets mit geprüfter Kompetenz zu begleiten.",
+        title: "IVD-Immobilien-Weiterbildungssiegel",
+        desc: "Das Siegel bestätigt kontinuierliche Qualifizierung durch mindestens 15 Stunden anerkannte Fortbildung pro Jahr. Es signalisiert Fachwissen, rechtliche Sicherheit und dass Kund:innen durch geprüfte Kompetenz begleitet werden.",
     },
+
     "ivd-marktforschung": {
         title: "Partner der IVD-Marktforschung",
-        desc: "Das Siegel kennzeichnet Unternehmen, die aktiv an der Datenerhebung und Analyse des Immobilienmarktes mitwirken. Damit tragen sie zu belastbaren Marktberichten bei und erhalten selbst frühzeitig fundierte Informationen – ein Mehrwert für Kundinnen und Kunden.",
+        desc: "Dieses Siegel kennzeichnet Unternehmen, die aktiv an Datenerhebung und Marktanalyse im Immobiliensektor mitwirken. Dadurch unterstützen sie belastbare Marktberichte und profitieren selbst frühzeitig von fundierten Informationen.",
     },
+
     vdiv: {
-        title: "vdiv – Die Immobilienverwalter Bayern",
-        desc: "Der Verband der Immobilienverwalter Deutschland e. V. ist der Spitzenverband der Haus- und Immobilienverwalter:innen in der Bundesrepublik Deutschland. Er wurde 1988 gegründet und vertritt die Interessen von derzeit rund 3.600 Unternehmen in Deutschland.",
+        title: "Mitglied im vdiv – Verband der Immobilienverwalter Bayern",
+        desc: "Der vdiv Bayern ist Teil eines bundesweiten Netzwerks professioneller Haus- und Immobilienverwalter:innen. Mitglieder verpflichten sich zu Qualitätsstandards, Fachinformation und Fortbildung. Der Verband schützt Interessen von Eigentümer:innen und Verwalter:innen gleichermaßen.",
         link: "",
     },
+
     "immoscout24-silber": {
         title: "ImmoScout24 Silber Partner seit 2025",
-        desc: "Immoscout24 ist die führende Online-Plattform für Wohn- und Gewerbeimmobilien in Deutschland.",
+        desc: "Das Silber-Siegel von ImmoScout24 wird an Partnerunternehmen verliehen, die durch hohe Aktivität, gute Bewertungen und professionelle Objektpräsentation überzeugen. Es steht für Erfahrung, Verlässlichkeit und erhöhte Sichtbarkeit.",
         link: "",
     },
+
     "immowelt-premium": {
         title: "immowelt Premium Partner",
-        desc: "Immowelt ist der Betreiber der Immobilienportale Immowelt.de, Immonet.de und Immowelt.at sowie des Portals bauen.de und bietet eine hohe Reichweite für Anzeigen.",
+        desc: "Das Premium-Siegel von Immowelt kennzeichnet Makler:innen und Immobilienunternehmen mit hoher Servicequalität, starker Präsenz auf der Plattform und positiven Kundenbewertungen. Es signalisiert Professionalität und gute Marktreichweite.",
         link: "",
     },
+
     "haus+grund": {
-        title: "HAUS+GRUND MÜNCHEN – HAUS- UND GRUNDBESITZERVEREIN MÜNCHEN und Umgebung e.V.",
-        desc: "Seit 1879 die Interessentenvertretung für Haus-, Wohnungs- und Grundeigentümer:innen.",
+        title: "HAUS+GRUND MÜNCHEN – Haus- und Grundbesitzerverein München und Umgebung e. V.",
+        desc: "HAUS+GRUND München ist seit 1879 die unabhängige Interessenvertretung für Eigentümer:innen von Häusern, Wohnungen und Grundstücken. Der Verein bietet rechtliche Beratung, praktische Informationen und politische Vertretung rund um Vermietung und Verwaltung.",
         link: "",
     },
 };
