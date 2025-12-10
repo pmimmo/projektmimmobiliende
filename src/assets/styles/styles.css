@@ -428,12 +428,7 @@ header.hero p.lead {
 /* --------------------------------------------------
    Weihnachts-/Neujahrsbox
 -------------------------------------------------- */
-.xmas-box {
-  margin: 4rem auto;
-  padding: 0;
-}
-
-.xmas-content {
+#weihnachten-neujahr .xmas-content {
   border-radius: 2rem;
   background-image: url('/img/pexels-george-dolgikh-1303094.jpg');
   background-repeat: no-repeat;
@@ -460,20 +455,14 @@ header.hero p.lead {
   /* NEU für Blur-Panel */
 }
 
-/* NEU: Text über das Blur-Panel legen */
-.xmas-content > * {
-  position: relative;
-  z-index: 1;
-}
-
 /* Typografie justieren */
-.xmas-content p {
+#weihnachten-neujahr .xmas-content p {
   margin-bottom: 1.5rem;
 }
 
 /* Mobile Anpassungen */
 @media (max-width: 768px) {
-  .xmas-content {
+  #weihnachten-neujahr .xmas-content {
     padding: 3rem 1.5rem 15rem 1.5rem;
   }
 }
