@@ -426,6 +426,59 @@ header.hero p.lead {
 }
 
 /* --------------------------------------------------
+   Weihnachts-/Neujahrsbox
+-------------------------------------------------- */
+.xmas-box {
+  margin: 4rem auto;
+  padding: 0;
+}
+
+.xmas-content {
+  border-radius: 2rem;
+  background-image: url('/img/pexels-george-dolgikh-1303094.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  background-color: #f8f8f8;
+  padding: 4rem 2rem 17rem 2rem;
+  color: rgb(169, 49, 73);
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.9);
+  /* background-color: #eee; */
+  box-shadow:
+  /* weiße Ecke oben links */
+  -4px -4px 6px -4px white inset,
+  /* weiße Ecke unten rechts */
+  4px 4px 6px -4px white inset,
+  /* grüner Rand */
+  0 0 0 1px rgba(169, 49, 73,.15),
+  /* innerer schwarzer Schatten oben */
+  0 -8px 8px 0 rgba(0,0,0,0.025) inset,
+  /* innerer schwarzer Schatten unten */
+  0  8px 8px 0 rgba(0,0,0,0.025) inset;
+  /* NEU für Blur-Panel */
+}
+
+/* NEU: Text über das Blur-Panel legen */
+.xmas-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Typografie justieren */
+.xmas-content p {
+  margin-bottom: 1.5rem;
+}
+
+/* Mobile Anpassungen */
+@media (max-width: 768px) {
+  .xmas-content {
+    padding: 3rem 1.5rem 15rem 1.5rem;
+  }
+}
+
+/* --------------------------------------------------
    Dekra / IVD blocks
 -------------------------------------------------- */
 #dekra-d1 .picture {
@@ -980,7 +1033,7 @@ footer:after {
 #dekra-d1 .highlight-text .heading { color: rgb(0, 107, 82); }
 #dekra-d1 .highlight-content {
   background-color: #eee;            /* soft DEKRA green background */
-  /* border: 1px solid rgba(0,107,82,.15); */
+  /* bor;der: 1px solid rgba(0,107,82,.15); */
   box-shadow:
   /* weiße Ecke oben links */
   -4px -4px 6px -4px white inset,
@@ -991,7 +1044,7 @@ footer:after {
   /* innerer schwarzer Schatten oben */
   0 -8px 8px 0 rgba(0,0,0,0.025) inset,
   /* innerer schwarzer Schatten unten */
-  0  8px 8px 0 rgba(0,0,0,0.025) inset;
+  0  8px 8px 0 rgba(0,0,0,0.025) inset
 }
 
 #ivd .highlight-text { color: rgb(27, 44, 102); }
