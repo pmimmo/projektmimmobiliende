@@ -468,6 +468,51 @@ header.hero p.lead {
 }
 
 /* --------------------------------------------------
+   Vacation
+-------------------------------------------------- */
+
+#vacation .vacation-content {
+  border-radius: 2rem;
+  /* background-image: url('/img/pexels-nubikini-386000.jpg'); */
+  background-image: url('/img/pexels-fedetoom-33303041.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  background-color: #f8f8f8;
+  min-height: 500px;
+  padding: 4rem 2rem 17rem 2rem;
+  color: rgb(27,44,102);
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-shadow: 0px 0px 8px rgba(255,255,255, 0.7);
+  /* background-color: #eee; */
+  box-shadow:
+  /* weiße Ecke oben links */
+  -4px -4px 6px -4px white inset,
+  /* weiße Ecke unten rechts */
+  4px 4px 6px -4px white inset,
+  /* grüner Rand */
+  0 0 0 1px rgba(169, 49, 73,.15),
+  /* innerer schwarzer Schatten oben */
+  0 -8px 8px 0 rgba(0,0,0,0.025) inset,
+  /* innerer schwarzer Schatten unten */
+  0  8px 8px 0 rgba(0,0,0,0.025) inset;
+  /* NEU für Blur-Panel */
+}
+
+/* Typografie justieren */
+#vacation .vacation-content p {
+  margin-bottom: 1.5rem;
+}
+
+/* Mobile Anpassungen */
+@media (max-width: 768px) {
+  #vacation .vacation-content {
+    padding: 3rem 1.5rem 17rem 1.5rem;
+  }
+}
+
+/* --------------------------------------------------
    Dekra / IVD blocks
 -------------------------------------------------- */
 #dekra-d1 .picture {
