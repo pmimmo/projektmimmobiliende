@@ -14,6 +14,12 @@ ErrorDocument 404 /404/index.html
   Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 </IfModule>
 
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType image/jpeg "access plus 1 year"
