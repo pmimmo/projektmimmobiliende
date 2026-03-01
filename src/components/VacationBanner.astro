@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+import vacationBg from '../assets/img/pexels-fedetoom-33303041.jpg';
+import banners from '../data/banners.json';
+
+const { vacation } = banners;
+const now = new Date();
+const year = vacation.year || now.getFullYear();
+const start = new Date(`${year}-${vacation.start}T00:00:00`);
+const end = new Date(`${year}-${vacation.end}T23:59:59`);
+const isActive = now >= start && now <= end;
+---
+{isActive && (
+  <aside id="vacation" class="vacation" aria-labelledby="vacation-heading">
+    <div class="container">
+      <h2 id="vacation-heading" class="sr-only">Betriebsurlaub</h2>
+      <div class="vacation-content scale-up">
+        <Image src={vacationBg} alt="" class="bg-cover" style="object-position: center top;" loading="lazy" decoding="async" />
+        <h3>Wir nehmen uns eine kurze Auszeit.</h3>
+        <p>Liebe Kunden der Projekt M Immobilien,</p>
+        <p>vom 9.–23. Februar 2026 befinden wir uns im Urlaub. <br />Gerne sind wir danach wieder persönlich für Sie da, mit voller Aufmerksamkeit, frischer Energie und der Leidenschaft, mit der wir Ihre Immobilienanliegen mit unserer Expertise und Engagement begleiten.</p>
+      </div>
+    </div>
+  </aside>
+)}

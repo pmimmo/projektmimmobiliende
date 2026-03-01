@@ -1,0 +1,24 @@
+---
+---
+<div id="logo-popover" popover="auto" role="dialog" aria-labelledby="lp-title" aria-describedby="lp-desc">
+  <button type="button" class="lp-close" popovertarget="logo-popover" popovertargetaction="hide" aria-label="Schließen">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <h4 id="lp-title"></h4>
+  <div class="lp-body">
+    <img id="lp-img" alt="" />
+    <div class="lp-text">
+      <div>
+        <p id="lp-desc"></p>
+        <p id="lp-certificateHolder"></p>
+      </div>
+      <p id="lp-link-wrap" hidden>
+        <a id="lp-link" class="button" target="_blank" rel="nofollow noopener">Siegel validieren</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  import '../scripts/seals-popover.ts';
+</script>

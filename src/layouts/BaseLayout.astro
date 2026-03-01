@@ -1,0 +1,111 @@
+---
+import '@fontsource-variable/open-sans';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import '../styles/font-awesome-overrides.css';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  keywords?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  dataPage?: string;
+}
+
+const {
+  title,
+  description,
+  keywords,
+  canonical,
+  ogImage,
+  ogType = 'website',
+  dataPage,
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>{title}</title>
+
+  {keywords && <meta name="keywords" content={keywords} />}
+  <meta name="author" content="Projekt M Immobilien GmbH" />
+  {description && <meta name="description" content={description} />}
+  {canonical && <link rel="canonical" href={canonical} />}
+
+  <link rel="preconnect" href="https://cloud.ccm19.de" />
+  <link rel="preconnect" href="https://www.provenexpert.com" />
+  <link rel="dns-prefetch" href="https://cloud.ccm19.de" />
+  <link rel="dns-prefetch" href="https://www.provenexpert.com" />
+
+  <script is:inline src="https://cloud.ccm19.de/app.js?apiKey=eb7f5702b2f40ea96cae74f1e61cbbf192153d960092c72c&amp;domain=689e1b0546961f2e8b062142" referrerpolicy="origin"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/img/favicon/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/img/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/img/favicon/site.webmanifest" />
+
+  <!-- Open Graph Meta-Tags -->
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:title" content={title} />
+  {description && <meta property="og:description" content={description} />}
+  <meta property="og:type" content={ogType} />
+  {canonical && <meta property="og:url" content={canonical} />}
+  {ogImage && <meta property="og:image" content={ogImage} />}
+  <meta property="og:site_name" content="Projekt M Immobilien GmbH" />
+  <meta property="og:logo" content="https://projektmimmobilien.de/img/logo.png" />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  {description && <meta name="twitter:description" content={description} />}
+  {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Projekt M Immobilien GmbH",
+    "image": [
+      "https://projektmimmobilien.de/img/openGraph.png",
+      "https://projektmimmobilien.de/img/portrait-neuer.jpg",
+      "https://projektmimmobilien.de/img/logo.png"
+    ],
+    "description": description || "",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Krumbacherstraße 5",
+      "addressLocality": "München",
+      "postalCode": "80798",
+      "addressCountry": "DE"
+    },
+    "url": canonical || "",
+    "telephone": "+49-89-28806768",
+    "email": "info@pmimmo.de",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.158335,
+      "longitude": 11.566951
+    },
+    "areaServed": [
+      { "@type": "City", "name": "München" },
+      { "@type": "City", "name": "Landshut" }
+    ],
+    "knowsAbout": [
+      "Immobilienmakler",
+      "Immobiliengutachter",
+      "Verkehrswertgutachten",
+      "Hausverwaltung",
+      "Immobilienmediation",
+      "Immobilienbewertung"
+    ]
+  })} />
+</head>
+<body data-page={dataPage}>
+  <slot />
+</body>
+</html>

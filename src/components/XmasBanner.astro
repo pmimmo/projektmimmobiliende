@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import xmasBg from '../assets/img/pexels-george-dolgikh-1303094-blur.jpg';
+import banners from '../data/banners.json';
+
+const { xmas } = banners;
+const now = new Date();
+const currentYear = now.getFullYear();
+
+// Xmas spans Dec–Jan across year boundary
+const startMonth = parseInt(xmas.start.split('-')[0], 10);
+const startDay = parseInt(xmas.start.split('-')[1], 10);
+const endMonth = parseInt(xmas.end.split('-')[0], 10);
+const endDay = parseInt(xmas.end.split('-')[1], 10);
+
+// Determine if we're in the Dec portion or the Jan portion
+let start: Date;
+let end: Date;
+
+if (now.getMonth() + 1 >= startMonth) {
+  // We're in Dec (or later in the start year)
+  start = new Date(currentYear, startMonth - 1, startDay, 0, 0, 0);
+  end = new Date(currentYear + 1, endMonth - 1, endDay, 23, 59, 59);
+} else {
+  // We're in Jan (in the end year)
+  start = new Date(currentYear - 1, startMonth - 1, startDay, 0, 0, 0);
+  end = new Date(currentYear, endMonth - 1, endDay, 23, 59, 59);
+}
+
+const isActive = now >= start && now <= end;
+---
+{isActive && (
+  <aside id="weihnachten-neujahr" class="xmas-box" aria-labelledby="xmas-heading">
+    <div class="container">
+      <h2 id="xmas-heading" class="sr-only">Erholsame Feiertage und ein schönen Jahreswechsel</h2>
+      <div class="xmas-content scale-up">
+        <Image src={xmasBg} alt="" class="bg-cover" style="object-position: center bottom;" loading="lazy" decoding="async" />
+        <p>Liebe Kunden der Projekt M Immobilien,</p>
+        <p>Für die bevorstehenden Weihnachtsfeiertage wünschen wir Ihnen und Ihrer Familie eine erholsame und besinnliche Zeit.</p>
+        <p>Wir bedanken uns für das uns entgegengebrachte Vertrauen und wünschen Ihnen einen mit Zuversicht erfüllten Jahreswechsel und von Herzen ein gesundes und friedvolles Jahr&nbsp;2026.</p>
+        <p>Auch wir freuen uns ab dem 22.&nbsp;Dezember 2025 auf die gemeinsame Zeit mit unseren Familien.</p>
+        <p>Ab dem 7. Januar sind wir gerne wieder für Sie und Ihre Anliegen da.</p>
+      </div>
+    </div>
+  </aside>
+)}
