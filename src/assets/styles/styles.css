@@ -1190,9 +1190,15 @@ html[data-theme="dark"] #toggle-dark i.fa-sun { display: inline; }
   }
 }
 
+.s_round:focus-visible {
+  outline: 3px solid var(--c-primary-dark);
+  outline-offset: 3px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .button, a.button { transition: none; }
   .b_siegel img { transition: none; }
+  .flip_box, .s_round, .s_arrow, .b_round { transition: none; }
 }
 
 /* Unter 600px: Mobile Feinanpassungen */

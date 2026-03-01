@@ -72,6 +72,40 @@ function sitemapPlugin(): Plugin {
     };
 }
 
+/** Vite-Plugin: AVIF-Kopien für alle Rasterbilder erzeugen (liest aus public/, schreibt nach dist/) */
+function avifPlugin(): Plugin {
+    return {
+        name: "generate-avif",
+        async closeBundle() {
+            const srcDir = resolve(__dirname, "public/img");
+            const destDir = resolve(__dirname, "dist/img");
+            if (!existsSync(srcDir) || !existsSync(destDir)) return;
+
+            const files = readdirSync(srcDir, { recursive: true, withFileTypes: true });
+            const rasterExts = new Set([".png", ".jpg", ".jpeg"]);
+            let count = 0;
+
+            for (const entry of files) {
+                if (!entry.isFile()) continue;
+                const ext = extname(entry.name).toLowerCase();
+                if (!rasterExts.has(ext)) continue;
+
+                const relativePath = join(entry.parentPath ?? entry.path, entry.name).slice(srcDir.length);
+                const srcPath = join(srcDir, relativePath);
+                const avifPath = join(destDir, relativePath) + ".avif";
+                try {
+                    await sharp(srcPath).avif({ quality: 65 }).toFile(avifPath);
+                    count++;
+                } catch (err) {
+                    console.warn(`\x1b[33m⚠ AVIF skipped ${entry.name}: ${(err as Error).message}\x1b[0m`);
+                }
+            }
+
+            console.log(`\x1b[32m✓ ${count} AVIF copies generated\x1b[0m`);
+        },
+    };
+}
+
 /** Vite-Plugin: WebP-Kopien für alle Rasterbilder erzeugen (liest aus public/, schreibt nach dist/) */
 function webpPlugin(): Plugin {
     return {
@@ -131,6 +165,7 @@ export default defineConfig({
             },
         }),
         sitemapPlugin(),
+        avifPlugin(),
         webpPlugin(),
     ],
 });
