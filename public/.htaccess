@@ -12,6 +12,7 @@ ErrorDocument 404 /404.html
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
   Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cloud.ccm19.de https://www.provenexpert.com; style-src 'self' 'unsafe-inline' https://www.provenexpert.com; img-src 'self' data: https://*.provenexpert.com https://*.tile.openstreetmap.de; font-src 'self'; connect-src 'self' https://cloud.ccm19.de https://www.provenexpert.com https://*.tile.openstreetmap.de; frame-src https://www.provenexpert.com"
 </IfModule>
 
 <IfModule mod_headers.c>

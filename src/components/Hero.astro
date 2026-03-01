@@ -5,7 +5,7 @@ import diaSeal from '../assets/img/dia.png';
 import bannerLederhosen from '../assets/img/banner-lederhosen.jpg';
 ---
 <header class="hero">
-  <Image src={bannerLederhosen} alt="" class="bg-cover" loading="eager" decoding="async" />
+  <Image src={bannerLederhosen} alt="" class="bg-cover" loading="eager" decoding="async" fetchpriority="high" />
   <TopKontakt />
   <div id="hero" class="manual-hyphen">
     <div class="dia">
@@ -30,6 +30,7 @@ import bannerLederhosen from '../assets/img/banner-lederhosen.jpg';
         width="3220"
         height="1099"
         decoding="async"
+        fetchpriority="high"
       />
     </div>
     <div class="verlauf">

@@ -1,4 +1,4 @@
 User-agent: *
 allow: /
 
-Sitemap: https://www.projektmimmobilien.de/sitemap.xml
+Sitemap: https://projektmimmobilien.de/sitemap-index.xml

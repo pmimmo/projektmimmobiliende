@@ -1201,6 +1201,13 @@ html[data-theme="dark"] #toggle-dark i.fa-sun { display: inline; }
   .button, a.button { transition: none; }
   .b_siegel img { transition: none; }
   .flip_box, .s_round, .s_arrow, .b_round { transition: none; }
+  .fade-in, .flip_container,
+  .slide-in-left, .slide-in-right,
+  .scale-up {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* Unter 600px: Mobile Feinanpassungen */
