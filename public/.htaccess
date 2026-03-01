@@ -4,6 +4,18 @@ ErrorDocument 404 /404/index.html
   RewriteEngine On
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # WebP Content-Negotiation: .webp ausliefern wenn Browser es unterstuetzt
+  RewriteCond %{HTTP_ACCEPT} image/webp
+  RewriteCond %{REQUEST_URI} \.(jpe?g|png)$
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.webp -f
+  RewriteRule (.+)\.(jpe?g|png)$ $1.$2.webp [T=image/webp,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(jpe?g|png)$">
+    Header append Vary Accept
+  </FilesMatch>
 </IfModule>
 
 <IfModule mod_headers.c>
