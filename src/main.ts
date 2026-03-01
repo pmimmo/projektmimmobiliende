@@ -1,5 +1,6 @@
 /** import "leaflet/dist/leaflet.css"; */
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import "@fontsource-variable/open-sans";
 /** import L from "leaflet"; */
 import "./assets/styles/styles.css";
 

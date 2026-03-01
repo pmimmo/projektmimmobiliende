@@ -1,16 +1,4 @@
 /* --------------------------------------------------
-   Fonts
--------------------------------------------------- */
-@font-face {
-  font-family: 'OpenSans';
-  font-stretch: 75% 100%;
-  font-style: normal;
-  font-weight: 300 800;
-  src: url('../fonts/OpenSans/OpenSans-VariableFont_wdth-wght.woff2') format('woff2-variations');
-  font-display: swap;
-}
-
-/* --------------------------------------------------
    Root variables & theme
 -------------------------------------------------- */
 :root {
@@ -73,7 +61,7 @@ html {
 body {
   background-color: white;
   color: var(--c-text);
-  font-family: 'OpenSans', 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+  font-family: 'Open Sans Variable', 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
   font-weight: 400;
   font-size: 1.2rem;
   line-height: 1.4;
@@ -974,7 +962,7 @@ footer:after {
 }
 
 .map-placeholder>p {
-  font-family: 'OpenSans', 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif !important;
+  font-family: 'Open Sans Variable', 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif !important;
   font-size: 1.2rem;
   color: var(--c-text) !important;
 }
@@ -1243,7 +1231,7 @@ body[data-page="legal"] h2,
 body[data-page="legal"] h3,
 body[data-page="legal"] h4,
 body[data-page="legal"] h5 {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans Variable', sans-serif;
   line-height: 1.3;
   font-weight: 600;
 }
