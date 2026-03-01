@@ -1,4 +1,5 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import "./assets/styles/font-awesome-overrides.css";
 import "@fontsource-variable/open-sans";
 import "./assets/styles/styles.css";
 import sealsData from "./data/seals.json";

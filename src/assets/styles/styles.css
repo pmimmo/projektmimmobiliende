@@ -226,7 +226,7 @@ a.button:focus-visible, button.button:focus-visible {
   align-items: center;
   gap: 1rem;
 }
-#top-kontakt a { color: var(--c-text-light); }
+#top-kontakt a { color: var(--c-text-light); min-height: 48px; min-width: 48px; display: inline-flex; align-items: center; }
 #top-kontakt a:hover { text-decoration: underline; background-color: inherit; }
 #top-kontakt .fas { color: var(--c-text-light); }
 
