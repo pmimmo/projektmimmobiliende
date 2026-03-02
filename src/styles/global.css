@@ -378,6 +378,7 @@ a.button:focus-visible, button.button:focus-visible {
   padding: 30px;
   position: relative;
   z-index: 1;
+  overflow: visible;
   box-shadow: var(--shadow-card);
 }
 
