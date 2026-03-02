@@ -53,7 +53,7 @@ const site = import.meta.env.SITE;
   <XmasBanner />
   <Hero />
   <Navigation />
-  <main>
+  <main id="main-content">
     <aside id="dekra-d1" class="highlight-box" aria-labelledby="dekra-heading">
       <div class="container">
         <h2 id="dekra-heading" class="sr-only">DEKRA-zertifizierte Immobilienbewertung</h2>
@@ -441,10 +441,8 @@ const site = import.meta.env.SITE;
         var lng = 11.566951;
         var zoom = 15;
 
-        function ready(fn){ if(document.readyState!=='loading'){ fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }
-
         function init(){
-          if (!window.L) return false;
+          if (!window.L) return;
           var isTouch = 'ontouchstart' in window || (navigator.maxTouchPoints||0) > 0;
           var map = L.map('map', {
             center: [lat, lng],
@@ -470,15 +468,30 @@ const site = import.meta.env.SITE;
             .bindPopup("<img src='/img/logo_pmi_web.svg' alt='Projekt M Immobilien GmbH – Logo' style='width:120px' />", { closeButton: false, maxWidth: 500, autoPan: true })
             .openPopup();
           map.whenReady(function(){ map.invalidateSize(); });
+        }
+
+        /* Leaflet bereits verfügbar (z.B. aus Browser-Cache) */
+        if (window.L) { init(); return; }
+
+        /* Leaflet-Script im DOM suchen und auf load warten */
+        function waitForLeaflet() {
+          var script = document.querySelector('script[src*="leaflet.js"]');
+          if (!script) return false;
+          if (window.L) { init(); return true; }
+          script.addEventListener('load', init);
           return true;
         }
 
-        ready(function(){
-          var tries = 0, maxTries = 100;
-          var t = setInterval(function(){
-            if (init() || ++tries >= maxTries) clearInterval(t);
-          }, 50);
-        });
+        /* Falls CCM19 das Script noch nicht eingefügt hat: DOM beobachten */
+        if (!waitForLeaflet()) {
+          var observer = new MutationObserver(function() {
+            if (waitForLeaflet() || window.L) {
+              observer.disconnect();
+              if (window.L) init();
+            }
+          });
+          observer.observe(document.documentElement, { childList: true, subtree: true });
+        }
       })();
     </script>
     <link rel="stylesheet" href="/leaflet/leaflet.css" />

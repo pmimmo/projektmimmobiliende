@@ -14,7 +14,6 @@
 
   /* Neutrals */
   --c-secondary: hsl(0, 0%, 100%);
-  /* --c-background: hsla(0, 0%, 97%); */
   --c-background: #fff;
   --c-background-opacity: hsla(0, 0%, 97%, 0.85);
   --c-background-primary-opacity: hsla(var(--c-primary-h), var(--c-primary-s), var(--c-primary-l), .3);
@@ -42,7 +41,6 @@
 
 html {
   scroll-behavior: smooth;
-  transition: background-color 0.3s ease, color 0.3s ease;
   background-color: white;
 }
 
@@ -161,6 +159,25 @@ li { list-style: disc; margin-bottom: .4rem; }
 a { color: var(--c-text); text-decoration: none; }
 a:hover { background-color: var(--c-primary); text-decoration: none; }
 
+/* Skip-Link */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background: var(--c-primary);
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.skip-link:focus-visible {
+  top: 1rem;
+  background: var(--c-primary);
+  color: white;
+}
+
 /* Accessible focus ring */
 :focus-visible { outline: 3px solid var(--c-primary-dark); outline-offset: 3px; }
 button:focus-visible, a:focus-visible { border-radius: 4px; }
@@ -224,15 +241,6 @@ a.button:focus-visible, button.button:focus-visible {
   z-index: -1;
 }
 
-
-/* --------------------------------------------------
-   Dekra / IVD blocks
--------------------------------------------------- */
-#dekra-d1 .picture {
-  border-radius: 50%;
-  border: 1px solid #dee2e6;
-  aspect-ratio: 1 / 1;
-}
 
 /* --------------------------------------------------
    Team
