@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://projektmimmobilien.de',
   output: 'static',
+  compressHTML: true,
   trailingSlash: 'always',
   build: {
     format: 'directory',

@@ -33,6 +33,11 @@
 
   --border-radius: 1rem;
 
+  /* Box-Shadow-Bausteine */
+  --shadow-edge: 2px 2px 1px -2px white inset, -2px -2px 1px -2px white inset;
+  --shadow-inner: 0 -8px 8px 0 rgba(0,0,0,0.025) inset, 0 8px 8px 0 rgba(0,0,0,0.025) inset;
+  --shadow-card: var(--shadow-edge), var(--shadow-inner);
+  --shadow-highlight: -4px -4px 6px -4px white inset, 4px 4px 6px -4px white inset, var(--shadow-inner);
 }
 
 html {
@@ -187,9 +192,7 @@ a.button, button.button {
   cursor: pointer;
   text-decoration: none;
   margin: 0;
-  box-shadow: 
-  2px 2px 1px -2px white inset,
-  -2px -2px 1px -2px white inset;
+  box-shadow: var(--shadow-edge);
 }
 a.button:hover, button.button:hover,
 a.button:focus-visible, button.button:focus-visible {
@@ -367,14 +370,7 @@ a.button:focus-visible, button.button:focus-visible {
   padding: 30px;
   position: relative;
   z-index: 1;
-  box-shadow: 
-  2px 2px 1px -2px white inset,
-  -2px -2px 1px -2px white inset,
-  /* 0 8px 24px 0px rgba(0,0,0,.1), */
-  /* innerer schwarzer Schatten oben */
-  0 -8px 8px 0 rgba(0,0,0,0.025) inset,
-  /* innerer schwarzer Schatten unten */
-  0  8px 8px 0 rgba(0,0,0,0.025) inset;
+  box-shadow: var(--shadow-card);
 }
 
 .f_icon_box {
@@ -422,13 +418,7 @@ a.button:focus-visible, button.button:focus-visible {
   transform: rotateY(180deg);
   border-radius: 1rem;
   padding: 30px;
-  box-shadow: 
-  2px 2px 1px -2px white inset,
-  -2px -2px 1px -2px white inset,
-  /* innerer schwarzer Schatten oben */
-  0 -8px 8px 0 rgba(0,0,0,0.025) inset,
-  /* innerer schwarzer Schatten unten */
-  0  8px 8px 0 rgba(0,0,0,0.025) inset;
+  box-shadow: var(--shadow-card);
 }
 
 .b_text {
@@ -707,18 +697,7 @@ ul.b_text li {
   margin: 0 auto;
   background-color: #f2f8fc;
   border-radius: 2rem;
-  /* box-shadow: 0 0 16px rgba(0,0,0,0.4); */
-  box-shadow:
-  /* weiße Ecke oben links */
-  -4px -4px 6px -4px white inset,
-  /* weiße Ecke unten rechts */
-  4px 4px 6px -4px white inset,
-  /* grüner Rand */
-  0 0 0 1px rgba(27, 44, 102,.15),
-  /* innerer schwarzer Schatten oben */
-  0 -8px 8px 0 rgba(0,0,0,0.025) inset,
-  /* innerer schwarzer Schatten unten */
-  0  8px 8px 0 rgba(0,0,0,0.025) inset;
+  box-shadow: var(--shadow-highlight), 0 0 0 1px rgba(27, 44, 102,.15);
 }
 .ivd-logos {
   display: grid;
@@ -734,19 +713,8 @@ ul.b_text li {
 #dekra-d1 .highlight-text { color: rgb(0, 107, 82); }
 #dekra-d1 .highlight-text .heading { color: rgb(0, 107, 82); }
 #dekra-d1 .highlight-content {
-  background-color: #eee;            /* soft DEKRA green background */
-  /* bor;der: 1px solid rgba(0,107,82,.15); */
-  box-shadow:
-  /* weiße Ecke oben links */
-  -4px -4px 6px -4px white inset,
-  /* weiße Ecke unten rechts */
-  4px 4px 6px -4px white inset,
-  /* grüner Rand */
-  0 0 0 1px rgba(0,107,82,.15),
-  /* innerer schwarzer Schatten oben */
-  0 -8px 8px 0 rgba(0,0,0,0.025) inset,
-  /* innerer schwarzer Schatten unten */
-  0  8px 8px 0 rgba(0,0,0,0.025) inset
+  background-color: #eee;
+  box-shadow: var(--shadow-highlight), 0 0 0 1px rgba(0,107,82,.15);
 }
 
 #ivd .highlight-text { color: rgb(27, 44, 102); }

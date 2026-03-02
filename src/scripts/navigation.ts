@@ -5,12 +5,18 @@ if (btnEl && menuEl) {
   const btn = btnEl;
   const menu = menuEl;
 
+  const focusableSelector = 'a[href], button:not([disabled])';
+
   function setExpanded(expanded: boolean) {
     btn.setAttribute("aria-expanded", String(expanded));
     if (expanded) {
       menu.classList.add("open");
+      // Fokus auf ersten Link im Menü setzen
+      const firstItem = menu.querySelector<HTMLElement>(focusableSelector);
+      firstItem?.focus();
     } else {
       menu.classList.remove("open");
+      btn.focus();
     }
   }
 
@@ -19,9 +25,34 @@ if (btnEl && menuEl) {
     setExpanded(!isOpen);
   });
 
-  // ESC
+  // ESC + Focus Trap
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") setExpanded(false);
+    if (e.key === "Escape") {
+      if (btn.getAttribute("aria-expanded") === "true") setExpanded(false);
+      return;
+    }
+
+    // Focus Trap: nur aktiv wenn Menü offen
+    if (e.key !== "Tab" || btn.getAttribute("aria-expanded") !== "true") return;
+
+    const focusable = [btn, ...Array.from(menu.querySelectorAll<HTMLElement>(focusableSelector))];
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last?.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first?.focus();
+    }
+  });
+
+  // Klick außerhalb schließt Menü
+  document.addEventListener("click", (e) => {
+    if (btn.getAttribute("aria-expanded") === "true" && !menu.contains(e.target as Node) && e.target !== btn && !btn.contains(e.target as Node)) {
+      setExpanded(false);
+    }
   });
 
   // Hash-Links

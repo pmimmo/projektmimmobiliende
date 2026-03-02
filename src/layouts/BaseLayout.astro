@@ -21,6 +21,8 @@ const {
   ogType = 'website',
   dataPage,
 } = Astro.props;
+
+const site = import.meta.env.SITE;
 ---
 <!DOCTYPE html>
 <html lang="de">
@@ -55,7 +57,7 @@ const {
   {canonical && <meta property="og:url" content={canonical} />}
   {ogImage && <meta property="og:image" content={ogImage} />}
   <meta property="og:site_name" content="Projekt M Immobilien GmbH" />
-  <meta property="og:logo" content="https://projektmimmobilien.de/img/logo.png" />
+  <meta property="og:logo" content={`${site}/img/logo.png`} />
 
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -69,9 +71,9 @@ const {
     "@type": "RealEstateAgent",
     "name": "Projekt M Immobilien GmbH",
     "image": [
-      "https://projektmimmobilien.de/img/openGraph.png",
-      "https://projektmimmobilien.de/img/portrait-neuer.jpg",
-      "https://projektmimmobilien.de/img/logo.png"
+      `${site}/img/openGraph.png`,
+      `${site}/img/portrait-neuer.jpg`,
+      `${site}/img/logo.png`
     ],
     "description": description || "",
     "address": {
