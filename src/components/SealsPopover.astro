@@ -1,8 +1,9 @@
 ---
+import Icon from './Icon.astro';
 ---
 <div id="logo-popover" popover="auto" role="dialog" aria-labelledby="lp-title" aria-describedby="lp-desc">
   <button type="button" class="lp-close" popovertarget="logo-popover" popovertargetaction="hide" aria-label="Schließen">
-    <i class="fa-solid fa-xmark"></i>
+    <Icon name="xmark" />
   </button>
   <h4 id="lp-title"></h4>
   <div class="lp-body">

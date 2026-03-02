@@ -2,13 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
 ---
 <BaseLayout title="Fehler 404 – Diese Seite wurde nicht gefunden" description="Diese Seite wurde nicht gefunden.">
   <Navigation />
   <main>
     <div id="error-404" class="container">
       <div>
-        <i class="fa-solid fa-triangle-exclamation"></i>
+        <Icon name="triangle-exclamation" />
         <h2>Fehler 404<br />Diese Seite wurde nicht gefunden</h2>
         <p>Die von Ihnen aufgerufene Seite existiert nicht oder wurde verschoben. <br />Bitte nutzen Sie unser Menü oder den folgenden Button, um zur Startseite zu gelangen.</p>
       </div>
