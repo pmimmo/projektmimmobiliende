@@ -1101,19 +1101,6 @@ footer a { cursor: pointer; }
 footer a:hover { text-decoration: underline; background-color: inherit; }
 
 /* --------------------------------------------------
-   Dark-mode icon (toggle button exists in HTML)
--------------------------------------------------- */
-#toggle-dark i.fa-sun { display: none; }
-html[data-theme="dark"] #toggle-dark i.fa-moon { display: none; }
-html[data-theme="dark"] #toggle-dark i.fa-sun { display: inline; }
-#toggle-dark i { font-size: 1.2rem; }
-#toggle-dark {
-  background: none; border: none; padding: 0; margin: 0; font: inherit; color: inherit; cursor: pointer;
-}
-#toggle-dark:hover i.fa-sun  { color: orange; transform: scale(1.1); transition: all 0.2s ease; }
-#toggle-dark:hover i.fa-moon { color: blue;   transform: scale(1.1); transition: all 0.2s ease; }
-
-/* --------------------------------------------------
    Gradients / utilities
 -------------------------------------------------- */
 /* --------------------------------------------------

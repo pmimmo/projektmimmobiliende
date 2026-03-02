@@ -362,11 +362,11 @@ import teamPosterBg from '../assets/img/header-team.jpg';
     </section>
 
     <section id="auszeichnungen" class="container">
-      <h3 class="text-center mb-m">Auszeichnungen</h3>
+      <h2 class="text-center mb-m">Auszeichnungen</h2>
       <div data-stagger="150">
         <Image src={mitgliedIvd} alt="Mitglied im ivd" class="scale-up seal-logo" data-seal="ivd" width={960} height={1200} loading="lazy" decoding="async" />
         <Image src={vdivBayern} alt="vdiv – Die Immobilienverwalter Bayern" class="scale-up seal-logo" data-seal="vdiv" width={1028} height={611} loading="lazy" decoding="async" />
-        <img src="/img/hypZertGutachter.svg" alt="Wir beschäftigen HypZert Gutachter" class="scale-up seal-logo" data-seal="hypzert-s" width="74" height="53" loading="lazy" decoding="async" />
+        <img src="/img/hypZertGutachter.svg" alt="Wir beschäftigen HypZert Gutachter" class="scale-up seal-logo" data-seal="hypzert-gutachter" width="74" height="53" loading="lazy" decoding="async" />
         <Image src={sprengnetterImmoWert} alt="SPRENGNETTER Gesicherter ImmoWert" class="scale-up seal-logo" data-seal="sprengnetter-immowert" width={389} height={382} loading="lazy" decoding="async" />
         <Image src={diaZertMakler} alt="DIA Zert - Zertifiziert durch DIA Consulting AG nach EU-Norm DIN EN 15733" class="scale-up seal-logo" data-seal="din15733" width={400} height={316} loading="lazy" decoding="async" />
         <Image src={immoscout24Silber} alt="ImmoScout24 Silber Partner seit 2025" class="scale-up seal-logo" data-seal="immoscout24-silber" width={411} height={523} loading="lazy" decoding="async" />
@@ -413,20 +413,19 @@ import teamPosterBg from '../assets/img/header-team.jpg';
       </div>
     </section>
 
-    <aside id="provenExpertFull">
+    <aside id="provenExpertFull" aria-label="ProvenExpert Bewertungen">
       <div id="pewl" class="pewl">
         <div class="map-placeholder">
           <p>Das Proven Expert Bewertungssiegel ist blockiert, da Sie den externen Inhalten nicht zugestimmt haben.</p>
         </div>
       </div>
       <!-- ProvenExpert Bewertungssiegel -->
-      <div id="pewl"></div>
       <script is:inline type="text/x-ccm-loader" data-ccm-loader-src="https://www.provenexpert.com/widget/landing_projekt-m-immobilien-gmbh.js?feedback=1&avatar=1&competence=1&style=white" async></script>
       <link rel="stylesheet" type="text/css" href="https://www.provenexpert.com/css/widget_landing.css" media="screen,print" />
       <!-- ProvenExpert Bewertungssiegel Ende -->
     </aside>
 
-    <section id="map" class="blueprint-grid">
+    <section id="map" class="blueprint-grid" aria-label="Standort auf der Karte">
       <div class="map-placeholder">
         <p>Die interaktive Karte ist blockiert, da Sie den externen Inhalten nicht zugestimmt haben.</p>
       </div>
@@ -481,10 +480,9 @@ import teamPosterBg from '../assets/img/header-team.jpg';
     </script>
     <link rel="stylesheet" href="/leaflet/leaflet.css" />
 
-    <aside>
+    <aside aria-label="ProvenExpert Bewertungssiegel">
       <!-- ProvenExpert Bewertungssiegel -->
       <style is:inline>
-        body { -ms-overflow-style: scrollbar; }
         @media (max-width: 786px) {
           .ProvenExpert_widget_container { display: none !important; }
         }
