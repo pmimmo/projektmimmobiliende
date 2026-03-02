@@ -398,6 +398,7 @@ a.button:focus-visible, button.button:focus-visible {
   background: #FFF;
   background: linear-gradient(240deg, rgba(106, 151, 38, .3) 50%, rgba(106, 151, 38, 0) 100%);
   border-radius: 50%;
+  transition: transform 0.35s ease, background 0.35s ease;
 }
 
 .f_icon_circle .icon {
@@ -408,6 +409,17 @@ a.button:focus-visible, button.button:focus-visible {
   height: 4rem;
   opacity: .7;
   color: var(--c-primary);
+  transition: transform 0.3s ease 0.05s, opacity 0.3s ease;
+}
+
+.flip_container:hover .f_icon_circle {
+  transform: scale(1.12);
+  background: linear-gradient(240deg, rgba(106, 151, 38, .4) 50%, rgba(106, 151, 38, 0) 100%);
+}
+
+.flip_container:hover .f_icon_circle .icon {
+  transform: scale(1.2);
+  opacity: .85;
 }
 
 .f_subline,
