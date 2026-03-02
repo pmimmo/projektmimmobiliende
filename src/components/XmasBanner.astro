@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import xmasBg from '../assets/img/pexels-george-dolgikh-1303094-blur.jpg';
 import banners from '../data/banners.json';
 
@@ -34,7 +34,7 @@ const isActive = now >= start && now <= end;
     <div class="container">
       <h2 id="xmas-heading" class="sr-only">Erholsame Feiertage und ein schönen Jahreswechsel</h2>
       <div class="xmas-content scale-up">
-        <Image src={xmasBg} alt="" class="bg-cover" style="object-position: center bottom;" loading="lazy" decoding="async" />
+        <Picture src={xmasBg} formats={['avif', 'webp']} alt="" class="bg-cover" style="object-position: center bottom;" loading="lazy" decoding="async" />
         <p>Liebe Kunden der Projekt M Immobilien,</p>
         <p>Für die bevorstehenden Weihnachtsfeiertage wünschen wir Ihnen und Ihrer Familie eine erholsame und besinnliche Zeit.</p>
         <p>Wir bedanken uns für das uns entgegengebrachte Vertrauen und wünschen Ihnen einen mit Zuversicht erfüllten Jahreswechsel und von Herzen ein gesundes und friedvolles Jahr&nbsp;2026.</p>

@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import Hero from '../components/Hero.astro';
@@ -57,7 +57,7 @@ import teamPosterBg from '../assets/img/header-team.jpg';
         <h2 id="dekra-heading" class="sr-only">DEKRA-zertifizierte Immobilienbewertung</h2>
         <div class="highlight-content scale-up">
           <div class="highlight-media">
-            <Image class="picture" src={portraitNeuer1zu1} alt="Rüdiger Neuer – DEKRA-zertifizierter Sachverständiger" width={500} height={500} decoding="async" />
+            <Picture class="picture" src={portraitNeuer1zu1} formats={['avif', 'webp']} alt="Rüdiger Neuer – DEKRA-zertifizierter Sachverständiger" width={500} height={500} decoding="async" />
           </div>
           <div class="highlight-text">
             <p class="lead heading">++Unsere Expertise++</p>
@@ -193,7 +193,7 @@ import teamPosterBg from '../assets/img/header-team.jpg';
           <div class="person">
             <div class="person-info">
               <div class="portrait-wrapper scale-up">
-                <Image src={portraitNeuer} alt="Portrait Neuer" class="portrait-neuer" width={534} height={800} loading="lazy" decoding="async" />
+                <Picture src={portraitNeuer} formats={['avif', 'webp']} alt="Portrait Neuer" class="portrait-neuer" width={534} height={800} loading="lazy" decoding="async" />
                 <Image src={diaZertSrn} class="seal-logo dia-badge" alt="Zertifizierter Immobileingutachter S (DIAZert) – Rüdiger Neuer" data-seal="dia-zert-s" width={300} height={338} loading="lazy" decoding="async" />
               </div>
               <h3>Rüdiger Neuer</h3>
@@ -202,7 +202,7 @@ import teamPosterBg from '../assets/img/header-team.jpg';
           </div>
           <div class="person">
             <div class="person-info">
-              <Image class="portrait scale-up" src={portraitGebhard} alt="Jürgen Gebhard" width={534} height={800} loading="lazy" decoding="async" />
+              <Picture class="portrait scale-up" src={portraitGebhard} formats={['avif', 'webp']} alt="Jürgen Gebhard" width={534} height={800} loading="lazy" decoding="async" />
               <h3>Jürgen Gebhard</h3>
               <p>Immobilienmakler</p>
             </div>
@@ -352,7 +352,7 @@ import teamPosterBg from '../assets/img/header-team.jpg';
     </aside>
 
     <section id="nachhaltigkeit">
-      <Image src={nachhaltigkeitBg} alt="" class="bg-cover" style="object-position: center bottom;" loading="lazy" decoding="async" />
+      <Picture src={nachhaltigkeitBg} formats={['avif', 'webp']} alt="" class="bg-cover" style="object-position: center bottom;" loading="lazy" decoding="async" />
       <div class="image"></div>
       <div class="content">
         <div class="container">
@@ -385,7 +385,7 @@ import teamPosterBg from '../assets/img/header-team.jpg';
               <p>Unser Büro ist im Herzen der Millionenstadt München, im Stadtteil Schwabing. Sie finden uns zentral zwischen Josephs- und Hohenzollernplatz und dem beliebten Elisabethmarkt. Wir sind anders: Was zeichnet uns aus? Wir agieren diskret und unauffällig, halten uns mit Werbung zurück. Wir sind in der Branche geschätzt. Unser Wachstum generieren wir größtenteils über Empfehlungen. Wir sehen uns als „Boutique-Makler", wir lieben Herausforderungen. Die Vielzahl erfolgreicher, abgeschlossener Projekte sehen wir als direkte Kennzahl für den Erfolg unserer Strategie.</p>
             </div>
             <div class="image-container">
-              <Image src={mapMuenchen} alt="Standort München Schwabing" class="slide-in-right" width={1249} height={960} loading="lazy" decoding="async" />
+              <Picture src={mapMuenchen} formats={['avif', 'webp']} alt="Standort München Schwabing" class="slide-in-right" width={1249} height={960} loading="lazy" decoding="async" />
             </div>
           </div>
           <div class="standort-container">
@@ -394,7 +394,7 @@ import teamPosterBg from '../assets/img/header-team.jpg';
               <p>Der Immobilienmarkt der Region Landshut liegt uns neben München besonders am Herzen. Auf Grund einer überdurchschnittlich großen Nachfrage begleiten wir seit vielen Jahren den Verkauf von Wohnungen, Häusern und auch Grundstücken im Einzugsgebiet von Landshut. Unser Immobilienmakler Jürgen Gebhard kommt selbst aus Landshut und ist regional sehr gut vernetzt. Gerade beim Verkauf von Grundstücken ist sein guter Kontakt zu möglichen Interessent:innen und Projektentwickler:innen aus der Umgebung von Landshut ein attraktiver Synergie-Effekt.</p>
             </div>
             <div class="image-container">
-              <Image src={mapLandshut} alt="Standort Landshut" class="slide-in-left" width={960} height={1044} loading="lazy" decoding="async" />
+              <Picture src={mapLandshut} formats={['avif', 'webp']} alt="Standort Landshut" class="slide-in-left" width={960} height={1044} loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
@@ -402,7 +402,7 @@ import teamPosterBg from '../assets/img/header-team.jpg';
     </section>
 
     <aside id="kontakt-team-poster">
-      <Image src={teamPosterBg} alt="" class="bg-cover" style="object-position: center top;" loading="lazy" decoding="async" />
+      <Picture src={teamPosterBg} formats={['avif', 'webp']} alt="" class="bg-cover" style="object-position: center top;" loading="lazy" decoding="async" />
     </aside>
 
     <section id="callToAction">

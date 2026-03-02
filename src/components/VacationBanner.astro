@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import vacationBg from '../assets/img/pexels-fedetoom-33303041.jpg';
 import banners from '../data/banners.json';
 
@@ -15,7 +15,7 @@ const isActive = now >= start && now <= end;
     <div class="container">
       <h2 id="vacation-heading" class="sr-only">Betriebsurlaub</h2>
       <div class="vacation-content scale-up">
-        <Image src={vacationBg} alt="" class="bg-cover" style="object-position: center top;" loading="lazy" decoding="async" />
+        <Picture src={vacationBg} formats={['avif', 'webp']} alt="" class="bg-cover" style="object-position: center top;" loading="lazy" decoding="async" />
         <h3>Wir nehmen uns eine kurze Auszeit.</h3>
         <p>Liebe Kunden der Projekt M Immobilien,</p>
         <p>vom 9.–23. Februar 2026 befinden wir uns im Urlaub. <br />Gerne sind wir danach wieder persönlich für Sie da, mit voller Aufmerksamkeit, frischer Energie und der Leidenschaft, mit der wir Ihre Immobilienanliegen mit unserer Expertise und Engagement begleiten.</p>
