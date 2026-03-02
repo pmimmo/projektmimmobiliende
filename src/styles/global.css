@@ -148,7 +148,7 @@ li { list-style: disc; margin-bottom: .4rem; }
 
 .condensed { font-stretch: 75%; }
 
-.fas { color: var(--c-text); margin-right: 0.5rem; }
+.icon { color: var(--c-text); margin-right: 0.5rem; }
 
 /* --------------------------------------------------
    Links
@@ -237,7 +237,7 @@ a.button:focus-visible, button.button:focus-visible {
 }
 #top-kontakt a { color: var(--c-text-light); min-height: 48px; min-width: 48px; display: inline-flex; align-items: center; }
 #top-kontakt a:hover { text-decoration: underline; background-color: inherit; }
-#top-kontakt .fas { color: var(--c-text-light); }
+#top-kontakt .icon { color: var(--c-text-light); }
 
 /* --------------------------------------------------
    Navigation
@@ -680,11 +680,12 @@ header.hero p.lead {
   border-radius: 50%;
 }
 
-.f_icon_circle i {
+.f_icon_circle .icon {
   position: relative;
   top: 60px;
   left: -20px;
-  font-size: 4rem;
+  width: 4rem;
+  height: 4rem;
   opacity: .7;
   color: var(--c-primary);
 }
@@ -988,8 +989,9 @@ footer:after {
   text-align: center;
   gap: 4rem;
 }
-#error-404 i {
-  font-size: 4rem;
+#error-404 .icon {
+  width: 4rem;
+  height: 4rem;
   color: orangered;
 }
 
