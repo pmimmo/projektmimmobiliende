@@ -28,7 +28,7 @@ Pages: `src/pages/index.astro` (homepage), `src/pages/datenschutz.astro`, `src/p
 
 ### Layouts
 
-- `src/layouts/BaseLayout.astro` — Full HTML document with `<head>` (meta, OG, JSON-LD, fonts, FA), accepts props for SEO metadata
+- `src/layouts/BaseLayout.astro` — Full HTML document with `<head>` (meta, OG, JSON-LD, fonts), accepts props for SEO metadata
 - `src/layouts/LegalLayout.astro` — Extends BaseLayout with `data-page="legal"`, Navigation + Footer for legal pages
 
 ### Components
@@ -41,6 +41,7 @@ Astro components in `src/components/`:
 - `SealsPopover.astro` — Popover dialog for seal details (includes seals-popover.ts script)
 - `VacationBanner.astro` — Date-based vacation banner (reads `src/data/banners.json`)
 - `XmasBanner.astro` — Date-based Christmas banner (reads `src/data/banners.json`)
+- `Icon.astro` — Inline SVG icon component (replaces Font Awesome), uses `fill="currentColor"`. Neue Icons hinzufügen: SVG von [fontawesome.com/icons](https://fontawesome.com/icons) suchen, `viewBox` und `d`-Pfad in die `ICONS`-Map in `Icon.astro` eintragen, dann `<Icon name="neuer-name" />` verwenden. TypeScript prüft gültige Namen beim Build.
 
 ### Seasonal Banners
 
@@ -48,9 +49,9 @@ Banners are **date-based automated** via `src/data/banners.json`. The Astro fron
 
 ### CSS
 
-Global styles in `src/styles/global.css` (~1425 lines, plain CSS). Uses CSS custom properties for theming (`--c-primary`, `--c-secondary`, `--c-accent`, etc.). No preprocessor. Responsive breakpoints at 900px, 768px, and 640px.
+Global styles in `src/styles/global.css` (~970 lines, plain CSS). Uses CSS custom properties for theming (`--c-primary`, `--c-secondary`, `--c-accent`, etc.). No preprocessor. Responsive breakpoints at 900px, 768px, and 640px.
 
-Font Awesome overrides in `src/styles/font-awesome-overrides.css`.
+Component-specific styles live in scoped `<style>` blocks within their respective `.astro` files (TopKontakt, Navigation, Hero, XmasBanner, VacationBanner, Footer, SealsPopover, 404). Global.css retains only shared styles: variables, resets, typography, flip-cards, homepage sections, scroll animations, highlights, legal styles, and utilities.
 
 ### Client-Side JavaScript
 
@@ -62,12 +63,32 @@ Split into focused modules in `src/scripts/`:
 
 Scripts are included via `<script>` tags in their respective components. Astro auto-deduplicates.
 
-### Static Assets
+### Static Assets & Image Pipeline
 
-- Images in `src/assets/img/` (for future Astro Image pipeline use) and `public/img/` (currently served as-is)
-- Favicons in `public/img/favicon/` (fixed paths)
+**Rasterbilder** (JPG, PNG, JPEG) gehören nach `src/assets/img/` — Astro optimiert sie beim Build:
+- `<Image>` erzeugt eine optimierte WebP-Version
+- `<Picture formats={['avif', 'webp']}>` erzeugt AVIF + WebP + Fallback (für große Bilder verwenden)
+- Astro skaliert Bilder auf die per `width`/`height`-Prop angegebene Größe herunter
+- Ohne `width`/`height` wird die volle Originalauflösung verwendet — daher immer angeben!
+- Astro erzeugt **kein** automatisches responsive `srcset` mit mehreren Größen
+
+**Empfohlene `width`-Werte:**
+
+| Verwendung | width (px) |
+|---|---|
+| Vollbild-Hintergründe (Hero, Banner) | 1600–2000 |
+| Portraits, Karten, Content-Bilder | 500–800 |
+| Siegel/Logos (PNG) | 300–500 |
+| SVGs | Keine Optimierung nötig |
+
+**Dateien in `public/`** werden 1:1 ausgeliefert (keine Optimierung):
+- SVGs in `public/img/` (HypZert, Logo etc.)
+- Favicons in `public/img/favicon/`
 - Vendored Leaflet in `public/leaflet/`
-- Font Awesome 7 bundled via npm import
+
+Unbenutzte Bilder liegen in `src/assets/img/_unused/`.
+
+**Sonstige Assets:**
 - Open Sans variable font via `@fontsource-variable/open-sans`
 
 ### Deployment
