@@ -23,3 +23,99 @@
 <script>
   import '../scripts/navigation.ts';
 </script>
+
+<style>
+  #nav-placeholder {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  nav {
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(
+      to bottom,
+      var(--c-background-opacity) 0%,
+      hsla(0, 0%, 97%, 0) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(10px);
+    margin-bottom: 6rem;
+  }
+  nav .container { margin-top: .3rem; }
+  nav div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0 1rem;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
+
+  #primary-menu { align-items: center; }
+  #primary-menu .nav-item, #primary-menu .button { line-height: 1; }
+  nav a.nav-item {
+    color: var(--c-text);
+    text-decoration: none;
+    border-bottom: 3px solid var(--c-background);
+    padding-bottom: .3rem;
+  }
+  nav a.nav-item:hover { border-bottom: 3px solid var(--c-primary); background-color: inherit; }
+
+  nav a[aria-current="page"] {
+    border-bottom: 3px solid var(--c-primary);
+    font-weight: 500;
+  }
+  nav a.button[aria-current="page"] {
+    border: none;
+  }
+  nav .logo img { height: 70px; max-height: 70px; padding: .5rem 0; display: block; }
+  nav .logo a {
+    border: none;
+    background: none;
+  }
+
+  .nav-toggle-button { display: none; position: absolute; top: 1.2rem; right: 1rem; width: 34px; height: 24px; cursor: pointer; background: transparent; border: none; }
+  .nav-toggle-button .bars,
+  .nav-toggle-button .bars::before,
+  .nav-toggle-button .bars::after { content: ""; display: block; height: 3px; width: 100%; background: var(--c-primary-dark); border-radius: 3px; transition: transform .3s ease, opacity .3s ease; }
+  .nav-toggle-button .bars { position: relative; }
+  .nav-toggle-button .bars::before { position: absolute; top: -8px; }
+  .nav-toggle-button .bars::after  { position: absolute; top: 8px; }
+
+  .nav-toggle-button[aria-expanded="true"] .bars { background: transparent; }
+  .nav-toggle-button[aria-expanded="true"] .bars::before { transform: rotate(45deg) translate(5px, 5px); }
+  .nav-toggle-button[aria-expanded="true"] .bars::after  { transform: rotate(-45deg) translate(5px, -5px); }
+
+  @media (max-width: 900px) {
+    nav .logo img { height: 50px; max-height: 50px; padding: .2rem 0; }
+    .nav-toggle-button { display: block; }
+    .nav-menu { display: none; }
+    .nav-menu.open { display: flex; }
+    .nav-menu {
+      flex-direction: column;
+      position: absolute;
+      top: 4rem;
+      right: 1rem;
+      background: var(--c-background);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      padding: 1rem 0;
+      border-radius: 10px;
+    }
+    .nav-menu a.nav-item {
+      display: block;
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid var(--c-background-gray);
+    }
+  }
+</style>

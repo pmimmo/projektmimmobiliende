@@ -23,3 +23,35 @@ const isActive = now >= start && now <= end;
     </div>
   </aside>
 )}
+
+<style>
+  #vacation .vacation-content {
+    border-radius: 2rem;
+    background-color: #f8f8f8;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    min-height: 500px;
+    padding: 4rem 2rem 17rem 2rem;
+    color: rgb(27,44,102);
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-shadow: 0px 0px 8px rgba(255,255,255, 0.7);
+    box-shadow:
+    -4px -4px 6px -4px white inset,
+    4px 4px 6px -4px white inset,
+    0 0 0 1px rgba(169, 49, 73,.15),
+    0 -8px 8px 0 rgba(0,0,0,0.025) inset,
+    0  8px 8px 0 rgba(0,0,0,0.025) inset;
+  }
+
+  #vacation .vacation-content p {
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    #vacation .vacation-content {
+      padding: 3rem 1.5rem 17rem 1.5rem;
+    }
+  }
+</style>

@@ -5,3 +5,19 @@ import Icon from './Icon.astro';
   <a href="mailto:info@pmimmo.de"><Icon name="envelope" />info@pmimmo.de</a>
   <a href="tel:+498928806768"><Icon name="phone-flip" />089 28806768</a>
 </div>
+
+<style>
+  #top-kontakt {
+    background: var(--c-background-primary-gradient-linear);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  #top-kontakt a { color: var(--c-text-light); min-height: 48px; min-width: 48px; display: inline-flex; align-items: center; }
+  #top-kontakt a:hover { text-decoration: underline; background-color: inherit; }
+</style>
