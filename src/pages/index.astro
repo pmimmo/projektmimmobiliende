@@ -1,520 +1,531 @@
 ---
-import { Image, Picture } from 'astro:assets';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Icon from '../components/Icon.astro';
-import Hero from '../components/Hero.astro';
-import Navigation from '../components/Navigation.astro';
-import VacationBanner from '../components/VacationBanner.astro';
-import XmasBanner from '../components/XmasBanner.astro';
-import SealsPopover from '../components/SealsPopover.astro';
-import Footer from '../components/Footer.astro';
+import { Image, Picture } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import Hero from "../components/Hero.astro";
+import Navigation from "../components/Navigation.astro";
+import VacationBanner from "../components/VacationBanner.astro";
+import XmasBanner from "../components/XmasBanner.astro";
+import SealsPopover from "../components/SealsPopover.astro";
+import Footer from "../components/Footer.astro";
 
 // Portraits
-import portraitNeuer1zu1 from '../assets/img/portrait-neuer-1zu1.jpg';
-import portraitNeuer from '../assets/img/portrait-neuer.jpg';
-import portraitGebhard from '../assets/img/portrait-gebhard.jpg';
+import portraitNeuer1zu1 from "../assets/img/portrait-neuer-1zu1.jpg";
+import portraitNeuer from "../assets/img/portrait-neuer.jpg";
+import portraitGebhard from "../assets/img/portrait-gebhard.jpg";
 
 // Siegel
-import dekraD1 from '../assets/img/DekraImmobilienbewertungD1.png';
-import sprengnetterImmoWert from '../assets/img/SprengnetterGesicherterImmoWert-Text-unten.png';
-import diaZertSrn from '../assets/img/DIAZertSrnSmall-ohneSchatten.png';
-import ruedigerNeuer53e5 from '../assets/img/Ruediger-Neuer-53e5.png';
-import mitgliedIvd from '../assets/img/mitgliedImIvd.png';
-import vdivBayern from '../assets/img/vdivImmobilienverwalterBayern.png';
-import sprengnetterMediator from '../assets/img/SpregnetterImmoMediator.png';
-import hausGrund from '../assets/img/haus+grund.png';
-import ivd2025 from '../assets/img/IVD_2025.png';
-import ivdMarktforschung from '../assets/img/2025 - Siegel Partner-Marktforschung ivd schmal.png';
-import diaAbsolvent from '../assets/img/DiaAbsolvent.jpeg';
-import sprengnetterImmowert3D from '../assets/img/SprengnetterGesicherterImmobilienwert-3D.png';
-import sprengnetterImmobesichtiger from '../assets/img/SprengnetterImmoBesichtiger-Schadenerkennung.png';
-import diaZertMakler from '../assets/img/DIAZertMakler.png';
-import immoscout24Silber from '../assets/img/immoscout24SilberPartnerSeit2025.png';
-import immoWeltPremium from '../assets/img/immoWeltPremiumPartner.png';
+import dekraD1 from "../assets/img/DekraImmobilienbewertungD1.png";
+import sprengnetterImmoWert from "../assets/img/SprengnetterGesicherterImmoWert-Text-unten.png";
+import diaZertSrn from "../assets/img/DIAZertSrnSmall-ohneSchatten.png";
+import ruedigerNeuer53e5 from "../assets/img/Ruediger-Neuer-53e5.png";
+import mitgliedIvd from "../assets/img/mitgliedImIvd.png";
+import vdivBayern from "../assets/img/vdivImmobilienverwalterBayern.png";
+import sprengnetterMediator from "../assets/img/SpregnetterImmoMediator.png";
+import hausGrund from "../assets/img/haus+grund.png";
+import ivd2025 from "../assets/img/IVD_2025.png";
+import ivdMarktforschung from "../assets/img/2025 - Siegel Partner-Marktforschung ivd schmal.png";
+import diaAbsolvent from "../assets/img/DiaAbsolvent.jpeg";
+import sprengnetterImmowert3D from "../assets/img/SprengnetterGesicherterImmobilienwert-3D.png";
+import sprengnetterImmobesichtiger from "../assets/img/SprengnetterImmoBesichtiger-Schadenerkennung.png";
+import diaZertMakler from "../assets/img/DIAZertMakler.png";
+import immoscout24Silber from "../assets/img/immoscout24SilberPartnerSeit2025.png";
+import immoWeltPremium from "../assets/img/immoWeltPremiumPartner.png";
 
 // Karten
-import mapMuenchen from '../assets/img/map-muenchen.png';
-import mapLandshut from '../assets/img/map-landshut.png';
+import mapMuenchen from "../assets/img/map-muenchen.png";
+import mapLandshut from "../assets/img/map-landshut.png";
 
 // Hintergrundbilder
-import nachhaltigkeitBg from '../assets/img/nachhaltigkeitFiatE.jpeg';
-import teamPosterBg from '../assets/img/header-team.jpg';
+import nachhaltigkeitBg from "../assets/img/nachhaltigkeitFiatE.jpeg";
+import teamPosterBg from "../assets/img/header-team.jpg";
 
 const site = import.meta.env.SITE;
 ---
-<BaseLayout
-  title="Projekt M Immobilien – Ihr Immobilienexperte in München"
-  description="Projekt M Immobilien erstellt zertifizierte Immobiliengutachten, verkauft Immobilien mit Herz und vermittelt in Konflikten mit Fachverstand. Jetzt beraten lassen!"
-  keywords="Immobilien, München, Immobilienmakler, Gutachten, Immobiliengutachten, Verkehrswertgutachten, Marktwertgutachten, Mediation, Immobilienbewertung, Projekt M, Rüdiger Neuer, Wohnung verkaufen, Haus verkaufen"
-  canonical={`${site}/`}
-  ogImage={`${site}/img/openGraph.png`}
->
-  <VacationBanner />
-  <XmasBanner />
-  <Hero />
-  <Navigation />
-  <main id="main-content">
-    <aside id="dekra-d1" class="highlight-box" aria-labelledby="dekra-heading">
-      <div class="container">
-        <h2 id="dekra-heading" class="sr-only">DEKRA-zertifizierte Immobilienbewertung</h2>
-        <div class="highlight-content scale-up">
-          <div class="highlight-media">
-            <Picture class="picture" src={portraitNeuer1zu1} formats={['avif', 'webp']} alt="Rüdiger Neuer – DEKRA-zertifizierter Sachverständiger" width={500} height={500} decoding="async" />
-          </div>
-          <div class="highlight-text">
-            <p class="lead heading">++Unsere Expertise++</p>
-            <p class="lead">Unser Geschäftsführer, Herr Neuer, ist DEKRA-zertifizierter Sachverständiger für Immobilienbewertung D1 und steht Ihnen mit seiner umfassenden Expertise zur Verfügung.</p>
-          </div>
-          <div class="highlight-badge">
-            <Image src={dekraD1} alt="DEKRA Standard Sachverständige/r für Immobilienbewergung D1 Standard EFH / ZFH" class="seal-logo" data-title="DEKRA Sachverständige/r Immobilienbewertung D1" data-desc="Das D1-Zertifikat bestätigt die besondere Fachkompetenz für die Bewertung von Standard-Einfamilien- und Zweifamilienhäusern. Geprüfte Sachverständige verfügen über fundiertes Fachwissen, rechtliche Kenntnisse und Praxiserfahrung in der Wertermittlung. Sie sind verpflichtet, ihr Wissen regelmäßig durch Fortbildungen und Rezertifizierungen nachzuweisen. Das Siegel schafft Vertrauen, dass Markt- und Verkehrswerte neutral, nachvollziehbar und nach anerkannten Standards ermittelt werden." data-holder="Rüdiger Neuer" data-seal="dekra-d1" width={300} height={468} loading="lazy" decoding="async" />
-          </div>
-        </div>
-      </div>
-    </aside>
 
-    <section id="leistungen" class="container">
-      <h2>Unsere Leistungen</h2>
-      <div class="kacheln" data-stagger="300">
-        <div class="flip_container">
-          <div class="flip_box">
-            <div class="front">
-              <p class="f_title">Immobiliengutachter</p>
-              <div class="f_icon_box">
-                <div class="f_icon_circle">
-                  <Icon name="scale-balanced" />
+<BaseLayout title="Projekt M Immobilien – Ihr Immobilienexperte in München" description="Projekt M Immobilien erstellt zertifizierte Immobiliengutachten, verkauft Immobilien mit Herz und vermittelt in Konflikten mit Fachverstand. Jetzt beraten lassen!" keywords="Immobilien, München, Immobilienmakler, Gutachten, Immobiliengutachten, Verkehrswertgutachten, Marktwertgutachten, Mediation, Immobilienbewertung, Projekt M, Rüdiger Neuer, Wohnung verkaufen, Haus verkaufen" canonical={`${site}/`} ogImage={`${site}/img/openGraph.png`}>
+    <VacationBanner />
+    <XmasBanner />
+    <Hero />
+    <Navigation />
+    <main id="main-content">
+        <aside id="dekra-d1" class="highlight-box" aria-labelledby="dekra-heading">
+            <div class="container">
+                <h2 id="dekra-heading" class="sr-only">DEKRA-zertifizierte Immobilienbewertung</h2>
+                <div class="highlight-content scale-up">
+                    <div class="highlight-media">
+                        <Picture class="picture" src={portraitNeuer1zu1} formats={["avif", "webp"]} alt="Rüdiger Neuer – DEKRA-zertifizierter Sachverständiger" width={500} height={500} decoding="async" />
+                    </div>
+                    <div class="highlight-text">
+                        <p class="lead heading">++Unsere Expertise++</p>
+                        <p class="lead">Unser Geschäftsführer, Herr Neuer, ist DEKRA-zertifizierter Sachverständiger für Immobilienbewertung D1 und steht Ihnen mit seiner umfassenden Expertise zur Verfügung.</p>
+                    </div>
+                    <div class="highlight-badge">
+                        <Image src={dekraD1} alt="DEKRA Standard Sachverständige/r für Immobilienbewergung D1 Standard EFH / ZFH" class="seal-logo" data-title="DEKRA Sachverständige/r Immobilienbewertung D1" data-desc="Das D1-Zertifikat bestätigt die besondere Fachkompetenz für die Bewertung von Standard-Einfamilien- und Zweifamilienhäusern. Geprüfte Sachverständige verfügen über fundiertes Fachwissen, rechtliche Kenntnisse und Praxiserfahrung in der Wertermittlung. Sie sind verpflichtet, ihr Wissen regelmäßig durch Fortbildungen und Rezertifizierungen nachzuweisen. Das Siegel schafft Vertrauen, dass Markt- und Verkehrswerte neutral, nachvollziehbar und nach anerkannten Standards ermittelt werden." data-holder="Rüdiger Neuer" data-seal="dekra-d1" width={300} height={468} loading="lazy" decoding="async" />
+                    </div>
                 </div>
-              </div>
-              <div class="f_bottom_text">
-                <p class="f_subline">Leistung</p>
-                <h3 class="f_headline">Verkehrswert-/<br />Marktwertgutachten</h3>
-              </div>
             </div>
-            <div class="back">
-              <h3 class="b_headline">Immobiliengutachter</h3>
-              <div class="b_siegel">
-                <Image src={sprengnetterImmoWert} alt="SPRENGNETTER Gesicherter ImmoWert" class="seal-logo" data-seal="sprengnetter-immowert" width={389} height={382} loading="lazy" decoding="async" />
-                <Image src={dekraD1} alt="DEKRA Standard Sachverständige/r für Immobilienbewergung D1 Standard EFH / ZFH" class="seal-logo" data-seal="dekra-d1" width={300} height={468} loading="lazy" decoding="async" />
-                <Image src={diaZertSrn} alt="DIA Zert – Zertifizierter Sachverständiger für Immobilienbewertung" class="seal-logo" data-seal="dia-zert-s" width={300} height={338} loading="lazy" decoding="async" />
-                <Image src={ruedigerNeuer53e5} alt="Diplom-Sachverständiger (DIA) für die Bewertung von bebauten und unbebauten Grundstücken, für Mieten und Pachten und für Schäden an Gebäuden – Rüdiger Neuer" class="seal-logo" data-seal="dia-zert-dipl-sach" width={394} height={418} loading="lazy" decoding="async" />
-                <img src="/img/HypZertSImmobiliengutachter.svg" alt="HypZert S – Immobileingutachter – Real Estate Valuer" class="seal-logo" data-seal="hypzert-s" width="139" height="68" loading="lazy" decoding="async" />
-              </div>
-            </div>
-          </div>
-          <div class="r_wrap">
-            <div class="b_round"></div>
-            <div class="s_round" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen"><div class="s_arrow"></div></div>
-          </div>
-        </div>
+        </aside>
 
-        <div class="flip_container">
-          <div class="flip_box">
-            <div class="front">
-              <p class="f_title">Immobilienmakler</p>
-              <div class="f_icon_box">
-                <div class="f_icon_circle">
-                  <Icon name="house-chimney" />
+        <section id="leistungen" class="container">
+            <h2>Unsere Leistungen</h2>
+            <div class="kacheln" data-stagger="300">
+                <div class="flip_container">
+                    <div class="flip_box">
+                        <div class="front">
+                            <p class="f_title">Immobiliengutachter</p>
+                            <div class="f_icon_box">
+                                <div class="f_icon_circle">
+                                    <Icon name="scale-balanced" />
+                                </div>
+                            </div>
+                            <div class="f_bottom_text">
+                                <p class="f_subline">Leistung</p>
+                                <h3 class="f_headline">Verkehrswert-/Marktwertgutachten</h3>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <h3 class="b_headline">Immobiliengutachter</h3>
+                            <div class="b_siegel">
+                                <Image src={sprengnetterImmoWert} alt="SPRENGNETTER Gesicherter ImmoWert" class="seal-logo" data-seal="sprengnetter-immowert" width={389} height={382} loading="lazy" decoding="async" />
+                                <Image src={dekraD1} alt="DEKRA Standard Sachverständige/r für Immobilienbewergung D1 Standard EFH / ZFH" class="seal-logo" data-seal="dekra-d1" width={300} height={468} loading="lazy" decoding="async" />
+                                <Image src={diaZertSrn} alt="DIA Zert – Zertifizierter Sachverständiger für Immobilienbewertung" class="seal-logo" data-seal="dia-zert-s" width={300} height={338} loading="lazy" decoding="async" />
+                                <Image src={ruedigerNeuer53e5} alt="Diplom-Sachverständiger (DIA) für die Bewertung von bebauten und unbebauten Grundstücken, für Mieten und Pachten und für Schäden an Gebäuden – Rüdiger Neuer" class="seal-logo" data-seal="dia-zert-dipl-sach" width={394} height={418} loading="lazy" decoding="async" />
+                                <img src="/img/HypZertSImmobiliengutachter.svg" alt="HypZert S – Immobileingutachter – Real Estate Valuer" class="seal-logo" data-seal="hypzert-s" width="139" height="68" loading="lazy" decoding="async" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="r_wrap" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen">
+                        <span class="flip-hint">Mehr erfahren</span>
+                        <div class="b_round"></div>
+                        <div class="s_round"><div class="s_arrow"></div></div>
+                    </div>
                 </div>
-              </div>
-              <div class="f_bottom_text">
-                <p class="f_subline">Leistung</p>
-                <h3 class="f_headline">Verkauf – seriös & vertrauensvoll</h3>
-              </div>
-            </div>
-            <div class="back">
-              <h3 class="b_headline">Immobilienmakler</h3>
-              <div class="b_siegel">
-                <Image src={mitgliedIvd} alt="Mitglied im ivd" class="seal-logo" data-seal="ivd" width={960} height={1200} loading="lazy" decoding="async" />
-                <Image src={vdivBayern} alt="vdiv – Die Immobilienverwalter Bayern" class="seal-logo" data-seal="vdiv" width={1028} height={611} loading="lazy" decoding="async" />
-              </div>
-            </div>
-          </div>
-          <div class="r_wrap">
-            <div class="b_round"></div>
-            <div class="s_round" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen"><div class="s_arrow"></div></div>
-          </div>
-        </div>
 
-        <div class="flip_container">
-          <div class="flip_box">
-            <div class="front">
-              <p class="f_title">Immobilienmediator</p>
-              <div class="f_icon_box">
-                <div class="f_icon_circle">
-                  <Icon name="comments" />
+                <div class="flip_container">
+                    <div class="flip_box">
+                        <div class="front">
+                            <p class="f_title">Immobilienmakler</p>
+                            <div class="f_icon_box">
+                                <div class="f_icon_circle">
+                                    <Icon name="house-chimney" />
+                                </div>
+                            </div>
+                            <div class="f_bottom_text">
+                                <p class="f_subline">Leistung</p>
+                                <h3 class="f_headline">Verkauf – seriös & vertrauensvoll</h3>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <h3 class="b_headline">Immobilienmakler</h3>
+                            <div class="b_siegel">
+                                <Image src={mitgliedIvd} alt="Mitglied im ivd" class="seal-logo" data-seal="ivd" width={960} height={1200} loading="lazy" decoding="async" />
+                                <Image src={vdivBayern} alt="vdiv – Die Immobilienverwalter Bayern" class="seal-logo" data-seal="vdiv" width={1028} height={611} loading="lazy" decoding="async" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="r_wrap" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen">
+                        <span class="flip-hint">Mehr erfahren</span>
+                        <div class="b_round"></div>
+                        <div class="s_round"><div class="s_arrow"></div></div>
+                    </div>
                 </div>
-              </div>
-              <div class="f_bottom_text">
-                <p class="f_subline">Leistung</p>
-                <h3 class="f_headline">Konflikte lösen</h3>
-              </div>
-            </div>
-            <div class="back">
-              <h3 class="b_headline">Immobilienmediator</h3>
-              <div class="b_siegel">
-                <Image src={sprengnetterMediator} alt="SPRENGNETTER ImmoMediator" class="seal-logo" data-seal="sprengnetter-immomediator" width={441} height={440} loading="lazy" decoding="async" />
-              </div>
-            </div>
-          </div>
-          <div class="r_wrap">
-            <div class="b_round"></div>
-            <div class="s_round" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen"><div class="s_arrow"></div></div>
-          </div>
-        </div>
 
-        <div class="flip_container">
-          <div class="flip_box">
-            <div class="front">
-              <p class="f_title">Wohnflächenberechnung</p>
-              <div class="f_icon_box">
-                <div class="f_icon_circle">
-                  <Icon name="ruler-combined" />
+                <div class="flip_container">
+                    <div class="flip_box">
+                        <div class="front">
+                            <p class="f_title">Immobilienmediator</p>
+                            <div class="f_icon_box">
+                                <div class="f_icon_circle">
+                                    <Icon name="comments" />
+                                </div>
+                            </div>
+                            <div class="f_bottom_text">
+                                <p class="f_subline">Leistung</p>
+                                <h3 class="f_headline">Konflikte lösen</h3>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <h3 class="b_headline">Immobilienmediator</h3>
+                            <div class="b_siegel">
+                                <Image src={sprengnetterMediator} alt="SPRENGNETTER ImmoMediator" class="seal-logo" data-seal="sprengnetter-immomediator" width={441} height={440} loading="lazy" decoding="async" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="r_wrap" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen">
+                        <span class="flip-hint">Mehr erfahren</span>
+                        <div class="b_round"></div>
+                        <div class="s_round"><div class="s_arrow"></div></div>
+                    </div>
                 </div>
-              </div>
-              <div class="f_bottom_text">
-                <p class="f_subline">Leistung</p>
-                <h3 class="f_headline">In Vorbereitung</h3>
-              </div>
-            </div>
-            <div class="back">
-              <h3 class="b_headline manual-hyphen">Wohn&shy;flächenberechnung</h3>
-              <p class="b_text">Demnächst verfügbar – sprechen Sie uns gern schon an.</p>
-            </div>
-          </div>
-          <div class="r_wrap">
-            <div class="b_round"></div>
-            <div class="s_round" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen"><div class="s_arrow"></div></div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section id="team" class="mb-l">
-      <div class="container team">
-        <h2>Team</h2>
-        <div class="personen" data-stagger="300">
-          <div class="person">
-            <div class="person-info">
-              <div class="portrait-wrapper scale-up">
-                <Picture src={portraitNeuer} formats={['avif', 'webp']} alt="Portrait Neuer" class="portrait-neuer" width={534} height={800} loading="lazy" decoding="async" />
-                <Image src={diaZertSrn} class="seal-logo dia-badge" alt="Zertifizierter Immobileingutachter S (DIAZert) – Rüdiger Neuer" data-seal="dia-zert-s" width={300} height={338} loading="lazy" decoding="async" />
-              </div>
-              <h3>Rüdiger Neuer</h3>
-              <p>Inhaber und Geschäftsführer<br />Immobiliengutachter und Immobilienmediator</p>
-            </div>
-          </div>
-          <div class="person">
-            <div class="person-info">
-              <Picture class="portrait scale-up" src={portraitGebhard} formats={['avif', 'webp']} alt="Jürgen Gebhard" width={534} height={800} loading="lazy" decoding="async" />
-              <h3>Jürgen Gebhard</h3>
-              <p>Immobilienmakler</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="kompetenzen">
-      <div class="container">
-        <h2>Unsere Kompetenzen</h2>
-        <div class="kacheln" data-stagger="300">
-          <div class="flip_container">
-            <div class="flip_box">
-              <div class="front">
-                <p class="f_title">Mitgliedschaften</p>
-                <div class="f_icon_box">
-                  <div class="f_icon_circle">
-                    <Icon name="people-group" />
-                  </div>
+                <div class="flip_container">
+                    <div class="flip_box">
+                        <div class="front">
+                            <p class="f_title">Wohnflächenberechnung</p>
+                            <div class="f_icon_box">
+                                <div class="f_icon_circle">
+                                    <Icon name="ruler-combined" />
+                                </div>
+                            </div>
+                            <div class="f_bottom_text">
+                                <p class="f_subline">Leistung</p>
+                                <h3 class="f_headline">In Vorbereitung</h3>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <h3 class="b_headline manual-hyphen">Wohn&shy;flächenberechnung</h3>
+                            <p class="b_text">Demnächst verfügbar – sprechen Sie uns gern schon an.</p>
+                        </div>
+                    </div>
+                    <div class="r_wrap" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen">
+                        <span class="flip-hint">Mehr erfahren</span>
+                        <div class="b_round"></div>
+                        <div class="s_round"><div class="s_arrow"></div></div>
+                    </div>
                 </div>
-                <div class="f_bottom_text">
-                  <p class="f_subline">Kompetenzen</p>
-                  <h3 class="f_headline">Teil eines starken Netzwerks</h3>
+            </div>
+        </section>
+
+        <section id="team" class="mb-l">
+            <div class="container team">
+                <h2>Team</h2>
+                <div class="personen" data-stagger="300">
+                    <div class="person">
+                        <div class="person-info">
+                            <div class="portrait-wrapper scale-up">
+                                <Picture src={portraitNeuer} formats={["avif", "webp"]} alt="Portrait Neuer" class="portrait-neuer" width={534} height={800} loading="lazy" decoding="async" />
+                                <Image src={diaZertSrn} class="seal-logo dia-badge" alt="Zertifizierter Immobileingutachter S (DIAZert) – Rüdiger Neuer" data-seal="dia-zert-s" width={300} height={338} loading="lazy" decoding="async" />
+                            </div>
+                            <h3>Rüdiger Neuer</h3>
+                            <p>Inhaber und Geschäftsführer<br />Immobiliengutachter und Immobilienmediator</p>
+                        </div>
+                    </div>
+                    <div class="person">
+                        <div class="person-info">
+                            <Picture class="portrait scale-up" src={portraitGebhard} formats={["avif", "webp"]} alt="Jürgen Gebhard" width={534} height={800} loading="lazy" decoding="async" />
+                            <h3>Jürgen Gebhard</h3>
+                            <p>Immobilienmakler</p>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="back">
-                <h3 class="b_headline">Mitgliedschaften</h3>
-                <p class="b_text">Engagement in Fachverbänden und Organisationen – für Qualität und Austausch auf höchstem Niveau.</p>
-                <div class="b_siegel">
-                  <img src="/img/hypZertGutachter.svg" alt="Wir beschäftigen HypZert Gutachter" class="seal-logo" data-seal="hypzert-gutachter" width="74" height="53" loading="lazy" decoding="async" />
-                  <Image src={mitgliedIvd} alt="Mitglied im ivd" class="seal-logo" data-seal="ivd" width={960} height={1200} loading="lazy" decoding="async" />
-                  <Image src={vdivBayern} alt="vdiv – Die Immobilienverwalter Bayern" class="seal-logo" data-seal="vdiv" width={1028} height={611} loading="lazy" decoding="async" />
-                  <Image src={hausGrund} alt="HAUS+GRUND MÜNCHEN – HAUS- UND GRUNDBESITZERVEREIN MÜNCHEN und Umgebung e.V." class="seal-logo" data-seal="haus+grund" width={600} height={79} loading="lazy" decoding="async" />
+            </div>
+        </section>
+
+        <section id="kompetenzen">
+            <div class="container">
+                <h2>Unsere Kompetenzen</h2>
+                <div class="kacheln" data-stagger="300">
+                    <div class="flip_container">
+                        <div class="flip_box">
+                            <div class="front">
+                                <p class="f_title">Mitgliedschaften</p>
+                                <div class="f_icon_box">
+                                    <div class="f_icon_circle">
+                                        <Icon name="people-group" />
+                                    </div>
+                                </div>
+                                <div class="f_bottom_text">
+                                    <p class="f_subline">Kompetenzen</p>
+                                    <h3 class="f_headline">Teil eines starken Netzwerks</h3>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <h3 class="b_headline">Mitgliedschaften</h3>
+                                <p class="b_text">Engagement in Fachverbänden und Organisationen – für Qualität und Austausch auf höchstem Niveau.</p>
+                                <div class="b_siegel">
+                                    <img src="/img/hypZertGutachter.svg" alt="Wir beschäftigen HypZert Gutachter" class="seal-logo" data-seal="hypzert-gutachter" width="74" height="53" loading="lazy" decoding="async" />
+                                    <Image src={mitgliedIvd} alt="Mitglied im ivd" class="seal-logo" data-seal="ivd" width={960} height={1200} loading="lazy" decoding="async" />
+                                    <Image src={vdivBayern} alt="vdiv – Die Immobilienverwalter Bayern" class="seal-logo" data-seal="vdiv" width={1028} height={611} loading="lazy" decoding="async" />
+                                    <Image src={hausGrund} alt="HAUS+GRUND MÜNCHEN – HAUS- UND GRUNDBESITZERVEREIN MÜNCHEN und Umgebung e.V." class="seal-logo" data-seal="haus+grund" width={600} height={79} loading="lazy" decoding="async" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="r_wrap" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen">
+                            <span class="flip-hint">Mehr erfahren</span>
+                            <div class="b_round"></div>
+                            <div class="s_round"><div class="s_arrow"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="flip_container">
+                        <div class="flip_box">
+                            <div class="front">
+                                <p class="f_title">Fortbildungen</p>
+                                <div class="f_icon_box">
+                                    <div class="f_icon_circle">
+                                        <Icon name="graduation-cap" />
+                                    </div>
+                                </div>
+                                <div class="f_bottom_text">
+                                    <p class="f_subline">Kompetenzen</p>
+                                    <h3 class="f_headline">Wissen, das wächst</h3>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <h3 class="b_headline">Fortbildungen</h3>
+                                <p class="b_text">Kontinuierliche Weiterbildung in aktuellen Themen – fachlich, rechtlich und methodisch.</p>
+                                <ul class="b_text">
+                                    <li>Fortbildungszertifikate des Verbandes der Immobilienverwalter Bayern e.V. (vdiv) durchgängig seit 2012</li>
+                                    <li>Weiterbildungssiegel bzw. Weiterbildungszertifikate des Immobilienverbandes Deutschland (IVD) durchgäng seit 2016</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="r_wrap" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen">
+                            <span class="flip-hint">Mehr erfahren</span>
+                            <div class="b_round"></div>
+                            <div class="s_round"><div class="s_arrow"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="flip_container">
+                        <div class="flip_box">
+                            <div class="front">
+                                <p class="f_title">Qualifikationen</p>
+                                <div class="f_icon_box">
+                                    <div class="f_icon_circle">
+                                        <Icon name="award" />
+                                    </div>
+                                </div>
+                                <div class="f_bottom_text">
+                                    <p class="f_subline">Kompetenzen</p>
+                                    <h3 class="f_headline manual-hyphen">Geprüft und zertifiziert</h3>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <h3 class="b_headline">Qualifikationen</h3>
+                                <p class="b_text">Kontinuierliche Weiterbildung in aktuellen Themen – fachlich, rechtlich und methodisch.</p>
+                                <div class="b_siegel">
+                                    <Image src={sprengnetterMediator} alt="SPRENGNETTER ImmoMediator" class="seal-logo" data-seal="sprengnetter-immomediator" width={441} height={440} loading="lazy" decoding="async" />
+                                    <Image src={diaAbsolvent} alt="Absolvent/in der Deutschen Immobilien-Akademie (DIA)" class="seal-logo" data-holder="Rüdiger Neuer" data-seal="dia-absolvent" width={621} height={872} loading="lazy" decoding="async" />
+                                    <Image src={sprengnetterImmowert3D} alt="SPRENGNETTER Gesicherter ImmoWert" class="seal-logo" data-seal="sprengnetter-immowert" width={236} height={236} loading="lazy" decoding="async" />
+                                    <Image src={sprengnetterImmobesichtiger} alt="SPRENGNETTER ImmoBesichtiger-Schadenerkennung" class="seal-logo" data-seal="sprengnetter-immobesichtiger" width={450} height={450} loading="lazy" decoding="async" />
+                                    <Image src={diaZertMakler} alt="DIA Zert - Zertifiziert durch DIA Consulting AG nach EU-Norm DIN EN 15733" class="seal-logo" data-seal="dia-zert-din15733" width={400} height={316} loading="lazy" decoding="async" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="r_wrap" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen">
+                            <span class="flip-hint">Mehr erfahren</span>
+                            <div class="b_round"></div>
+                            <div class="s_round"><div class="s_arrow"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="flip_container">
+                        <div class="flip_box">
+                            <div class="front">
+                                <p class="f_title">Umweltschutz</p>
+                                <div class="f_icon_box">
+                                    <div class="f_icon_circle">
+                                        <Icon name="seedling" />
+                                    </div>
+                                </div>
+                                <div class="f_bottom_text">
+                                    <p class="f_subline">Kompetenzen</p>
+                                    <h3 class="f_headline">Nachhaltig handeln</h3>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <h3 class="b_headline">Umweltschutz</h3>
+                                <p class="b_text">Unser unabdingbarer Anspruch an Verantwortung liegt in der Schonung von Ressourcen und der bestmöglichen Reduzierung von CO₂-Emissionen. Hierzu nutzen wir für viele Strecken innerhalb Münchens unsere Citybikes sowie ein Elektromobil.</p>
+                            </div>
+                        </div>
+                        <div class="r_wrap" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen">
+                            <span class="flip-hint">Mehr erfahren</span>
+                            <div class="b_round"></div>
+                            <div class="s_round"><div class="s_arrow"></div></div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="r_wrap">
-              <div class="b_round"></div>
-              <div class="s_round" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen"><div class="s_arrow"></div></div>
-            </div>
-          </div>
+        </section>
 
-          <div class="flip_container">
-            <div class="flip_box">
-              <div class="front">
-                <p class="f_title">Fortbildungen</p>
-                <div class="f_icon_box">
-                  <div class="f_icon_circle">
-                    <Icon name="graduation-cap" />
-                  </div>
+        <aside id="ivd" class="highlight-box" aria-labelledby="ivd-heading">
+            <div class="container">
+                <h2 id="ivd-heading">Mitglied im IVD</h2>
+                <div class="highlight-content scale-up">
+                    <div class="highlight-text">
+                        <p class="lead heading">++Mitglied im IVD++</p>
+                        <p class="lead">Projekt M Immobilien ist Mitglied im IVD.<br />Wir sind offizieller Partner der IVD-Marktforschung und bilden uns regelmäßig&nbsp;fort.</p>
+                    </div>
+                    <div class="ivd-logos">
+                        <Image src={ivd2025} alt="IVD Immobilien-Weiterbildungssiegel" class="seal-logo" data-seal="ivd-weiterbildung" width={487} height={743} loading="lazy" decoding="async" />
+                        <Image src={ivdMarktforschung} alt="Partner der IVD-Marktforschung" class="seal-logo" data-seal="ivd-marktforschung" width={252} height={628} loading="lazy" decoding="async" />
+                    </div>
                 </div>
-                <div class="f_bottom_text">
-                  <p class="f_subline">Kompetenzen</p>
-                  <h3 class="f_headline">Wissen, das wächst</h3>
+            </div>
+        </aside>
+
+        <section id="nachhaltigkeit">
+            <Picture src={nachhaltigkeitBg} formats={["avif", "webp"]} alt="" class="bg-cover" style="object-position: center bottom;" loading="lazy" decoding="async" />
+            <div class="image"></div>
+            <div class="content">
+                <div class="container">
+                    <h2>Umweltschutz – Wir agieren nachhaltig und&nbsp;lokal</h2>
+                    <p>Unser unabdingbarer Anspruch an Verantwortung liegt in der Schonung von Ressourcen und der bestmöglichen Reduzierung von CO₂-Emissionen. Hierzu nutzen wir für viele Strecken innerhalb Münchens unsere Citybikes sowie ein Elektromobil.</p>
                 </div>
-              </div>
-              <div class="back">
-                <h3 class="b_headline">Fortbildungen</h3>
-                <p class="b_text">Kontinuierliche Weiterbildung in aktuellen Themen – fachlich, rechtlich und methodisch.</p>
-                <ul class="b_text">
-                  <li>Fortbildungszertifikate des Verbandes der Immobilienverwalter Bayern e.V. (vdiv) durchgängig seit 2012</li>
-                  <li>Weiterbildungssiegel bzw. Weiterbildungszertifikate des Immobilienverbandes Deutschland (IVD) durchgäng seit 2016</li>
-                </ul>
-              </div>
             </div>
-            <div class="r_wrap">
-              <div class="b_round"></div>
-              <div class="s_round" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen"><div class="s_arrow"></div></div>
-            </div>
-          </div>
+        </section>
 
-          <div class="flip_container">
-            <div class="flip_box">
-              <div class="front">
-                <p class="f_title">Qualifikationen</p>
-                <div class="f_icon_box">
-                  <div class="f_icon_circle">
-                    <Icon name="award" />
-                  </div>
+        <section id="auszeichnungen" class="container">
+            <h2 class="text-center mb-m">Auszeichnungen</h2>
+            <div data-stagger="150">
+                <Image src={mitgliedIvd} alt="Mitglied im ivd" class="scale-up seal-logo" data-seal="ivd" width={960} height={1200} loading="lazy" decoding="async" />
+                <Image src={vdivBayern} alt="vdiv – Die Immobilienverwalter Bayern" class="scale-up seal-logo" data-seal="vdiv" width={1028} height={611} loading="lazy" decoding="async" />
+                <img src="/img/hypZertGutachter.svg" alt="Wir beschäftigen HypZert Gutachter" class="scale-up seal-logo" data-seal="hypzert-gutachter" width="74" height="53" loading="lazy" decoding="async" />
+                <Image src={sprengnetterImmoWert} alt="SPRENGNETTER Gesicherter ImmoWert" class="scale-up seal-logo" data-seal="sprengnetter-immowert" width={389} height={382} loading="lazy" decoding="async" />
+                <Image src={diaZertMakler} alt="DIA Zert - Zertifiziert durch DIA Consulting AG nach EU-Norm DIN EN 15733" class="scale-up seal-logo" data-seal="din15733" width={400} height={316} loading="lazy" decoding="async" />
+                <Image src={immoscout24Silber} alt="ImmoScout24 Silber Partner seit 2025" class="scale-up seal-logo" data-seal="immoscout24-silber" width={411} height={523} loading="lazy" decoding="async" />
+                <Image src={immoWeltPremium} alt="immowelt Premium Partner" class="scale-up seal-logo" data-seal="immowelt-premium" width={182} height={182} loading="lazy" decoding="async" />
+            </div>
+        </section>
+
+        <section id="standorte">
+            <div class="container">
+                <h2>Unsere Standorte</h2>
+                <div class="standorte">
+                    <div class="standort-container">
+                        <div class="content-container">
+                            <h3>München</h3>
+                            <p>Unser Büro ist im Herzen der Millionenstadt München, im Stadtteil Schwabing. Sie finden uns zentral zwischen Josephs- und Hohenzollernplatz und dem beliebten Elisabethmarkt. Wir sind anders: Was zeichnet uns aus? Wir agieren diskret und unauffällig, halten uns mit Werbung zurück. Wir sind in der Branche geschätzt. Unser Wachstum generieren wir größtenteils über Empfehlungen. Wir sehen uns als „Boutique-Makler", wir lieben Herausforderungen. Die Vielzahl erfolgreicher, abgeschlossener Projekte sehen wir als direkte Kennzahl für den Erfolg unserer Strategie.</p>
+                        </div>
+                        <div class="image-container">
+                            <Picture src={mapMuenchen} formats={["avif", "webp"]} alt="Standort München Schwabing" class="slide-in-right" width={1249} height={960} loading="lazy" decoding="async" />
+                        </div>
+                    </div>
+                    <div class="standort-container">
+                        <div class="content-container">
+                            <h3>Landshut</h3>
+                            <p>Der Immobilienmarkt der Region Landshut liegt uns neben München besonders am Herzen. Auf Grund einer überdurchschnittlich großen Nachfrage begleiten wir seit vielen Jahren den Verkauf von Wohnungen, Häusern und auch Grundstücken im Einzugsgebiet von Landshut. Unser Immobilienmakler Jürgen Gebhard kommt selbst aus Landshut und ist regional sehr gut vernetzt. Gerade beim Verkauf von Grundstücken ist sein guter Kontakt zu möglichen Interessent:innen und Projektentwickler:innen aus der Umgebung von Landshut ein attraktiver Synergie-Effekt.</p>
+                        </div>
+                        <div class="image-container">
+                            <Picture src={mapLandshut} formats={["avif", "webp"]} alt="Standort Landshut" class="slide-in-left" width={960} height={1044} loading="lazy" decoding="async" />
+                        </div>
+                    </div>
                 </div>
-                <div class="f_bottom_text">
-                  <p class="f_subline">Kompetenzen</p>
-                  <h3 class="f_headline manual-hyphen">Geprüft und zertifiziert</h3>
+            </div>
+        </section>
+
+        <aside id="kontakt-team-poster">
+            <Picture src={teamPosterBg} formats={["avif", "webp"]} alt="" class="bg-cover" style="object-position: center top;" loading="lazy" decoding="async" />
+        </aside>
+
+        <section id="callToAction">
+            <div class="container">
+                <p class="firma manual-hyphen">projekt m immobilien</p>
+                <h2 class="sr-only">Jetzt unverbindlich Beratung oder Gutachten anfragen</h2>
+                <p>Rufen Sie uns an. Wir freuen uns auf ein persönliches Gespräch.</p>
+                <a class="button" href="tel:+498928806768" aria-label="Jetzt anrufen: 089 28806768">089 28806768</a>
+            </div>
+        </section>
+
+        <aside id="provenExpertFull" aria-label="ProvenExpert Bewertungen">
+            <div id="pewl" class="pewl">
+                <div class="map-placeholder">
+                    <p>Das Proven Expert Bewertungssiegel ist blockiert, da Sie den externen Inhalten nicht zugestimmt haben.</p>
                 </div>
-              </div>
-              <div class="back">
-                <h3 class="b_headline">Qualifikationen</h3>
-                <p class="b_text">Kontinuierliche Weiterbildung in aktuellen Themen – fachlich, rechtlich und methodisch.</p>
-                <div class="b_siegel">
-                  <Image src={sprengnetterMediator} alt="SPRENGNETTER ImmoMediator" class="seal-logo" data-seal="sprengnetter-immomediator" width={441} height={440} loading="lazy" decoding="async" />
-                  <Image src={diaAbsolvent} alt="Absolvent/in der Deutschen Immobilien-Akademie (DIA)" class="seal-logo" data-holder="Rüdiger Neuer" data-seal="dia-absolvent" width={621} height={872} loading="lazy" decoding="async" />
-                  <Image src={sprengnetterImmowert3D} alt="SPRENGNETTER Gesicherter ImmoWert" class="seal-logo" data-seal="sprengnetter-immowert" width={236} height={236} loading="lazy" decoding="async" />
-                  <Image src={sprengnetterImmobesichtiger} alt="SPRENGNETTER ImmoBesichtiger-Schadenerkennung" class="seal-logo" data-seal="sprengnetter-immobesichtiger" width={450} height={450} loading="lazy" decoding="async" />
-                  <Image src={diaZertMakler} alt="DIA Zert - Zertifiziert durch DIA Consulting AG nach EU-Norm DIN EN 15733" class="seal-logo" data-seal="dia-zert-din15733" width={400} height={316} loading="lazy" decoding="async" />
-                </div>
-              </div>
             </div>
-            <div class="r_wrap">
-              <div class="b_round"></div>
-              <div class="s_round" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen"><div class="s_arrow"></div></div>
+            <!-- ProvenExpert Bewertungssiegel -->
+            <script is:inline type="text/x-ccm-loader" data-ccm-loader-src="https://www.provenexpert.com/widget/landing_projekt-m-immobilien-gmbh.js?feedback=1&avatar=1&competence=1&style=white" async></script>
+            <link rel="stylesheet" type="text/css" href="https://www.provenexpert.com/css/widget_landing.css" media="screen,print" />
+            <!-- ProvenExpert Bewertungssiegel Ende -->
+        </aside>
+
+        <section id="map" class="blueprint-grid" aria-label="Standort auf der Karte">
+            <div class="map-placeholder">
+                <p>Die interaktive Karte ist blockiert, da Sie den externen Inhalten nicht zugestimmt haben.</p>
             </div>
-          </div>
+        </section>
 
-          <div class="flip_container">
-            <div class="flip_box">
-              <div class="front">
-                <p class="f_title">Umweltschutz</p>
-                <div class="f_icon_box">
-                  <div class="f_icon_circle">
-                    <Icon name="seedling" />
-                  </div>
-                </div>
-                <div class="f_bottom_text">
-                  <p class="f_subline">Kompetenzen</p>
-                  <h3 class="f_headline">Nachhaltig handeln</h3>
-                </div>
-              </div>
-              <div class="back">
-                <h3 class="b_headline">Umweltschutz</h3>
-                <p class="b_text">Unser unabdingbarer Anspruch an Verantwortung liegt in der Schonung von Ressourcen und der bestmöglichen Reduzierung von CO₂-Emissionen. Hierzu nutzen wir für viele Strecken innerhalb Münchens unsere Citybikes sowie ein Elektromobil.</p>
-              </div>
-            </div>
-            <div class="r_wrap">
-              <div class="b_round"></div>
-              <div class="s_round" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen"><div class="s_arrow"></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <script is:inline type="text/x-ccm-loader" data-ccm-loader-src="/leaflet/leaflet.js"></script>
+        <script is:inline type="text/x-ccm-loader">
+            (function () {
+                var lat = 48.158335;
+                var lng = 11.566951;
+                var zoom = 15;
 
-    <aside id="ivd" class="highlight-box" aria-labelledby="ivd-heading">
-      <div class="container">
-        <h2 id="ivd-heading">Mitglied im IVD</h2>
-        <div class="highlight-content scale-up">
-          <div class="highlight-text">
-            <p class="lead heading">++Mitglied im IVD++</p>
-            <p class="lead">Projekt M Immobilien ist Mitglied im IVD.<br />Wir sind offizieller Partner der IVD-Marktforschung und bilden uns regelmäßig&nbsp;fort.</p>
-          </div>
-          <div class="ivd-logos">
-            <Image src={ivd2025} alt="IVD Immobilien-Weiterbildungssiegel" class="seal-logo" data-seal="ivd-weiterbildung" width={487} height={743} loading="lazy" decoding="async" />
-            <Image src={ivdMarktforschung} alt="Partner der IVD-Marktforschung" class="seal-logo" data-seal="ivd-marktforschung" width={252} height={628} loading="lazy" decoding="async" />
-          </div>
-        </div>
-      </div>
-    </aside>
+                function init() {
+                    if (!window.L) return;
+                    var isTouch = "ontouchstart" in window || (navigator.maxTouchPoints || 0) > 0;
+                    var map = L.map("map", {
+                        center: [lat, lng],
+                        zoom: zoom,
+                        dragging: !isTouch,
+                        scrollWheelZoom: false,
+                        touchZoom: false,
+                        doubleClickZoom: false,
+                        boxZoom: false,
+                        keyboard: true,
+                        zoomControl: true,
+                    });
+                    map.attributionControl.setPrefix(false);
+                    L.tileLayer("https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png", {
+                        maxZoom: 19,
+                        detectRetina: true,
+                        updateWhenIdle: true,
+                        keepBuffer: 1,
+                        crossOrigin: true,
+                        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                    }).addTo(map);
+                    L.marker([lat, lng]).addTo(map).bindPopup("<img src='/img/logo_pmi_web.svg' alt='Projekt M Immobilien GmbH – Logo' style='width:120px' />", { closeButton: false, maxWidth: 500, autoPan: true }).openPopup();
+                    map.whenReady(function () {
+                        map.invalidateSize();
+                    });
+                }
 
-    <section id="nachhaltigkeit">
-      <Picture src={nachhaltigkeitBg} formats={['avif', 'webp']} alt="" class="bg-cover" style="object-position: center bottom;" loading="lazy" decoding="async" />
-      <div class="image"></div>
-      <div class="content">
-        <div class="container">
-          <h2>Umweltschutz – Wir agieren nachhaltig und&nbsp;lokal</h2>
-          <p>Unser unabdingbarer Anspruch an Verantwortung liegt in der Schonung von Ressourcen und der bestmöglichen Reduzierung von CO₂-Emissionen. Hierzu nutzen wir für viele Strecken innerhalb Münchens unsere Citybikes sowie ein Elektromobil.</p>
-        </div>
-      </div>
-    </section>
+                /* Leaflet bereits verfügbar (z.B. aus Browser-Cache) */
+                if (window.L) {
+                    init();
+                    return;
+                }
 
-    <section id="auszeichnungen" class="container">
-      <h2 class="text-center mb-m">Auszeichnungen</h2>
-      <div data-stagger="150">
-        <Image src={mitgliedIvd} alt="Mitglied im ivd" class="scale-up seal-logo" data-seal="ivd" width={960} height={1200} loading="lazy" decoding="async" />
-        <Image src={vdivBayern} alt="vdiv – Die Immobilienverwalter Bayern" class="scale-up seal-logo" data-seal="vdiv" width={1028} height={611} loading="lazy" decoding="async" />
-        <img src="/img/hypZertGutachter.svg" alt="Wir beschäftigen HypZert Gutachter" class="scale-up seal-logo" data-seal="hypzert-gutachter" width="74" height="53" loading="lazy" decoding="async" />
-        <Image src={sprengnetterImmoWert} alt="SPRENGNETTER Gesicherter ImmoWert" class="scale-up seal-logo" data-seal="sprengnetter-immowert" width={389} height={382} loading="lazy" decoding="async" />
-        <Image src={diaZertMakler} alt="DIA Zert - Zertifiziert durch DIA Consulting AG nach EU-Norm DIN EN 15733" class="scale-up seal-logo" data-seal="din15733" width={400} height={316} loading="lazy" decoding="async" />
-        <Image src={immoscout24Silber} alt="ImmoScout24 Silber Partner seit 2025" class="scale-up seal-logo" data-seal="immoscout24-silber" width={411} height={523} loading="lazy" decoding="async" />
-        <Image src={immoWeltPremium} alt="immowelt Premium Partner" class="scale-up seal-logo" data-seal="immowelt-premium" width={182} height={182} loading="lazy" decoding="async" />
-      </div>
-    </section>
+                /* Leaflet-Script im DOM suchen und auf load warten */
+                function waitForLeaflet() {
+                    var script = document.querySelector('script[src*="leaflet.js"]');
+                    if (!script) return false;
+                    if (window.L) {
+                        init();
+                        return true;
+                    }
+                    script.addEventListener("load", init);
+                    return true;
+                }
 
-    <section id="standorte">
-      <div class="container">
-        <h2>Unsere Standorte</h2>
-        <div class="standorte">
-          <div class="standort-container">
-            <div class="content-container">
-              <h3>München</h3>
-              <p>Unser Büro ist im Herzen der Millionenstadt München, im Stadtteil Schwabing. Sie finden uns zentral zwischen Josephs- und Hohenzollernplatz und dem beliebten Elisabethmarkt. Wir sind anders: Was zeichnet uns aus? Wir agieren diskret und unauffällig, halten uns mit Werbung zurück. Wir sind in der Branche geschätzt. Unser Wachstum generieren wir größtenteils über Empfehlungen. Wir sehen uns als „Boutique-Makler", wir lieben Herausforderungen. Die Vielzahl erfolgreicher, abgeschlossener Projekte sehen wir als direkte Kennzahl für den Erfolg unserer Strategie.</p>
-            </div>
-            <div class="image-container">
-              <Picture src={mapMuenchen} formats={['avif', 'webp']} alt="Standort München Schwabing" class="slide-in-right" width={1249} height={960} loading="lazy" decoding="async" />
-            </div>
-          </div>
-          <div class="standort-container">
-            <div class="content-container">
-              <h3>Landshut</h3>
-              <p>Der Immobilienmarkt der Region Landshut liegt uns neben München besonders am Herzen. Auf Grund einer überdurchschnittlich großen Nachfrage begleiten wir seit vielen Jahren den Verkauf von Wohnungen, Häusern und auch Grundstücken im Einzugsgebiet von Landshut. Unser Immobilienmakler Jürgen Gebhard kommt selbst aus Landshut und ist regional sehr gut vernetzt. Gerade beim Verkauf von Grundstücken ist sein guter Kontakt zu möglichen Interessent:innen und Projektentwickler:innen aus der Umgebung von Landshut ein attraktiver Synergie-Effekt.</p>
-            </div>
-            <div class="image-container">
-              <Picture src={mapLandshut} formats={['avif', 'webp']} alt="Standort Landshut" class="slide-in-left" width={960} height={1044} loading="lazy" decoding="async" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+                /* Falls CCM19 das Script noch nicht eingefügt hat: DOM beobachten */
+                if (!waitForLeaflet()) {
+                    var observer = new MutationObserver(function () {
+                        if (waitForLeaflet() || window.L) {
+                            observer.disconnect();
+                            if (window.L) init();
+                        }
+                    });
+                    observer.observe(document.documentElement, { childList: true, subtree: true });
+                }
+            })();
+        </script>
+        <link rel="stylesheet" href="/leaflet/leaflet.css" />
 
-    <aside id="kontakt-team-poster">
-      <Picture src={teamPosterBg} formats={['avif', 'webp']} alt="" class="bg-cover" style="object-position: center top;" loading="lazy" decoding="async" />
-    </aside>
+        <aside aria-label="ProvenExpert Bewertungssiegel">
+            <!-- ProvenExpert Bewertungssiegel -->
+            <style is:inline>
+                @media (max-width: 786px) {
+                    .ProvenExpert_widget_container {
+                        display: none !important;
+                    }
+                }
+            </style>
+            <span class="ProvenExpert_widget_container" id="provenexpert_circle_widget_qvesz" style="text-decoration: none; z-index: 9999; position: fixed; float: left; line-height: 0; right: 5px; bottom: 50px"></span>
+            <script is:inline type="text/x-ccm-loader" async data-ccm-loader-src="https://www.provenexpert.com/widget/circlewidget.js?s=100&id=qvesz&u=2HmZ5LmZhWGAlSQBlDwp2N3AjDwAjOKA"></script>
+            <!-- ProvenExpert Bewertungssiegel -->
+        </aside>
 
-    <section id="callToAction">
-      <div class="container">
-        <p class="firma manual-hyphen">projekt m immobilien</p>
-        <h2 class="sr-only">Jetzt unverbindlich Beratung oder Gutachten anfragen</h2>
-        <p>Rufen Sie uns an. Wir freuen uns auf ein persönliches Gespräch.</p>
-        <a class="button" href="tel:+498928806768" aria-label="Jetzt anrufen: 089 28806768">089 28806768</a>
-      </div>
-    </section>
+        <SealsPopover />
+    </main>
 
-    <aside id="provenExpertFull" aria-label="ProvenExpert Bewertungen">
-      <div id="pewl" class="pewl">
-        <div class="map-placeholder">
-          <p>Das Proven Expert Bewertungssiegel ist blockiert, da Sie den externen Inhalten nicht zugestimmt haben.</p>
-        </div>
-      </div>
-      <!-- ProvenExpert Bewertungssiegel -->
-      <script is:inline type="text/x-ccm-loader" data-ccm-loader-src="https://www.provenexpert.com/widget/landing_projekt-m-immobilien-gmbh.js?feedback=1&avatar=1&competence=1&style=white" async></script>
-      <link rel="stylesheet" type="text/css" href="https://www.provenexpert.com/css/widget_landing.css" media="screen,print" />
-      <!-- ProvenExpert Bewertungssiegel Ende -->
-    </aside>
+    <Footer />
 
-    <section id="map" class="blueprint-grid" aria-label="Standort auf der Karte">
-      <div class="map-placeholder">
-        <p>Die interaktive Karte ist blockiert, da Sie den externen Inhalten nicht zugestimmt haben.</p>
-      </div>
-    </section>
-
-    <script is:inline type="text/x-ccm-loader" data-ccm-loader-src="/leaflet/leaflet.js"></script>
-    <script is:inline type="text/x-ccm-loader">
-      (function(){
-        var lat = 48.158335;
-        var lng = 11.566951;
-        var zoom = 15;
-
-        function init(){
-          if (!window.L) return;
-          var isTouch = 'ontouchstart' in window || (navigator.maxTouchPoints||0) > 0;
-          var map = L.map('map', {
-            center: [lat, lng],
-            zoom: zoom,
-            dragging: !isTouch,
-            scrollWheelZoom: false,
-            touchZoom: false,
-            doubleClickZoom: false,
-            boxZoom: false,
-            keyboard: true,
-            zoomControl: true
-          });
-          map.attributionControl.setPrefix(false);
-          L.tileLayer('https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            detectRetina: true,
-            updateWhenIdle: true,
-            keepBuffer: 1,
-            crossOrigin: true,
-            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          }).addTo(map);
-          L.marker([lat, lng]).addTo(map)
-            .bindPopup("<img src='/img/logo_pmi_web.svg' alt='Projekt M Immobilien GmbH – Logo' style='width:120px' />", { closeButton: false, maxWidth: 500, autoPan: true })
-            .openPopup();
-          map.whenReady(function(){ map.invalidateSize(); });
-        }
-
-        /* Leaflet bereits verfügbar (z.B. aus Browser-Cache) */
-        if (window.L) { init(); return; }
-
-        /* Leaflet-Script im DOM suchen und auf load warten */
-        function waitForLeaflet() {
-          var script = document.querySelector('script[src*="leaflet.js"]');
-          if (!script) return false;
-          if (window.L) { init(); return true; }
-          script.addEventListener('load', init);
-          return true;
-        }
-
-        /* Falls CCM19 das Script noch nicht eingefügt hat: DOM beobachten */
-        if (!waitForLeaflet()) {
-          var observer = new MutationObserver(function() {
-            if (waitForLeaflet() || window.L) {
-              observer.disconnect();
-              if (window.L) init();
-            }
-          });
-          observer.observe(document.documentElement, { childList: true, subtree: true });
-        }
-      })();
+    <script>
+        import "../scripts/scroll-animations.ts";
+        import "../scripts/flip-cards.ts";
     </script>
-    <link rel="stylesheet" href="/leaflet/leaflet.css" />
-
-    <aside aria-label="ProvenExpert Bewertungssiegel">
-      <!-- ProvenExpert Bewertungssiegel -->
-      <style is:inline>
-        @media (max-width: 786px) {
-          .ProvenExpert_widget_container { display: none !important; }
-        }
-      </style>
-      <span class="ProvenExpert_widget_container" id="provenexpert_circle_widget_qvesz" style="text-decoration: none; z-index: 9999; position: fixed; float: left; line-height: 0; right: 5px; bottom: 50px"></span>
-      <script is:inline type="text/x-ccm-loader" async data-ccm-loader-src="https://www.provenexpert.com/widget/circlewidget.js?s=100&id=qvesz&u=2HmZ5LmZhWGAlSQBlDwp2N3AjDwAjOKA"></script>
-      <!-- ProvenExpert Bewertungssiegel -->
-    </aside>
-
-    <SealsPopover />
-  </main>
-
-  <Footer />
-
-  <script>
-    import '../scripts/scroll-animations.ts';
-    import '../scripts/flip-cards.ts';
-  </script>
 </BaseLayout>

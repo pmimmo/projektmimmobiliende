@@ -67,7 +67,7 @@ body {
   font-family: 'Open Sans Variable', 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
   font-weight: 400;
   font-size: 1.2rem;
-  line-height: 1.4;
+  line-height: 1.6;
   hyphens: auto;
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
@@ -117,14 +117,14 @@ h1 { font-weight: 600; }
 h2 {
   font-weight: 700;
   font-size: 2rem;
-  margin-top: 2.5vh !important;
-  margin-bottom: 4vh !important;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 h3 {
-  font-weight: 400;
-  font-size: 2rem;
-  margin-bottom: 2.5vh;
+  font-weight: 500;
+  font-size: 1.6rem;
+  margin-bottom: 1.25rem;
 }
 
 h4 {
@@ -223,7 +223,7 @@ a.button:focus-visible, button.button:focus-visible {
   width: 100%;
   max-width: 1200px;
   margin: auto;
-  padding: 0 1rem;
+  padding: 0 clamp(1rem, 3vw, 3rem);
 }
 .container > * {
   padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
@@ -297,10 +297,6 @@ a.button:focus-visible, button.button:focus-visible {
   max-width: 300px; 
   margin-bottom: 2rem;
   border-bottom: 1rem solid var(--c-primary);
-}
-
-#team h3 { 
-  font-size: 1.6em; 
 }
 
 /* Trennlinie */
@@ -429,7 +425,8 @@ a.button:focus-visible, button.button:focus-visible {
 .f_headline {
   line-height: 98%;
   margin-bottom: 15px;
-  padding-right: 60px;
+  padding-right: 170px;
+  hyphens: manual;
 }
 
 .back {
@@ -503,9 +500,29 @@ ul.b_text li {
 
 .r_wrap {
   position: absolute;
-  right: 30px;
-  bottom: 30px;
+  right: 2rem;
+  bottom: 2rem;
   cursor: pointer;
+}
+
+.flip-hint {
+  position: absolute;
+  right: 60px;
+  bottom: 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--c-primary);
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.r_wrap:hover .flip-hint {
+  opacity: 1;
+}
+
+.flipped ~ .r_wrap .flip-hint {
+  display: none;
 }
 
 .b_round,
@@ -617,6 +634,11 @@ ul.b_text li {
   flex-direction: row;
   flex-wrap: wrap;
   flex: 0 0 50%;
+}
+
+#standorte .content-container h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
 }
 
 #standorte .image-container {
@@ -858,8 +880,8 @@ body[data-page="legal"] h1 {
 
 body[data-page="legal"] h2 {
   font-size: 1.75rem;
-  margin-top: 3rem !important;
-  margin-bottom: 1rem !important;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
 }
 
 body[data-page="legal"] h3 {
