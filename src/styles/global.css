@@ -30,6 +30,11 @@
   /* Accent */
   --c-accent: #ffc107;
 
+  /* Grautöne */
+  --c-gray-100: #f8f8f8;
+  --c-gray-200: #f2f2f2;
+  --c-gray-300: #ededed;
+
   --border-radius: 1rem;
 
   /* Box-Shadow-Bausteine */
@@ -225,9 +230,6 @@ a.button:focus-visible, button.button:focus-visible {
   margin: auto;
   padding: 0 clamp(1rem, 3vw, 3rem);
 }
-.container > * {
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
-}
 
 .mb-m { margin-bottom: 2rem; }
 .mb-l { margin-bottom: 4rem; }
@@ -365,7 +367,7 @@ a.button:focus-visible, button.button:focus-visible {
 }
 
 .front {
-  background: #ededed;
+  background: var(--c-gray-300);
   color: var(--c-text);
   border-radius: 1rem;
   display: flex;
@@ -482,11 +484,8 @@ ul.b_text li {
 
 .b_siegel img:hover,
 .b_siegel img:focus-visible {
-  transform: scale(1.5);
-  background-color: #f7f7f7;
-  padding: .55rem;
-  border-radius: .25rem;
-  box-shadow: 0 0 0 2px var(--c-background), 0 6px 12px rgba(0,0,0,.18);
+  transform: scale(1.15);
+  /* box-shadow: 0 4px 8px rgba(0,0,0,.12); */
   z-index: 1;
 }
 
@@ -593,14 +592,14 @@ ul.b_text li {
 
 #nachhaltigkeit .content {
   width: 100%; height: 100%; display: block; color: white; position: absolute; bottom: 0;
-  background: linear-gradient( to bottom, rgba(121, 14, 14, 0.0) 65%, rgba(0, 0, 0, 0.9) 100% );
+  background: linear-gradient( to bottom, rgba(0, 0, 0, 0.0) 40%, rgba(0, 0, 0, 0.85) 100% );
 }
 #nachhaltigkeit .container {
   height: 100%;
   display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
   padding-bottom: 4rem; text-align: center;
 }
-#nachhaltigkeit h2 { margin-bottom: 2rem !important; }
+#nachhaltigkeit h2 { margin-bottom: 2rem; }
 
 #auszeichnungen { margin-top: 6rem; margin-bottom: 6rem; }
 #auszeichnungen div {
@@ -715,11 +714,10 @@ ul.b_text li {
   gap: 2rem;
   align-items: center;
   justify-items: center;
-  background-color: #ededed;
+  background-color: var(--c-gray-300);
   padding: 4rem;
   margin: 0 auto;
   border-radius: 2rem;
-  /* box-shadow: 0 0 16px rgba(0,0,0,0.4); */
 }
 .highlight-media img { max-height: 200px; object-fit: contain; }
 .highlight-badge img { max-height: 200px; object-fit: contain; }
@@ -727,7 +725,7 @@ ul.b_text li {
 .highlight-text .heading { font-weight: 800; text-transform: uppercase; }
 
 /* Keep highlight headings visually like section titles */
-.highlight-box h3 { font-weight: 500; font-size: 2rem; margin-top: 2.5vh !important; margin-bottom: 4vh !important; }
+.highlight-box h3 { font-weight: 500; font-size: 2rem; margin-top: 1.5rem; margin-bottom: 2rem; }
 
 /* IVD logos grid */
 #ivd .highlight-content {
@@ -756,7 +754,7 @@ ul.b_text li {
 #dekra-d1 .highlight-text { color: rgb(0, 107, 82); }
 #dekra-d1 .highlight-text .heading { color: rgb(0, 107, 82); }
 #dekra-d1 .highlight-content {
-  background-color: #eee;
+  background-color: var(--c-gray-100);
   box-shadow: var(--shadow-highlight), 0 0 0 1px rgba(0,107,82,.15);
 }
 
@@ -937,7 +935,6 @@ body[data-page="legal"] main {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.6s ease, transform 0.6s ease;
-  will-change: transform, opacity;
 }
 .fade-in.visible, .flip_container.visible {
   opacity: 1;
