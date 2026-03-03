@@ -822,6 +822,12 @@ ul.b_text li {
     flex-wrap: nowrap;
   }
 
+  #standorte .content-container,
+  #standorte .image-container {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
   .flip_container,
   .front,
   .back {
