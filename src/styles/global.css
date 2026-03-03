@@ -515,6 +515,7 @@ ul.b_text li {
   opacity: 0.7;
   transition: opacity 0.2s ease;
   white-space: nowrap;
+  pointer-events: none;
 }
 
 .r_wrap:hover .flip-hint {
@@ -814,11 +815,25 @@ ul.b_text li {
     aspect-ratio: auto;
     min-height: 450px; /* Sicherheitsnetz, damit es nicht zu flach wird */
   }
+
+  .f_headline {
+    padding-right: 0;
+  }
+
+  .front {
+    padding-bottom: 5rem;
+  }
+
+  .flip-hint {
+    right: 60px;
+    bottom: 15px;
+    font-size: 0.8rem;
+  }
 }
 
 /* iPhone */
 
-.s_round:focus-visible {
+.r_wrap:focus-visible .s_round {
   outline: 3px solid var(--c-primary-dark);
   outline-offset: 3px;
 }
