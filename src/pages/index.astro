@@ -1,7 +1,7 @@
 ---
 import { Image, Picture } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Icon from "../components/Icon.astro";
+import FlipCard from "../components/FlipCard.astro";
 import Hero from "../components/Hero.astro";
 import Navigation from "../components/Navigation.astro";
 import VacationBanner from "../components/VacationBanner.astro";
@@ -70,136 +70,57 @@ const site = import.meta.env.SITE;
         <section id="leistungen" class="container">
             <h2>Unsere Leistungen</h2>
             <div class="kacheln" data-stagger="300">
-                <div class="flip_container">
-                    <div class="flip_box">
-                        <div class="front">
-                            <p class="f_title">Immobiliengutachter</p>
-                            <div class="f_icon_box">
-                                <div class="f_icon_circle">
-                                    <Icon name="scale-balanced" />
-                                </div>
-                            </div>
-                            <div class="f_bottom_text">
-                                <div class="f_text_group">
-                                    <p class="f_subline">Leistung</p>
-                                    <h3 class="f_headline">Verkehrswert-<wbr>/Marktwertgutachten</h3>
-                                </div>
-                                <div class="r_wrap" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen">
-                                    <span class="flip-hint">Mehr erfahren</span>
-                                    <div class="s_round"><div class="s_arrow"></div></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="back">
-                            <h3 class="b_headline">Immobiliengutachter</h3>
-                            <div class="b_siegel">
-                                <Image src={sprengnetterImmoWert} alt="SPRENGNETTER Gesicherter ImmoWert" class="seal-logo" data-seal="sprengnetter-immowert" width={389} height={382} loading="lazy" decoding="async" />
-                                <Image src={dekraD1} alt="DEKRA Standard Sachverständige/r für Immobilienbewergung D1 Standard EFH / ZFH" class="seal-logo" data-seal="dekra-d1" width={300} height={468} loading="lazy" decoding="async" />
-                                <Image src={diaZertSrn} alt="DIA Zert – Zertifizierter Sachverständiger für Immobilienbewertung" class="seal-logo" data-seal="dia-zert-s" width={300} height={338} loading="lazy" decoding="async" />
-                                <Image src={ruedigerNeuer53e5} alt="Diplom-Sachverständiger (DIA) für die Bewertung von bebauten und unbebauten Grundstücken, für Mieten und Pachten und für Schäden an Gebäuden – Rüdiger Neuer" class="seal-logo" data-seal="dia-zert-dipl-sach" width={394} height={418} loading="lazy" decoding="async" />
-                                <img src="/img/HypZertSImmobiliengutachter.svg" alt="HypZert S – Immobileingutachter – Real Estate Valuer" class="seal-logo" data-seal="hypzert-s" width="139" height="68" loading="lazy" decoding="async" />
-                            </div>
-                            <div class="r_wrap" tabindex="0" role="button" aria-expanded="true" aria-label="Karte zurückdrehen">
-                                <div class="s_round"><div class="s_arrow s_arrow_rotate"></div></div>
-                            </div>
-                        </div>
+                <FlipCard
+                    title="Immobiliengutachter"
+                    icon="scale-balanced"
+                    subline="Leistung"
+                    headline="Verkehrswert-<wbr>/Marktwertgutachten"
+                    backHeadline="Immobiliengutachter"
+                >
+                    <div class="b_siegel">
+                        <Image src={sprengnetterImmoWert} alt="SPRENGNETTER Gesicherter ImmoWert" class="seal-logo" data-seal="sprengnetter-immowert" width={389} height={382} loading="lazy" decoding="async" />
+                        <Image src={dekraD1} alt="DEKRA Standard Sachverständige/r für Immobilienbewergung D1 Standard EFH / ZFH" class="seal-logo" data-seal="dekra-d1" width={300} height={468} loading="lazy" decoding="async" />
+                        <Image src={diaZertSrn} alt="DIA Zert – Zertifizierter Sachverständiger für Immobilienbewertung" class="seal-logo" data-seal="dia-zert-s" width={300} height={338} loading="lazy" decoding="async" />
+                        <Image src={ruedigerNeuer53e5} alt="Diplom-Sachverständiger (DIA) für die Bewertung von bebauten und unbebauten Grundstücken, für Mieten und Pachten und für Schäden an Gebäuden – Rüdiger Neuer" class="seal-logo" data-seal="dia-zert-dipl-sach" width={394} height={418} loading="lazy" decoding="async" />
+                        <img src="/img/HypZertSImmobiliengutachter.svg" alt="HypZert S – Immobileingutachter – Real Estate Valuer" class="seal-logo" data-seal="hypzert-s" width="139" height="68" loading="lazy" decoding="async" />
                     </div>
-                </div>
+                </FlipCard>
 
-                <div class="flip_container">
-                    <div class="flip_box">
-                        <div class="front">
-                            <p class="f_title">Immobilienmakler</p>
-                            <div class="f_icon_box">
-                                <div class="f_icon_circle">
-                                    <Icon name="house-chimney" />
-                                </div>
-                            </div>
-                            <div class="f_bottom_text">
-                                <div class="f_text_group">
-                                    <p class="f_subline">Leistung</p>
-                                    <h3 class="f_headline">Verkauf – seriös & vertrauensvoll</h3>
-                                </div>
-                                <div class="r_wrap" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen">
-                                    <span class="flip-hint">Mehr erfahren</span>
-                                    <div class="s_round"><div class="s_arrow"></div></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="back">
-                            <h3 class="b_headline">Immobilienmakler</h3>
-                            <div class="b_siegel">
-                                <Image src={mitgliedIvd} alt="Mitglied im ivd" class="seal-logo" data-seal="ivd" width={960} height={1200} loading="lazy" decoding="async" />
-                                <Image src={vdivBayern} alt="vdiv – Die Immobilienverwalter Bayern" class="seal-logo" data-seal="vdiv" width={1028} height={611} loading="lazy" decoding="async" />
-                            </div>
-                            <div class="r_wrap" tabindex="0" role="button" aria-expanded="true" aria-label="Karte zurückdrehen">
-                                <div class="s_round"><div class="s_arrow s_arrow_rotate"></div></div>
-                            </div>
-                        </div>
+                <FlipCard
+                    title="Immobilienmakler"
+                    icon="house-chimney"
+                    subline="Leistung"
+                    headline="Verkauf – seriös &amp; vertrauensvoll"
+                    backHeadline="Immobilienmakler"
+                >
+                    <div class="b_siegel">
+                        <Image src={mitgliedIvd} alt="Mitglied im ivd" class="seal-logo" data-seal="ivd" width={960} height={1200} loading="lazy" decoding="async" />
+                        <Image src={vdivBayern} alt="vdiv – Die Immobilienverwalter Bayern" class="seal-logo" data-seal="vdiv" width={1028} height={611} loading="lazy" decoding="async" />
                     </div>
-                </div>
+                </FlipCard>
 
-                <div class="flip_container">
-                    <div class="flip_box">
-                        <div class="front">
-                            <p class="f_title">Immobilienmediator</p>
-                            <div class="f_icon_box">
-                                <div class="f_icon_circle">
-                                    <Icon name="comments" />
-                                </div>
-                            </div>
-                            <div class="f_bottom_text">
-                                <div class="f_text_group">
-                                    <p class="f_subline">Leistung</p>
-                                    <h3 class="f_headline">Konflikte lösen</h3>
-                                </div>
-                                <div class="r_wrap" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen">
-                                    <span class="flip-hint">Mehr erfahren</span>
-                                    <div class="s_round"><div class="s_arrow"></div></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="back">
-                            <h3 class="b_headline">Immobilienmediator</h3>
-                            <div class="b_siegel">
-                                <Image src={sprengnetterMediator} alt="SPRENGNETTER ImmoMediator" class="seal-logo" data-seal="sprengnetter-immomediator" width={441} height={440} loading="lazy" decoding="async" />
-                            </div>
-                            <div class="r_wrap" tabindex="0" role="button" aria-expanded="true" aria-label="Karte zurückdrehen">
-                                <div class="s_round"><div class="s_arrow s_arrow_rotate"></div></div>
-                            </div>
-                        </div>
+                <FlipCard
+                    title="Immobilienmediator"
+                    icon="comments"
+                    subline="Leistung"
+                    headline="Konflikte lösen"
+                    backHeadline="Immobilienmediator"
+                >
+                    <div class="b_siegel">
+                        <Image src={sprengnetterMediator} alt="SPRENGNETTER ImmoMediator" class="seal-logo" data-seal="sprengnetter-immomediator" width={441} height={440} loading="lazy" decoding="async" />
                     </div>
-                </div>
+                </FlipCard>
 
-                <div class="flip_container">
-                    <div class="flip_box">
-                        <div class="front">
-                            <p class="f_title">Wohnflächenberechnung</p>
-                            <div class="f_icon_box">
-                                <div class="f_icon_circle">
-                                    <Icon name="ruler-combined" />
-                                </div>
-                            </div>
-                            <div class="f_bottom_text">
-                                <div class="f_text_group">
-                                    <p class="f_subline">Leistung</p>
-                                    <h3 class="f_headline">In Vorbereitung</h3>
-                                </div>
-                                <div class="r_wrap" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen">
-                                    <span class="flip-hint">Mehr erfahren</span>
-                                    <div class="s_round"><div class="s_arrow"></div></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="back">
-                            <h3 class="b_headline manual-hyphen">Wohn&shy;flächenberechnung</h3>
-                            <p class="b_text">Demnächst verfügbar – sprechen Sie uns gern schon an.</p>
-                            <div class="r_wrap" tabindex="0" role="button" aria-expanded="true" aria-label="Karte zurückdrehen">
-                                <div class="s_round"><div class="s_arrow s_arrow_rotate"></div></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <FlipCard
+                    title="Wohnflächenberechnung"
+                    icon="ruler-combined"
+                    subline="Leistung"
+                    headline="In Vorbereitung"
+                    backHeadline="Wohn&shy;flächenberechnung"
+                    backHeadlineClass="manual-hyphen"
+                >
+                    <p class="b_text">Demnächst verfügbar – sprechen Sie uns gern schon an.</p>
+                </FlipCard>
             </div>
         </section>
 
@@ -232,142 +153,63 @@ const site = import.meta.env.SITE;
             <div class="container">
                 <h2>Unsere Kompetenzen</h2>
                 <div class="kacheln" data-stagger="300">
-                    <div class="flip_container">
-                        <div class="flip_box">
-                            <div class="front">
-                                <p class="f_title">Mitgliedschaften</p>
-                                <div class="f_icon_box">
-                                    <div class="f_icon_circle">
-                                        <Icon name="people-group" />
-                                    </div>
-                                </div>
-                                <div class="f_bottom_text">
-                                    <div class="f_text_group">
-                                        <p class="f_subline">Kompetenzen</p>
-                                        <h3 class="f_headline">Teil eines starken Netzwerks</h3>
-                                    </div>
-                                    <div class="r_wrap" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen">
-                                        <span class="flip-hint">Mehr erfahren</span>
-                                        <div class="s_round"><div class="s_arrow"></div></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="back">
-                                <h3 class="b_headline">Mitgliedschaften</h3>
-                                <p class="b_text">Engagement in Fachverbänden und Organisationen – für Qualität und Austausch auf höchstem Niveau.</p>
-                                <div class="b_siegel">
-                                    <img src="/img/hypZertGutachter.svg" alt="Wir beschäftigen HypZert Gutachter" class="seal-logo" data-seal="hypzert-gutachter" width="74" height="53" loading="lazy" decoding="async" />
-                                    <Image src={mitgliedIvd} alt="Mitglied im ivd" class="seal-logo" data-seal="ivd" width={960} height={1200} loading="lazy" decoding="async" />
-                                    <Image src={vdivBayern} alt="vdiv – Die Immobilienverwalter Bayern" class="seal-logo" data-seal="vdiv" width={1028} height={611} loading="lazy" decoding="async" />
-                                    <Image src={hausGrund} alt="HAUS+GRUND MÜNCHEN – HAUS- UND GRUNDBESITZERVEREIN MÜNCHEN und Umgebung e.V." class="seal-logo" data-seal="haus+grund" width={600} height={79} loading="lazy" decoding="async" />
-                                </div>
-                                <div class="r_wrap" tabindex="0" role="button" aria-expanded="true" aria-label="Karte zurückdrehen">
-                                    <div class="s_round"><div class="s_arrow s_arrow_rotate"></div></div>
-                                </div>
-                            </div>
+                    <FlipCard
+                        title="Mitgliedschaften"
+                        icon="people-group"
+                        subline="Kompetenzen"
+                        headline="Teil eines starken Netzwerks"
+                        backHeadline="Mitgliedschaften"
+                    >
+                        <p class="b_text">Engagement in Fachverbänden und Organisationen – für Qualität und Austausch auf höchstem Niveau.</p>
+                        <div class="b_siegel">
+                            <img src="/img/hypZertGutachter.svg" alt="Wir beschäftigen HypZert Gutachter" class="seal-logo" data-seal="hypzert-gutachter" width="74" height="53" loading="lazy" decoding="async" />
+                            <Image src={mitgliedIvd} alt="Mitglied im ivd" class="seal-logo" data-seal="ivd" width={960} height={1200} loading="lazy" decoding="async" />
+                            <Image src={vdivBayern} alt="vdiv – Die Immobilienverwalter Bayern" class="seal-logo" data-seal="vdiv" width={1028} height={611} loading="lazy" decoding="async" />
+                            <Image src={hausGrund} alt="HAUS+GRUND MÜNCHEN – HAUS- UND GRUNDBESITZERVEREIN MÜNCHEN und Umgebung e.V." class="seal-logo" data-seal="haus+grund" width={600} height={79} loading="lazy" decoding="async" />
                         </div>
-                    </div>
+                    </FlipCard>
 
-                    <div class="flip_container">
-                        <div class="flip_box">
-                            <div class="front">
-                                <p class="f_title">Fortbildungen</p>
-                                <div class="f_icon_box">
-                                    <div class="f_icon_circle">
-                                        <Icon name="graduation-cap" />
-                                    </div>
-                                </div>
-                                <div class="f_bottom_text">
-                                    <div class="f_text_group">
-                                        <p class="f_subline">Kompetenzen</p>
-                                        <h3 class="f_headline">Wissen, das wächst</h3>
-                                    </div>
-                                    <div class="r_wrap" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen">
-                                        <span class="flip-hint">Mehr erfahren</span>
-                                        <div class="s_round"><div class="s_arrow"></div></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="back">
-                                <h3 class="b_headline">Fortbildungen</h3>
-                                <p class="b_text">Kontinuierliche Weiterbildung in aktuellen Themen – fachlich, rechtlich und methodisch.</p>
-                                <ul class="b_text">
-                                    <li>Fortbildungszertifikate des Verbandes der Immobilienverwalter Bayern e.V. (vdiv) durchgängig seit 2012</li>
-                                    <li>Weiterbildungssiegel bzw. Weiterbildungszertifikate des Immobilienverbandes Deutschland (IVD) durchgäng seit 2016</li>
-                                </ul>
-                                <div class="r_wrap" tabindex="0" role="button" aria-expanded="true" aria-label="Karte zurückdrehen">
-                                    <div class="s_round"><div class="s_arrow s_arrow_rotate"></div></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <FlipCard
+                        title="Fortbildungen"
+                        icon="graduation-cap"
+                        subline="Kompetenzen"
+                        headline="Wissen, das wächst"
+                        backHeadline="Fortbildungen"
+                    >
+                        <p class="b_text">Kontinuierliche Weiterbildung in aktuellen Themen – fachlich, rechtlich und methodisch.</p>
+                        <ul class="b_text">
+                            <li>Fortbildungszertifikate des Verbandes der Immobilienverwalter Bayern e.V. (vdiv) durchgängig seit 2012</li>
+                            <li>Weiterbildungssiegel bzw. Weiterbildungszertifikate des Immobilienverbandes Deutschland (IVD) durchgäng seit 2016</li>
+                        </ul>
+                    </FlipCard>
 
-                    <div class="flip_container">
-                        <div class="flip_box">
-                            <div class="front">
-                                <p class="f_title">Qualifikationen</p>
-                                <div class="f_icon_box">
-                                    <div class="f_icon_circle">
-                                        <Icon name="award" />
-                                    </div>
-                                </div>
-                                <div class="f_bottom_text">
-                                    <div class="f_text_group">
-                                        <p class="f_subline">Kompetenzen</p>
-                                        <h3 class="f_headline manual-hyphen">Geprüft und zertifiziert</h3>
-                                    </div>
-                                    <div class="r_wrap" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen">
-                                        <span class="flip-hint">Mehr erfahren</span>
-                                        <div class="s_round"><div class="s_arrow"></div></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="back">
-                                <h3 class="b_headline">Qualifikationen</h3>
-                                <p class="b_text">Kontinuierliche Weiterbildung in aktuellen Themen – fachlich, rechtlich und methodisch.</p>
-                                <div class="b_siegel">
-                                    <Image src={sprengnetterMediator} alt="SPRENGNETTER ImmoMediator" class="seal-logo" data-seal="sprengnetter-immomediator" width={441} height={440} loading="lazy" decoding="async" />
-                                    <Image src={diaAbsolvent} alt="Absolvent/in der Deutschen Immobilien-Akademie (DIA)" class="seal-logo" data-holder="Rüdiger Neuer" data-seal="dia-absolvent" width={621} height={872} loading="lazy" decoding="async" />
-                                    <Image src={sprengnetterImmowert3D} alt="SPRENGNETTER Gesicherter ImmoWert" class="seal-logo" data-seal="sprengnetter-immowert" width={236} height={236} loading="lazy" decoding="async" />
-                                    <Image src={sprengnetterImmobesichtiger} alt="SPRENGNETTER ImmoBesichtiger-Schadenerkennung" class="seal-logo" data-seal="sprengnetter-immobesichtiger" width={450} height={450} loading="lazy" decoding="async" />
-                                    <Image src={diaZertMakler} alt="DIA Zert - Zertifiziert durch DIA Consulting AG nach EU-Norm DIN EN 15733" class="seal-logo" data-seal="dia-zert-din15733" width={400} height={316} loading="lazy" decoding="async" />
-                                </div>
-                                <div class="r_wrap" tabindex="0" role="button" aria-expanded="true" aria-label="Karte zurückdrehen">
-                                    <div class="s_round"><div class="s_arrow s_arrow_rotate"></div></div>
-                                </div>
-                            </div>
+                    <FlipCard
+                        title="Qualifikationen"
+                        icon="award"
+                        subline="Kompetenzen"
+                        headline="Geprüft und zertifiziert"
+                        headlineClass="manual-hyphen"
+                        backHeadline="Qualifikationen"
+                    >
+                        <p class="b_text">Kontinuierliche Weiterbildung in aktuellen Themen – fachlich, rechtlich und methodisch.</p>
+                        <div class="b_siegel">
+                            <Image src={sprengnetterMediator} alt="SPRENGNETTER ImmoMediator" class="seal-logo" data-seal="sprengnetter-immomediator" width={441} height={440} loading="lazy" decoding="async" />
+                            <Image src={diaAbsolvent} alt="Absolvent/in der Deutschen Immobilien-Akademie (DIA)" class="seal-logo" data-holder="Rüdiger Neuer" data-seal="dia-absolvent" width={621} height={872} loading="lazy" decoding="async" />
+                            <Image src={sprengnetterImmowert3D} alt="SPRENGNETTER Gesicherter ImmoWert" class="seal-logo" data-seal="sprengnetter-immowert" width={236} height={236} loading="lazy" decoding="async" />
+                            <Image src={sprengnetterImmobesichtiger} alt="SPRENGNETTER ImmoBesichtiger-Schadenerkennung" class="seal-logo" data-seal="sprengnetter-immobesichtiger" width={450} height={450} loading="lazy" decoding="async" />
+                            <Image src={diaZertMakler} alt="DIA Zert - Zertifiziert durch DIA Consulting AG nach EU-Norm DIN EN 15733" class="seal-logo" data-seal="dia-zert-din15733" width={400} height={316} loading="lazy" decoding="async" />
                         </div>
-                    </div>
+                    </FlipCard>
 
-                    <div class="flip_container">
-                        <div class="flip_box">
-                            <div class="front">
-                                <p class="f_title">Umweltschutz</p>
-                                <div class="f_icon_box">
-                                    <div class="f_icon_circle">
-                                        <Icon name="seedling" />
-                                    </div>
-                                </div>
-                                <div class="f_bottom_text">
-                                    <div class="f_text_group">
-                                        <p class="f_subline">Kompetenzen</p>
-                                        <h3 class="f_headline">Nachhaltig handeln</h3>
-                                    </div>
-                                    <div class="r_wrap" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen">
-                                        <span class="flip-hint">Mehr erfahren</span>
-                                        <div class="s_round"><div class="s_arrow"></div></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="back">
-                                <h3 class="b_headline">Umweltschutz</h3>
-                                <p class="b_text">Unser unabdingbarer Anspruch an Verantwortung liegt in der Schonung von Ressourcen und der bestmöglichen Reduzierung von CO₂-Emissionen. Hierzu nutzen wir für viele Strecken innerhalb Münchens unsere Citybikes sowie ein Elektromobil.</p>
-                                <div class="r_wrap" tabindex="0" role="button" aria-expanded="true" aria-label="Karte zurückdrehen">
-                                    <div class="s_round"><div class="s_arrow s_arrow_rotate"></div></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <FlipCard
+                        title="Umweltschutz"
+                        icon="seedling"
+                        subline="Kompetenzen"
+                        headline="Nachhaltig handeln"
+                        backHeadline="Umweltschutz"
+                    >
+                        <p class="b_text">Unser unabdingbarer Anspruch an Verantwortung liegt in der Schonung von Ressourcen und der bestmöglichen Reduzierung von CO₂-Emissionen. Hierzu nutzen wir für viele Strecken innerhalb Münchens unsere Citybikes sowie ein Elektromobil.</p>
+                    </FlipCard>
                 </div>
             </div>
         </section>

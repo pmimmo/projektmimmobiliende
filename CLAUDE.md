@@ -41,6 +41,7 @@ Astro components in `src/components/`:
 - `SealsPopover.astro` — Popover dialog for seal details (includes seals-popover.ts script)
 - `VacationBanner.astro` — Date-based vacation banner (reads `src/data/banners.json`)
 - `XmasBanner.astro` — Date-based Christmas banner (reads `src/data/banners.json`)
+- `FlipCard.astro` — Wiederverwendbare Flip-Card-Komponente (Front + Back). Props: `title`, `icon`, `subline`, `headline`, `backHeadline`, optional `headlineClass`/`backHeadlineClass`. Default-Slot für variablen Back-Content. Wird in den Sektionen „Leistungen" und „Kompetenzen" auf der Homepage verwendet.
 - `Icon.astro` — Inline SVG icon component (replaces Font Awesome), uses `fill="currentColor"`. Neue Icons hinzufügen: SVG von [fontawesome.com/icons](https://fontawesome.com/icons) suchen, `viewBox` und `d`-Pfad in die `ICONS`-Map in `Icon.astro` eintragen, dann `<Icon name="neuer-name" />` verwenden. TypeScript prüft gültige Namen beim Build.
 
 ### Seasonal Banners

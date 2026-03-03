@@ -1,0 +1,46 @@
+---
+import type { ComponentProps } from 'astro/types';
+import Icon from './Icon.astro';
+
+interface Props {
+  title: string;
+  icon: ComponentProps<typeof Icon>['name'];
+  subline: string;
+  headline: string;
+  backHeadline: string;
+  headlineClass?: string;
+  backHeadlineClass?: string;
+}
+
+const { title, icon, subline, headline, backHeadline, headlineClass, backHeadlineClass } = Astro.props;
+---
+
+<div class="flip_container">
+    <div class="flip_box">
+        <div class="front">
+            <p class="f_title">{title}</p>
+            <div class="f_icon_box">
+                <div class="f_icon_circle">
+                    <Icon name={icon} />
+                </div>
+            </div>
+            <div class="f_bottom_text">
+                <div class="f_text_group">
+                    <p class="f_subline">{subline}</p>
+                    <h3 class:list={["f_headline", headlineClass]} set:html={headline} />
+                </div>
+                <div class="r_wrap" tabindex="0" role="button" aria-expanded="false" aria-label="Karte umdrehen">
+                    <span class="flip-hint">Mehr erfahren</span>
+                    <div class="s_round"><div class="s_arrow"></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="back">
+            <h3 class:list={["b_headline", backHeadlineClass]} set:html={backHeadline} />
+            <slot />
+            <div class="r_wrap" tabindex="0" role="button" aria-expanded="true" aria-label="Karte zurückdrehen">
+                <div class="s_round"><div class="s_arrow s_arrow_rotate"></div></div>
+            </div>
+        </div>
+    </div>
+</div>
