@@ -10,7 +10,7 @@
   --c-primary-s: 60%;
   --c-primary-l: 37%;
   --c-primary: hsl(var(--c-primary-h), var(--c-primary-s), var(--c-primary-l));
-  --c-primary-dark: hsl(var(--c-primary-h), var(--c-primary-s), calc(var(--c-primary-l) - 40%));
+  --c-primary-dark: hsl(var(--c-primary-h), var(--c-primary-s), calc(var(--c-primary-l) - 12%));
 
   /* Neutrals */
   --c-secondary: hsl(0, 0%, 100%);
@@ -157,7 +157,7 @@ li { list-style: disc; margin-bottom: .4rem; }
    Links
 -------------------------------------------------- */
 a { color: var(--c-text); text-decoration: none; }
-a:hover { background-color: var(--c-primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
 /* Skip-Link */
 .skip-link {
@@ -829,14 +829,9 @@ ul.b_text li {
    Integrations
 -------------------------------------------------- */
 
-/* Prevent hover styles from affecting ProvenExpert widget */
+/* Prevent inherited styles for ProvenExpert widget links */
+.ProvenExpert_widget_container a,
 .ProvenExpert_widget_container a:hover {
-  background-color: transparent !important;
-}
-
-/* Prevent inherited background and color for ProvenExpert widget links */
-.ProvenExpert_widget_container a {
-  background-color: transparent !important;
   text-decoration: none !important;
 }
 

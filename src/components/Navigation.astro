@@ -54,8 +54,8 @@
       var(--c-background-opacity) 0%,
       hsla(0, 0%, 97%, 0) 100%
     );
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
     mask-image: linear-gradient(to bottom, black calc(100% - 15px), transparent);
     -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 15px), transparent);
     z-index: -1;
@@ -82,7 +82,7 @@
     border-bottom: 3px solid var(--c-background);
     padding-bottom: .3rem;
   }
-  nav a.nav-item:hover { border-bottom: 3px solid var(--c-primary); background-color: inherit; }
+  nav a.nav-item:hover { border-bottom: 3px solid var(--c-primary); text-decoration: none; }
 
   nav a[aria-current="page"] {
     border-bottom: 3px solid var(--c-primary);
