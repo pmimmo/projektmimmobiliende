@@ -316,8 +316,20 @@ a.button:focus-visible, button.button:focus-visible {
    Leistungen
 -------------------------------------------------- */
 
-#leistungen, #kompetenzen {
+#leistungen, #kompetenzen, #immobilienangebote {
   margin: 5rem auto;
+}
+
+.immobilienangebote-intro {
+  /* max-width: 70ch; */
+  margin-bottom: 2.5rem;
+}
+
+.immobilienangebote-intro h3 {
+  font-size: clamp(1.2rem, 0.9rem + 1.3vw, 1.7rem);
+  font-weight: 400;
+  margin-bottom: 1.2rem;
+  line-height: 1.3;
 }
 
 /* --------------------------------------------------
