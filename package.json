@@ -8,7 +8,8 @@
         "build": "astro check && astro build",
         "preview": "astro preview",
         "typecheck": "astro check",
-        "deploy": "./deploy.sh"
+        "deploy": "./deploy.sh",
+        "deploy-dev": "./deploy-dev.sh"
     },
     "devDependencies": {
         "sharp": "^0.34.5",

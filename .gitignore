@@ -20,6 +20,7 @@ dist-ssr
 .idea
 .DS_Store
 .env
+.htpasswd-dev
 *.suo
 *.ntvs*
 *.njsproj

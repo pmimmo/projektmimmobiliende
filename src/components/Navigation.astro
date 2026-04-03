@@ -8,17 +8,17 @@
     </button>
     <div class="container">
         <div class="logo">
-            <a href="/">
+            <a href={import.meta.env.BASE_URL}>
                 <img src="/img/logo_pmi_web.svg" alt="Projekt M Immobilien GmbH – Logo" width="3220" height="1099" />
             </a>
         </div>
         <div id="primary-menu" class="nav nav-menu">
-            <a class="nav-item" href="/#leistungen">Leistungen</a>
-            <a class="nav-item" href="/#team">Team</a>
-            <a class="nav-item" href="/#kompetenzen">Kompetenzen</a>
-            <a class="nav-item" href="/#immobilienangebote">Immobilienangebote</a>
-            <a class="nav-item" href="/#standorte">Standorte</a>
-            <a class="button" href="/#callToAction" aria-label="Jetzt Kontakt aufnehmen">Kontakt</a>
+            <a class="nav-item" href={`${import.meta.env.BASE_URL}#leistungen`}>Leistungen</a>
+            <a class="nav-item" href={`${import.meta.env.BASE_URL}#team`}>Team</a>
+            <a class="nav-item" href={`${import.meta.env.BASE_URL}#kompetenzen`}>Kompetenzen</a>
+            <a class="nav-item" href={`${import.meta.env.BASE_URL}#immobilienangebote`}>Immobilienangebote</a>
+            <a class="nav-item" href={`${import.meta.env.BASE_URL}#standorte`}>Standorte</a>
+            <a class="button" href={`${import.meta.env.BASE_URL}#callToAction`} aria-label="Jetzt Kontakt aufnehmen">Kontakt</a>
         </div>
     </div>
 </nav>

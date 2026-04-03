@@ -23,7 +23,7 @@ echo "Build erfolgreich."
 echo "Deployment zu $FTP_HOST:$FTP_TARGET ..."
 lftp -e "
 open -u $FTP_USER,$FTP_PASS $FTP_HOST
-mirror -R --delete --parallel=4 --exclude-glob .DS_Store --exclude-glob '*/.DS_Store' --exclude-glob '._*' dist $FTP_TARGET
+mirror -R --delete --parallel=4 --exclude-glob .DS_Store --exclude-glob '*/.DS_Store' --exclude-glob '._*' --exclude 'dev/' dist $FTP_TARGET
 bye
 " || { echo "Fehler beim FTP-Upload." >&2; exit 1; }
 

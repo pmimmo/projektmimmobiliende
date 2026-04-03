@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Developer Preview"
+AuthUserFile /var/www/vhosts/h737118.web301.dogado.net/projektmimmobiliende/dev/.htpasswd
+Require valid-user

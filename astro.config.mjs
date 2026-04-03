@@ -3,6 +3,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://projektmimmobilien.de',
+  base: process.env.ASTRO_BASE || '',
   output: 'static',
   compressHTML: true,
   trailingSlash: 'always',
