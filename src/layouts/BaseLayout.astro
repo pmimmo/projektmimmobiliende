@@ -30,6 +30,7 @@ const {
 
 const site = import.meta.env.SITE;
 const rating = await getProvenExpertRating();
+const isDev = import.meta.env.BASE_URL !== '/';
 ---
 <!DOCTYPE html>
 <html lang="de">
@@ -54,10 +55,10 @@ const rating = await getProvenExpertRating();
   <script is:inline src="https://cloud.ccm19.de/app.js?apiKey=eb7f5702b2f40ea96cae74f1e61cbbf192153d960092c72c&amp;domain=689e1b0546961f2e8b062142" referrerpolicy="origin"></script>
 
   <!-- Favicon -->
-  <link rel="icon" href="/img/favicon/favicon.ico" sizes="48x48" />
-  <link rel="icon" href="/img/favicon/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="/img/favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="/img/favicon/site.webmanifest" />
+  <link rel="icon" href={`${import.meta.env.BASE_URL}img/favicon/favicon.ico`} sizes="48x48" />
+  <link rel="icon" href={`${import.meta.env.BASE_URL}img/favicon/favicon.svg`} type="image/svg+xml" />
+  <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}img/favicon/apple-touch-icon.png`} />
+  <link rel="manifest" href={`${import.meta.env.BASE_URL}img/favicon/site.webmanifest`} />
 
   <!-- Open Graph Meta-Tags -->
   <meta property="og:locale" content="de_DE" />
@@ -191,6 +192,10 @@ const rating = await getProvenExpertRating();
 </head>
 <body data-page={dataPage}>
   <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+  {isDev && (
+    <div aria-hidden="true" style="position:fixed;left:0;top:0;bottom:0;width:5px;background:#f97316;z-index:99999;pointer-events:none;"></div>
+    <div aria-hidden="true" style="position:fixed;left:5px;top:70px;background:#f97316;color:#fff;font:bold 11px/1 sans-serif;padding:3px 7px;border-radius:0 4px 4px 0;z-index:99999;pointer-events:none;letter-spacing:.05em;">DEV</div>
+  )}
   <slot />
 </body>
 </html>

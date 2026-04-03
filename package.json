@@ -5,6 +5,7 @@
     "type": "module",
     "scripts": {
         "dev": "astro dev",
+        "dev-dev": "ASTRO_BASE=/dev astro dev",
         "build": "astro check && astro build",
         "preview": "astro preview",
         "typecheck": "astro check",
