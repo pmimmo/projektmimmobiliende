@@ -41,7 +41,7 @@ const isDev = import.meta.env.BASE_URL !== '/';
 
   {keywords && <meta name="keywords" content={keywords} />}
   <meta name="author" content="Projekt M Immobilien GmbH" />
-  <meta name="robots" content={robots} />
+  <meta name="robots" content={isDev ? 'noindex, nofollow' : robots} />
   {description && <meta name="description" content={description} />}
   {canonical && <link rel="canonical" href={canonical} />}
 

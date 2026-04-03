@@ -13,7 +13,7 @@ export default defineConfig({
   server: {
     host: true,
   },
-  integrations: [sitemap()],
+  integrations: process.env.ASTRO_BASE ? [] : [sitemap()],
   image: {
     service: {
       entrypoint: 'astro/assets/services/sharp',
