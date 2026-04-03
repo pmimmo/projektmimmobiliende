@@ -17,7 +17,7 @@ done
 # .htpasswd-dev prüfen oder erstellen
 if [ ! -f ".htpasswd-dev" ]; then
   echo "Kein .htpasswd-dev gefunden. Erstelle mit Passwort 'developer'..."
-  echo "developer:$(openssl passwd -apr1 'developer')" > .htpasswd-dev
+  echo "Vorschau:$(openssl passwd -apr1 'Vorschau')" > .htpasswd-dev
   echo ".htpasswd-dev erstellt."
 fi
 
