@@ -194,7 +194,8 @@ const isDev = import.meta.env.BASE_URL !== '/';
 <body data-page={dataPage}>
   <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
   {isDev && (
-    <div aria-hidden="true" style="position:fixed;left:0;top:0;bottom:calc(0px - env(safe-area-inset-bottom, 34px));width:5px;background:#f97316;z-index:99999;pointer-events:none;"></div>
+    <div aria-hidden="true" style="position:fixed;left:0;right:0;top:0;height:env(safe-area-inset-top, 0px);background:#f97316;z-index:99999;pointer-events:none;"></div>
+    <div aria-hidden="true" style="position:fixed;left:0;top:0;bottom:-100px;width:5px;background:#f97316;z-index:99999;pointer-events:none;"></div>
     <div aria-hidden="true" style="position:fixed;left:5px;top:70px;background:#f97316;color:#fff;font:bold 11px/1 sans-serif;padding:3px 7px;border-radius:0 4px 4px 0;z-index:99999;pointer-events:none;letter-spacing:.05em;">DEV</div>
   )}
   <slot />
