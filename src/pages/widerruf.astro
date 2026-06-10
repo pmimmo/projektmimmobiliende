@@ -1,0 +1,101 @@
+---
+import LegalLayout from "../layouts/LegalLayout.astro";
+
+const site = import.meta.env.SITE;
+---
+
+<LegalLayout title="Widerrufsformular | Projekt M Immobilien GmbH" description="Nutzen Sie dieses Formular, um Ihren Widerruf an Projekt M Immobilien GmbH zu übermitteln." canonical={`${site}/widerruf/`} breadcrumbTitle="Widerrufsformular">
+    <h1>Widerrufsformular</h1>
+
+    <p class="intro">Nutzen Sie dieses Formular, um Ihren Widerruf an Projekt M Immobilien GmbH zu übermitteln.</p>
+
+    <form class="withdrawal-form" method="post" action={`${import.meta.env.BASE_URL}api/widerruf.php`}>
+        <p class="required-note">* Pflichtfeld</p>
+
+        <div class="form-field">
+            <label for="name">Name *</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+
+        <div class="form-field">
+            <label for="email">E-Mail-Adresse *</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+
+        <div class="form-field">
+            <label for="object_number">Objektnummer</label>
+            <input id="object_number" name="object_number" type="text" autocomplete="off" />
+        </div>
+
+        <div class="website-field" aria-hidden="true">
+            <label for="website">Website</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <button class="button" type="submit">Widerruf absenden</button>
+    </form>
+</LegalLayout>
+
+<style>
+    .intro {
+        margin-top: 3rem;
+    }
+
+    .withdrawal-form {
+        display: grid;
+        gap: 1.25rem;
+        max-width: 42rem;
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .form-field {
+        display: grid;
+        gap: 0.35rem;
+    }
+
+    .required-note {
+        margin-bottom: 0;
+        font-size: 1rem;
+    }
+
+    label {
+        font-weight: 600;
+    }
+
+    input {
+        width: 100%;
+        min-height: 3rem;
+        padding: 0.75rem 1rem;
+        border: 1px solid color-mix(in srgb, var(--c-text) 22%, transparent);
+        border-radius: 0.5rem;
+        background: var(--c-background);
+        color: var(--c-text);
+        font: inherit;
+    }
+
+    input:focus {
+        border-color: var(--c-primary);
+    }
+
+    .website-field {
+        position: absolute;
+        left: -10000px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
+
+    .withdrawal-form .button {
+        justify-self: start;
+        margin-top: 0.5rem;
+        font-size: 1.15rem;
+    }
+
+    @media screen and (max-width: 640px) {
+        .withdrawal-form .button {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+</style>

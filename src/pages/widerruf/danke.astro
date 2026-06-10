@@ -1,0 +1,38 @@
+---
+import LegalLayout from "../../layouts/LegalLayout.astro";
+
+const site = import.meta.env.SITE;
+---
+
+<LegalLayout title="Widerruf erfolgreich übermittelt | Projekt M Immobilien GmbH" description="Vielen Dank. Ihre Nachricht über das Widerrufsformular wurde erfolgreich an Projekt M Immobilien GmbH übermittelt." canonical={`${site}/widerruf/danke/`} breadcrumbTitle="Widerruf erfolgreich übermittelt">
+    <div class="thank-you-content">
+        <h1>Widerruf erfolgreich übermittelt</h1>
+        <p>Vielen Dank. Ihre Nachricht über das Widerrufsformular wurde erfolgreich an Projekt M Immobilien GmbH übermittelt. Eine Eingangsbestätigung wurde an die von Ihnen angegebene E-Mail-Adresse gesendet. Wir werden den Eingang Ihres Widerrufs zeitnah prüfen und uns bei Bedarf mit Ihnen in Verbindung setzen.</p>
+    </div>
+</LegalLayout>
+
+<style>
+    .thank-you-content h1 + p {
+        margin-top: 3rem;
+    }
+
+    .thank-you-content {
+        display: flex;
+        min-height: calc(100vh - var(--header-height) - 18rem);
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 4rem;
+    }
+
+    .thank-you-content p {
+        max-width: 56rem;
+    }
+
+    @media screen and (max-width: 900px) {
+        .thank-you-content {
+            min-height: calc(100vh - var(--header-height-mobile) - 16rem);
+            justify-content: flex-start;
+            padding-top: 2rem;
+        }
+    }
+</style>
