@@ -141,13 +141,17 @@ if (trim((string) ($_POST['website'] ?? '')) !== '') {
     redirect_to('widerruf/danke/');
 }
 
-$name = clean_text((string) ($_POST['name'] ?? ''), 200);
+$firstName = clean_text((string) ($_POST['first_name'] ?? ''), 100);
+$lastName = clean_text((string) ($_POST['last_name'] ?? ''), 100);
 $email = filter_var(trim((string) ($_POST['email'] ?? '')), FILTER_VALIDATE_EMAIL);
-$objectNumber = clean_text((string) ($_POST['object_number'] ?? ''), 100);
+$objectReference = clean_text((string) ($_POST['object_reference'] ?? ''), 300);
+$contractDate = clean_text((string) ($_POST['contract_date'] ?? ''), 100);
+$comment = clean_text((string) ($_POST['comment'] ?? ''), 2000);
+$fullName = trim($firstName . ' ' . $lastName);
 $submittedAt = date('c');
 $submittedAtReadable = date('d.m.Y H:i') . ' Uhr';
 
-if ($name === '' || $email === false) {
+if ($firstName === '' || $lastName === '' || $email === false || $objectReference === '') {
     fail();
 }
 
@@ -183,16 +187,18 @@ try {
 
     $mail->setFrom($config['MAIL_FROM'], 'Projekt M Immobilien GmbH');
     $mail->addAddress($config['MAIL_TO']);
-    $mail->addReplyTo($email, $name);
+    $mail->addReplyTo($email, $fullName);
 
-    $mail->Subject = 'Widerruf Objekt ' . ($objectNumber !== '' ? $objectNumber : 'nicht angegeben');
+    $mail->Subject = 'Widerruf Objekt ' . $objectReference;
     $mail->Body = implode("\n", [
         'Neuer Widerruf über das Widerrufsformular',
         '',
-        'Name: ' . $name,
+        'Vorname: ' . $firstName,
+        'Name: ' . $lastName,
         'E-Mail: ' . $email,
-        '',
-        'Objektnummer: ' . ($objectNumber !== '' ? $objectNumber : 'nicht angegeben'),
+        'Objekt-Nummer oder Objekt-Adresse: ' . $objectReference,
+        'Vertragsdatum: ' . ($contractDate !== '' ? $contractDate : 'nicht angegeben'),
+        'Kommentar: ' . ($comment !== '' ? $comment : 'nicht angegeben'),
         '',
         'Zeitpunkt: ' . $submittedAtReadable,
     ]);
@@ -203,17 +209,19 @@ try {
         $mail->clearAddresses();
         $mail->clearReplyTos();
 
-        $mail->addAddress($email, $name);
+        $mail->addAddress($email, $fullName);
         $mail->Subject = 'Eingangsbestätigung Ihres Widerrufs – Projekt M Immobilien GmbH';
         $mail->isHTML(true);
         $mail->Body = implode("\n", [
-            '<p>Vielen Dank.</p>',
             '<p>Wir bestätigen den Eingang Ihrer Nachricht über unser Widerrufsformular.</p>',
             '<p>Ihre Angaben:</p>',
             '<p>',
-            'Name: ' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . '<br>',
+            'Vorname: ' . htmlspecialchars($firstName, ENT_QUOTES, 'UTF-8') . '<br>',
+            'Name: ' . htmlspecialchars($lastName, ENT_QUOTES, 'UTF-8') . '<br>',
             'E-Mail: ' . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . '<br>',
-            'Objektnummer: ' . htmlspecialchars($objectNumber !== '' ? $objectNumber : 'nicht angegeben', ENT_QUOTES, 'UTF-8'),
+            'Objekt-Nummer oder Objekt-Adresse: ' . htmlspecialchars($objectReference, ENT_QUOTES, 'UTF-8') . '<br>',
+            'Vertragsdatum: ' . htmlspecialchars($contractDate !== '' ? $contractDate : 'nicht angegeben', ENT_QUOTES, 'UTF-8') . '<br>',
+            'Kommentar: ' . htmlspecialchars($comment !== '' ? $comment : 'nicht angegeben', ENT_QUOTES, 'UTF-8'),
             '</p>',
             '<p>Zeitpunkt der Übermittlung:<br>' . htmlspecialchars($submittedAtReadable, ENT_QUOTES, 'UTF-8') . '</p>',
             '<p>Dies ist eine automatische Eingangsbestätigung.</p>',
@@ -228,15 +236,16 @@ try {
             'Geschäftsführer: Rüdiger Neuer</p>',
         ]);
         $mail->AltBody = implode("\n", [
-            'Vielen Dank.',
-            '',
             'Wir bestätigen den Eingang Ihrer Nachricht über unser Widerrufsformular.',
             '',
             'Ihre Angaben:',
             '',
-            'Name: ' . $name,
+            'Vorname: ' . $firstName,
+            'Name: ' . $lastName,
             'E-Mail: ' . $email,
-            'Objektnummer: ' . ($objectNumber !== '' ? $objectNumber : 'nicht angegeben'),
+            'Objekt-Nummer oder Objekt-Adresse: ' . $objectReference,
+            'Vertragsdatum: ' . ($contractDate !== '' ? $contractDate : 'nicht angegeben'),
+            'Kommentar: ' . ($comment !== '' ? $comment : 'nicht angegeben'),
             '',
             'Zeitpunkt der Übermittlung:',
             $submittedAtReadable,
