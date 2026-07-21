@@ -2,11 +2,12 @@
 import { Image, Picture } from "astro:assets";
 import TopKontakt from "./TopKontakt.astro";
 import diaSeal from "../assets/img/dia.png";
-import bannerLederhosen from "../assets/img/banner-lederhosen.jpg";
+// import bannerLederhosen from "../assets/img/banner-lederhosen.jpg";
+import bannerOper from "../assets/img/banner-oper-erweitert.jpg";
 ---
 
 <header class="hero">
-    <Picture src={bannerLederhosen} formats={["avif", "webp"]} alt="" class="bg-cover" loading="eager" decoding="async" fetchpriority="high" />
+    <Picture src={bannerOper} formats={["avif", "webp"]} alt="" class="bg-cover" loading="eager" decoding="async" fetchpriority="high" />
     <TopKontakt />
     <div id="hero" class="manual-hyphen">
         <div class="dia">
@@ -15,8 +16,8 @@ import bannerLederhosen from "../assets/img/banner-lederhosen.jpg";
         <div class="container hero-top">
             <img class="hero-logo" src={`${import.meta.env.BASE_URL}img/logo_pmi_web.svg`} alt="Projekt M Immobilien GmbH – Logo" width="3220" height="1099" decoding="async" fetchpriority="high" />
         </div>
-        <div class="verlauf">
-            <div class="container hero-bottom">
+        <div class="verlauf verlauf-none">
+            <div class="container hero-center">
                 <h1>Willkommen bei der Projekt M Immobilien</h1>
                 <p class="lead">Ihr starker Partner rund um die Immobilie in München und Landshut.</p>
             </div>
@@ -106,6 +107,10 @@ import bannerLederhosen from "../assets/img/banner-lederhosen.jpg";
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
     }
 
+    header #hero .verlauf-none {
+        background: none;
+    }
+
     header.hero h1 {
         font-size: clamp(2.2rem, 2.5vw + 1rem, 4rem);
         font-weight: 600;
@@ -126,6 +131,9 @@ import bannerLederhosen from "../assets/img/banner-lederhosen.jpg";
         font-weight: 300;
         color: white;
         text-align: center;
+        text-shadow:
+            0 0 4px rgba(0, 0, 0, 0.7),
+            0 0 8px rgba(0, 0, 0, 0.5);
         margin-bottom: 15vh;
         padding-inline-start: max(1rem, env(safe-area-inset-left));
         padding-inline-end: max(1rem, env(safe-area-inset-right));
