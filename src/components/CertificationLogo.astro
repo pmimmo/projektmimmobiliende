@@ -1,0 +1,77 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { getCertification, type CertificationId } from '../data/certifications';
+
+interface Props {
+  certificationId: CertificationId | string;
+  src: ImageMetadata | string;
+  alt: string;
+  class?: string;
+  width?: number;
+  height?: number;
+  loading?: 'eager' | 'lazy';
+  decoding?: 'async' | 'sync' | 'auto';
+  title?: string;
+  desc?: string;
+  holder?: string;
+  link?: string;
+}
+
+const {
+  certificationId,
+  src,
+  alt,
+  class: className,
+  width,
+  height,
+  loading = 'lazy',
+  decoding = 'async',
+  title,
+  desc,
+  holder,
+  link,
+} = Astro.props;
+
+const meta = getCertification(certificationId);
+const certificationTitle = title || meta?.title || alt;
+const certificationDesc = desc || meta?.desc;
+const certificationHolder = holder || meta?.holder;
+const certificationLink = link || meta?.link;
+const classes = ['seal-logo', className].filter(Boolean).join(' ');
+const dataAttrs: Record<string, string> = {
+  'data-certification': certificationId,
+  'data-seal': certificationId,
+  'data-title': certificationTitle,
+};
+
+if (certificationDesc) dataAttrs['data-desc'] = certificationDesc;
+if (certificationHolder) dataAttrs['data-holder'] = certificationHolder;
+if (certificationLink) dataAttrs['data-link'] = certificationLink;
+---
+
+{
+  typeof src === 'string' ? (
+    <img
+      src={src}
+      alt={alt}
+      class={classes}
+      width={width}
+      height={height}
+      loading={loading}
+      decoding={decoding}
+      {...dataAttrs}
+    />
+  ) : (
+    <Image
+      src={src}
+      alt={alt}
+      class={classes}
+      width={width}
+      height={height}
+      loading={loading}
+      decoding={decoding}
+      {...dataAttrs}
+    />
+  )
+}

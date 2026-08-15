@@ -1,13 +1,9 @@
-import sealsData from "../data/seals.json";
+import { getCertification, type CertificationMeta } from "../data/certifications";
 
 type PopoverApi = {
   showPopover?: () => void;
   hidePopover?: () => void;
 };
-
-type SealMeta = { title: string; desc: string; link?: string; holder?: string };
-
-const SEALS = sealsData as Record<string, SealMeta>;
 
 document.addEventListener("astro:page-load", () => {
   const pop = document.getElementById("logo-popover") as (HTMLElement & PopoverApi) | null;
@@ -17,6 +13,10 @@ document.addEventListener("astro:page-load", () => {
       el.setAttribute("tabindex", "0");
       el.setAttribute("role", "button");
       el.setAttribute("aria-haspopup", "dialog");
+      const key = el.dataset.certification || el.dataset.seal || "";
+      const meta = getCertification(key);
+      const label = el.getAttribute("data-title") || meta?.title || el.getAttribute("alt") || "Siegel";
+      el.setAttribute("aria-label", `${label} anzeigen`);
     });
 
     const imgEl = document.getElementById("lp-img") as HTMLImageElement | null;
@@ -28,8 +28,8 @@ document.addEventListener("astro:page-load", () => {
 
     function openPopoverFrom(el: HTMLElement): void {
       if (!pop || !imgEl || !titleEl || !descEl || !linkWrap || !linkEl) return;
-      const key = el.dataset.seal || "";
-      const meta = key && SEALS[key] ? SEALS[key] : ({} as SealMeta);
+      const key = el.dataset.certification || el.dataset.seal || "";
+      const meta = getCertification(key) || ({} as CertificationMeta);
       const title = el.getAttribute("data-title") || meta.title || el.getAttribute("alt") || "Siegel";
       const desc = el.getAttribute("data-desc") || meta.desc || "";
       const holder = el.getAttribute("data-holder") || meta.holder || "";
