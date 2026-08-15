@@ -1,6 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
+import { Picture } from 'astro:assets';
 import SeoPreviewLayout from '../../layouts/SeoPreviewLayout.astro';
+import portraitNeuer from '../../assets/img/portrait-neuer-1zu1.jpg';
+import dekraSeal from '../../assets/img/DekraImmobilienbewertungD1.png';
 
 const base = import.meta.env.BASE_URL;
 
@@ -25,37 +28,53 @@ const primaryServices = visibleServices.filter((service) => ['immobilienverkauf'
   eyebrow="Strategische Vorschau"
 >
   <section class="seo-preview-section">
-    <div class="seo-preview-split">
-      <div class="seo-preview-panel">
+    <div class="seo-preview-highlight">
+      <div class="seo-preview-highlight__media">
+        <Picture src={portraitNeuer} formats={['avif', 'webp']} alt="Rüdiger Neuer" loading="lazy" decoding="async" />
+      </div>
+      <div class="seo-preview-highlight__text">
         <p class="seo-preview-eyebrow">Startseiten-Entwurf</p>
         <h2>Diskret verkaufen, belastbar bewerten, persönlich beraten lassen.</h2>
-        <p>Die neue Startseite sollte nicht wie ein Immobilienportal wirken. Sie sollte sofort erklären, dass Projekt M Immobilien für Eigentümer arbeitet, die fachliche Einschätzung und vertrauliche Begleitung suchen.</p>
+        <p class="lead">Die neue Startseite sollte nicht wie ein Immobilienportal wirken. Sie sollte sofort erklären, dass Projekt M Immobilien für Eigentümer arbeitet, die fachliche Einschätzung und vertrauliche Begleitung suchen.</p>
         <div class="seo-preview-actions">
           <a class="button" href={`${base}seo-preview/leistungen/immobilienverkauf/`}>Immobilie verkaufen</a>
           <a class="seo-preview-secondary-link" href={`${base}seo-preview/leistungen/immobilienbewertung/`}>Bewertung prüfen</a>
         </div>
       </div>
-      <aside class="seo-preview-card">
-        <p class="seo-preview-kicker">Warum so?</p>
-        <h3>Die Startseite soll Entscheidungen führen</h3>
-        <p>Besucher kommen meist mit einem konkreten Anlass: Verkauf, Bewertung, Konflikt oder Standortsuche. Die neue Struktur macht diese Wege sichtbar.</p>
-      </aside>
+      <div class="seo-preview-highlight__badge">
+        <Picture src={dekraSeal} formats={['avif', 'webp']} alt="DEKRA zertifizierter Sachverständiger Immobilienbewertung D1" loading="lazy" decoding="async" />
+      </div>
     </div>
   </section>
 
-  <section class="seo-preview-section">
+  <section class="seo-preview-band seo-preview-band--gray">
     <div class="seo-preview-section-header">
       <h2>Direkte Wege für Eigentümer</h2>
       <p>Diese drei Einstiege sollten auf der Startseite deutlich weiter oben sichtbar sein als eine vollständige Leistungsauflistung.</p>
     </div>
-    <div class="seo-preview-grid seo-preview-grid--two">
+    <div class="seo-preview-feature-tiles">
       {primaryServices.map((service) => (
-        <a class="seo-preview-card seo-preview-card-link" href={`${base}seo-preview/leistungen/${service.id}/`}>
+        <a class="seo-preview-feature-tile" href={`${base}seo-preview/leistungen/${service.id}/`}>
           <span class="seo-preview-kicker">{service.data.shortTitle || 'Leistung'}</span>
           <h3>{service.data.title}</h3>
           <p>{service.data.primarySearchIntent}</p>
         </a>
       ))}
+    </div>
+  </section>
+
+  <section class="seo-preview-section">
+    <div class="seo-preview-statement">
+      <div class="seo-preview-statement__copy">
+        <p class="seo-preview-eyebrow">Boutique statt Objektportal</p>
+        <h2>Diskretion wird als Stärke sichtbar, nicht als fehlender Objektbestand.</h2>
+        <p>Die spätere Startseite sollte klar sagen, warum keine öffentlichen Immobilienangebote im Mittelpunkt stehen: Projekt M Immobilien verkauft vertraulich, persönlich und mit fachlicher Vorprüfung.</p>
+      </div>
+      <aside class="seo-preview-statement__note">
+        <p class="seo-preview-kicker">Warum so?</p>
+        <h3>Die Startseite soll Entscheidungen führen</h3>
+        <p>Besucher kommen meist mit einem konkreten Anlass: Verkauf, Bewertung, Konflikt oder Standortsuche. Die neue Struktur macht diese Wege sichtbar.</p>
+      </aside>
     </div>
   </section>
 
