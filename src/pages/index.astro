@@ -1,5 +1,5 @@
 ---
-import { Image, Picture } from "astro:assets";
+import { Picture } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import FlipCard from "../components/FlipCard.astro";
 import Hero from "../components/Hero.astro";
@@ -7,6 +7,7 @@ import Navigation from "../components/Navigation.astro";
 import VacationBanner from "../components/VacationBanner.astro";
 import XmasBanner from "../components/XmasBanner.astro";
 import SealsPopover from "../components/SealsPopover.astro";
+import CertificationLogo from "../components/CertificationLogo.astro";
 import Footer from "../components/Footer.astro";
 
 // Portraits
@@ -61,7 +62,7 @@ const site = import.meta.env.SITE;
                         <p class="lead">Unser Geschäftsführer, Herr Neuer, ist DEKRA-zertifizierter Sachverständiger für Immobilienbewertung D1 und steht Ihnen mit seiner umfassenden Expertise zur Verfügung.</p>
                     </div>
                     <div class="highlight-badge">
-                        <Image src={dekraD1} alt="DEKRA Standard Sachverständige/r für Immobilienbewergung D1 Standard EFH / ZFH" class="seal-logo" data-title="DEKRA Sachverständige/r Immobilienbewertung D1" data-desc="Das D1-Zertifikat bestätigt die besondere Fachkompetenz für die Bewertung von Standard-Einfamilien- und Zweifamilienhäusern. Geprüfte Sachverständige verfügen über fundiertes Fachwissen, rechtliche Kenntnisse und Praxiserfahrung in der Wertermittlung. Sie sind verpflichtet, ihr Wissen regelmäßig durch Fortbildungen und Rezertifizierungen nachzuweisen. Das Siegel schafft Vertrauen, dass Markt- und Verkehrswerte neutral, nachvollziehbar und nach anerkannten Standards ermittelt werden." data-holder="Rüdiger Neuer" data-seal="dekra-d1" width={300} height={468} loading="lazy" decoding="async" />
+                        <CertificationLogo certificationId="dekra-d1" src={dekraD1} alt="DEKRA Standard Sachverständige/r für Immobilienbewergung D1 Standard EFH / ZFH" title="DEKRA Sachverständige/r Immobilienbewertung D1" desc="Das D1-Zertifikat bestätigt die besondere Fachkompetenz für die Bewertung von Standard-Einfamilien- und Zweifamilienhäusern. Geprüfte Sachverständige verfügen über fundiertes Fachwissen, rechtliche Kenntnisse und Praxiserfahrung in der Wertermittlung. Sie sind verpflichtet, ihr Wissen regelmäßig durch Fortbildungen und Rezertifizierungen nachzuweisen. Das Siegel schafft Vertrauen, dass Markt- und Verkehrswerte neutral, nachvollziehbar und nach anerkannten Standards ermittelt werden." holder="Rüdiger Neuer" width={300} height={468} loading="lazy" decoding="async" />
                     </div>
                 </div>
             </div>
@@ -72,24 +73,24 @@ const site = import.meta.env.SITE;
             <div class="kacheln" data-stagger="300">
                 <FlipCard title="Immobiliengutachter" icon="scale-balanced" subline="Leistung" headline="Verkehrswert-<wbr>/Marktwertgutachten" backHeadline="Immobiliengutachter">
                     <div class="b_siegel">
-                        <Image src={sprengnetterImmoWert} alt="SPRENGNETTER Gesicherter ImmoWert" class="seal-logo" data-seal="sprengnetter-immowert" width={389} height={382} loading="lazy" decoding="async" />
-                        <Image src={dekraD1} alt="DEKRA Standard Sachverständige/r für Immobilienbewergung D1 Standard EFH / ZFH" class="seal-logo" data-seal="dekra-d1" width={300} height={468} loading="lazy" decoding="async" />
-                        <Image src={diaZertSrn} alt="DIA Zert – Zertifizierter Sachverständiger für Immobilienbewertung" class="seal-logo" data-seal="dia-zert-s" width={300} height={338} loading="lazy" decoding="async" />
-                        <Image src={ruedigerNeuer53e5} alt="Diplom-Sachverständiger (DIA) für die Bewertung von bebauten und unbebauten Grundstücken, für Mieten und Pachten und für Schäden an Gebäuden – Rüdiger Neuer" class="seal-logo" data-seal="dia-zert-dipl-sach" width={394} height={418} loading="lazy" decoding="async" />
-                        <img src={`${import.meta.env.BASE_URL}img/HypZertSImmobiliengutachter.svg`} alt="HypZert S – Immobileingutachter – Real Estate Valuer" class="seal-logo" data-seal="hypzert-s" width="139" height="68" loading="lazy" decoding="async" />
+                        <CertificationLogo certificationId="sprengnetter-immowert" src={sprengnetterImmoWert} alt="SPRENGNETTER Gesicherter ImmoWert" width={389} height={382} loading="lazy" decoding="async" />
+                        <CertificationLogo certificationId="dekra-d1" src={dekraD1} alt="DEKRA Standard Sachverständige/r für Immobilienbewergung D1 Standard EFH / ZFH" width={300} height={468} loading="lazy" decoding="async" />
+                        <CertificationLogo certificationId="dia-zert-s" src={diaZertSrn} alt="DIA Zert – Zertifizierter Sachverständiger für Immobilienbewertung" width={300} height={338} loading="lazy" decoding="async" />
+                        <CertificationLogo certificationId="dia-zert-dipl-sach" src={ruedigerNeuer53e5} alt="Diplom-Sachverständiger (DIA) für die Bewertung von bebauten und unbebauten Grundstücken, für Mieten und Pachten und für Schäden an Gebäuden – Rüdiger Neuer" width={394} height={418} loading="lazy" decoding="async" />
+                        <CertificationLogo certificationId="hypzert-s" src={`${import.meta.env.BASE_URL}img/HypZertSImmobiliengutachter.svg`} alt="HypZert S – Immobileingutachter – Real Estate Valuer" width={139} height={68} loading="lazy" decoding="async" />
                     </div>
                 </FlipCard>
 
                 <FlipCard title="Immobilienmakler" icon="house-chimney" subline="Leistung" headline="Verkauf – seriös & vertrauensvoll" backHeadline="Immobilienmakler">
                     <div class="b_siegel">
-                        <Image src={mitgliedIvd} alt="Mitglied im ivd" class="seal-logo" data-seal="ivd" width={960} height={1200} loading="lazy" decoding="async" />
-                        <Image src={vdivBayern} alt="vdiv – Die Immobilienverwalter Bayern" class="seal-logo" data-seal="vdiv" width={1028} height={611} loading="lazy" decoding="async" />
+                        <CertificationLogo certificationId="ivd" src={mitgliedIvd} alt="Mitglied im ivd" width={960} height={1200} loading="lazy" decoding="async" />
+                        <CertificationLogo certificationId="vdiv" src={vdivBayern} alt="vdiv – Die Immobilienverwalter Bayern" width={1028} height={611} loading="lazy" decoding="async" />
                     </div>
                 </FlipCard>
 
                 <FlipCard title="Immobilienmediator" icon="comments" subline="Leistung" headline="Konflikte lösen" backHeadline="Immobilienmediator">
                     <div class="b_siegel">
-                        <Image src={sprengnetterMediator} alt="SPRENGNETTER ImmoMediator" class="seal-logo" data-seal="sprengnetter-immomediator" width={441} height={440} loading="lazy" decoding="async" />
+                        <CertificationLogo certificationId="sprengnetter-immomediator" src={sprengnetterMediator} alt="SPRENGNETTER ImmoMediator" width={441} height={440} loading="lazy" decoding="async" />
                     </div>
                 </FlipCard>
 
@@ -107,7 +108,7 @@ const site = import.meta.env.SITE;
                         <div class="person-info">
                             <div class="portrait-wrapper scale-up">
                                 <Picture src={portraitNeuer} formats={["avif", "webp"]} alt="Portrait Neuer" class="portrait-neuer" width={534} height={800} loading="lazy" decoding="async" />
-                                <Image src={diaZertSrn} class="seal-logo dia-badge" alt="Zertifizierter Immobileingutachter S (DIAZert) – Rüdiger Neuer" data-seal="dia-zert-s" width={300} height={338} loading="lazy" decoding="async" />
+                                <CertificationLogo certificationId="dia-zert-s" src={diaZertSrn} class="dia-badge" alt="Zertifizierter Immobileingutachter S (DIAZert) – Rüdiger Neuer" width={300} height={338} loading="lazy" decoding="async" />
                             </div>
                             <h3>Rüdiger Neuer</h3>
                             <p>Inhaber und Geschäftsführer<br />Immobiliengutachter und Immobilienmediator</p>
@@ -131,10 +132,10 @@ const site = import.meta.env.SITE;
                     <FlipCard title="Mitgliedschaften" icon="people-group" subline="Kompetenzen" headline="Teil eines starken Netzwerks" backHeadline="Mitgliedschaften">
                         <p class="b_text">Engagement in Fachverbänden und Organisationen – für Qualität und Austausch auf höchstem Niveau.</p>
                         <div class="b_siegel">
-                            <img src={`${import.meta.env.BASE_URL}img/hypZertGutachter.svg`} alt="Wir beschäftigen HypZert Gutachter" class="seal-logo" data-seal="hypzert-gutachter" width="74" height="53" loading="lazy" decoding="async" />
-                            <Image src={mitgliedIvd} alt="Mitglied im ivd" class="seal-logo" data-seal="ivd" width={960} height={1200} loading="lazy" decoding="async" />
-                            <Image src={vdivBayern} alt="vdiv – Die Immobilienverwalter Bayern" class="seal-logo" data-seal="vdiv" width={1028} height={611} loading="lazy" decoding="async" />
-                            <Image src={hausGrund} alt="HAUS+GRUND MÜNCHEN – HAUS- UND GRUNDBESITZERVEREIN MÜNCHEN und Umgebung e.V." class="seal-logo" data-seal="haus+grund" width={600} height={79} loading="lazy" decoding="async" />
+                            <CertificationLogo certificationId="hypzert-gutachter" src={`${import.meta.env.BASE_URL}img/hypZertGutachter.svg`} alt="Wir beschäftigen HypZert Gutachter" width={74} height={53} loading="lazy" decoding="async" />
+                            <CertificationLogo certificationId="ivd" src={mitgliedIvd} alt="Mitglied im ivd" width={960} height={1200} loading="lazy" decoding="async" />
+                            <CertificationLogo certificationId="vdiv" src={vdivBayern} alt="vdiv – Die Immobilienverwalter Bayern" width={1028} height={611} loading="lazy" decoding="async" />
+                            <CertificationLogo certificationId="haus+grund" src={hausGrund} alt="HAUS+GRUND MÜNCHEN – HAUS- UND GRUNDBESITZERVEREIN MÜNCHEN und Umgebung e.V." width={600} height={79} loading="lazy" decoding="async" />
                         </div>
                     </FlipCard>
 
@@ -149,11 +150,11 @@ const site = import.meta.env.SITE;
                     <FlipCard title="Qualifikationen" icon="award" subline="Kompetenzen" headline="Geprüft und zertifiziert" headlineClass="manual-hyphen" backHeadline="Qualifikationen">
                         <p class="b_text">Kontinuierliche Weiterbildung in aktuellen Themen – fachlich, rechtlich und methodisch.</p>
                         <div class="b_siegel">
-                            <Image src={sprengnetterMediator} alt="SPRENGNETTER ImmoMediator" class="seal-logo" data-seal="sprengnetter-immomediator" width={441} height={440} loading="lazy" decoding="async" />
-                            <Image src={diaAbsolvent} alt="Absolvent/in der Deutschen Immobilien-Akademie (DIA)" class="seal-logo" data-holder="Rüdiger Neuer" data-seal="dia-absolvent" width={621} height={872} loading="lazy" decoding="async" />
-                            <Image src={sprengnetterImmowert3D} alt="SPRENGNETTER Gesicherter ImmoWert" class="seal-logo" data-seal="sprengnetter-immowert" width={236} height={236} loading="lazy" decoding="async" />
-                            <Image src={sprengnetterImmobesichtiger} alt="SPRENGNETTER ImmoBesichtiger-Schadenerkennung" class="seal-logo" data-seal="sprengnetter-immobesichtiger" width={450} height={450} loading="lazy" decoding="async" />
-                            <Image src={diaZertMakler} alt="DIA Zert - Zertifiziert durch DIA Consulting AG nach EU-Norm DIN EN 15733" class="seal-logo" data-seal="dia-zert-din15733" width={400} height={316} loading="lazy" decoding="async" />
+                            <CertificationLogo certificationId="sprengnetter-immomediator" src={sprengnetterMediator} alt="SPRENGNETTER ImmoMediator" width={441} height={440} loading="lazy" decoding="async" />
+                            <CertificationLogo certificationId="dia-absolvent" src={diaAbsolvent} alt="Absolvent/in der Deutschen Immobilien-Akademie (DIA)" holder="Rüdiger Neuer" width={621} height={872} loading="lazy" decoding="async" />
+                            <CertificationLogo certificationId="sprengnetter-immowert" src={sprengnetterImmowert3D} alt="SPRENGNETTER Gesicherter ImmoWert" width={236} height={236} loading="lazy" decoding="async" />
+                            <CertificationLogo certificationId="sprengnetter-immobesichtiger" src={sprengnetterImmobesichtiger} alt="SPRENGNETTER ImmoBesichtiger-Schadenerkennung" width={450} height={450} loading="lazy" decoding="async" />
+                            <CertificationLogo certificationId="dia-zert-din15733" src={diaZertMakler} alt="DIA Zert - Zertifiziert durch DIA Consulting AG nach EU-Norm DIN EN 15733" width={400} height={316} loading="lazy" decoding="async" />
                         </div>
                     </FlipCard>
 
@@ -173,8 +174,8 @@ const site = import.meta.env.SITE;
                         <p class="lead">Projekt M Immobilien ist Mitglied im IVD.<br />Wir sind offizieller Partner der IVD-Marktforschung und bilden uns regelmäßig&nbsp;fort.</p>
                     </div>
                     <div class="ivd-logos">
-                        <Image src={ivd2025} alt="IVD Immobilien-Weiterbildungssiegel" class="seal-logo" data-seal="ivd-weiterbildung" width={487} height={743} loading="lazy" decoding="async" />
-                        <Image src={ivdMarktforschung} alt="Partner der IVD-Marktforschung" class="seal-logo" data-seal="ivd-marktforschung" width={252} height={628} loading="lazy" decoding="async" />
+                        <CertificationLogo certificationId="ivd-weiterbildung" src={ivd2025} alt="IVD Immobilien-Weiterbildungssiegel" width={487} height={743} loading="lazy" decoding="async" />
+                        <CertificationLogo certificationId="ivd-marktforschung" src={ivdMarktforschung} alt="Partner der IVD-Marktforschung" width={252} height={628} loading="lazy" decoding="async" />
                     </div>
                 </div>
             </div>
@@ -224,13 +225,13 @@ const site = import.meta.env.SITE;
         <section id="auszeichnungen" class="container">
             <h2 class="text-center mb-m">Auszeichnungen</h2>
             <div data-stagger="150">
-                <Image src={mitgliedIvd} alt="Mitglied im ivd" class="scale-up seal-logo" data-seal="ivd" width={960} height={1200} loading="lazy" decoding="async" />
-                <Image src={vdivBayern} alt="vdiv – Die Immobilienverwalter Bayern" class="scale-up seal-logo" data-seal="vdiv" width={1028} height={611} loading="lazy" decoding="async" />
-                <img src={`${import.meta.env.BASE_URL}img/hypZertGutachter.svg`} alt="Wir beschäftigen HypZert Gutachter" class="scale-up seal-logo" data-seal="hypzert-gutachter" width="74" height="53" loading="lazy" decoding="async" />
-                <Image src={sprengnetterImmoWert} alt="SPRENGNETTER Gesicherter ImmoWert" class="scale-up seal-logo" data-seal="sprengnetter-immowert" width={389} height={382} loading="lazy" decoding="async" />
-                <Image src={diaZertMakler} alt="DIA Zert - Zertifiziert durch DIA Consulting AG nach EU-Norm DIN EN 15733" class="scale-up seal-logo" data-seal="din15733" width={400} height={316} loading="lazy" decoding="async" />
-                <Image src={immoscout24Silber} alt="ImmoScout24 Silber Partner seit 2025" class="scale-up seal-logo" data-seal="immoscout24-silber" width={411} height={523} loading="lazy" decoding="async" />
-                <Image src={immoWeltPremium} alt="immowelt Premium Partner" class="scale-up seal-logo" data-seal="immowelt-premium" width={182} height={182} loading="lazy" decoding="async" />
+                <CertificationLogo certificationId="ivd" src={mitgliedIvd} alt="Mitglied im ivd" class="scale-up" width={960} height={1200} loading="lazy" decoding="async" />
+                <CertificationLogo certificationId="vdiv" src={vdivBayern} alt="vdiv – Die Immobilienverwalter Bayern" class="scale-up" width={1028} height={611} loading="lazy" decoding="async" />
+                <CertificationLogo certificationId="hypzert-gutachter" src={`${import.meta.env.BASE_URL}img/hypZertGutachter.svg`} alt="Wir beschäftigen HypZert Gutachter" class="scale-up" width={74} height={53} loading="lazy" decoding="async" />
+                <CertificationLogo certificationId="sprengnetter-immowert" src={sprengnetterImmoWert} alt="SPRENGNETTER Gesicherter ImmoWert" class="scale-up" width={389} height={382} loading="lazy" decoding="async" />
+                <CertificationLogo certificationId="din15733" src={diaZertMakler} alt="DIA Zert - Zertifiziert durch DIA Consulting AG nach EU-Norm DIN EN 15733" class="scale-up" width={400} height={316} loading="lazy" decoding="async" />
+                <CertificationLogo certificationId="immoscout24-silber" src={immoscout24Silber} alt="ImmoScout24 Silber Partner seit 2025" class="scale-up" width={411} height={523} loading="lazy" decoding="async" />
+                <CertificationLogo certificationId="immowelt-premium" src={immoWeltPremium} alt="immowelt Premium Partner" class="scale-up" width={182} height={182} loading="lazy" decoding="async" />
             </div>
         </section>
 

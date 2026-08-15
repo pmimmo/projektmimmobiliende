@@ -1,6 +1,7 @@
 ---
-import { Image, Picture } from "astro:assets";
+import { Picture } from "astro:assets";
 import TopKontakt from "./TopKontakt.astro";
+import CertificationLogo from "./CertificationLogo.astro";
 import diaSeal from "../assets/img/dia.png";
 // import bannerLederhosen from "../assets/img/banner-lederhosen.jpg";
 import bannerOper from "../assets/img/banner-oper-erweitert.jpg";
@@ -11,7 +12,7 @@ import bannerOper from "../assets/img/banner-oper-erweitert.jpg";
     <TopKontakt />
     <div id="hero" class="manual-hyphen">
         <div class="dia">
-            <Image src={diaSeal} alt="Immobilienmakler zertifiziert nach DIN EN 15733" class="seal-logo" data-title="Immobilienmakler zertifiziert nach DIN EN 15733" data-desc="Die DIN EN 15733 ist die europaweit gültige Norm für Immobilienmakler. Sie bescheinigt eine fachliche Mindestqualifikation (z. B. Immobilienfachwirt), regelt strenge Informationspflichten gegenüber Käufer und Verkäufer und verpflichtet zu einem Moralkodex. Dazu gehören Transparenz, Schutz der Kundeninteressen, Diskriminierungsfreiheit, Versicherungsschutz sowie ein internes Beschwerdemanagement. Die Zertifizierung ist freiwillig – ein verlässliches Qualitätssiegel für Verbraucher." data-seal="din15733" width={300} height={300} loading="lazy" decoding="async" />
+            <CertificationLogo certificationId="din15733" src={diaSeal} alt="Immobilienmakler zertifiziert nach DIN EN 15733" title="Immobilienmakler zertifiziert nach DIN EN 15733" desc="Die DIN EN 15733 ist die europaweit gültige Norm für Immobilienmakler. Sie bescheinigt eine fachliche Mindestqualifikation (z. B. Immobilienfachwirt), regelt strenge Informationspflichten gegenüber Käufer und Verkäufer und verpflichtet zu einem Moralkodex. Dazu gehören Transparenz, Schutz der Kundeninteressen, Diskriminierungsfreiheit, Versicherungsschutz sowie ein internes Beschwerdemanagement. Die Zertifizierung ist freiwillig – ein verlässliches Qualitätssiegel für Verbraucher." width={300} height={300} loading="lazy" decoding="async" />
         </div>
         <div class="container hero-top">
             <img class="hero-logo" src={`${import.meta.env.BASE_URL}img/logo_pmi_web.svg`} alt="Projekt M Immobilien GmbH – Logo" width="3220" height="1099" decoding="async" fetchpriority="high" />
