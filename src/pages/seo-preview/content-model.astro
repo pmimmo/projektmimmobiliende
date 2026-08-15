@@ -1,10 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Navigation from '../../components/Navigation.astro';
-import Footer from '../../components/Footer.astro';
-
-const site = import.meta.env.SITE;
+import SeoPreviewLayout from '../../layouts/SeoPreviewLayout.astro';
 
 const [certifications, people, services, locations] = await Promise.all([
   getCollection('certifications'),
@@ -29,21 +25,12 @@ function labelFromMap<T extends { title?: string; name?: string }>(map: Map<stri
 }
 ---
 
-<BaseLayout
-  title="SEO Preview: Content-Modell – Projekt M Immobilien"
+<SeoPreviewLayout
+  title="Datenmodell"
   description="Interne Vorschau für das neue SEO-Content-Modell von Projekt M Immobilien."
-  canonical={`${site}/seo-preview/content-model/`}
-  robots="noindex, nofollow"
-  schema="none"
+  canonicalPath="/seo-preview/content-model/"
+  eyebrow="Technische Datenansicht"
 >
-  <Navigation />
-  <main id="main-content" class="preview-shell">
-    <section class="preview-hero">
-      <p class="eyebrow">Interne Vorschau</p>
-      <h1>SEO-Content-Modell</h1>
-      <p class="lead">Diese Seite zeigt die neue Datenbasis für Zertifizierungen, Personen, Leistungen und Standorte. Sie ist nicht für die öffentliche Navigation gedacht.</p>
-    </section>
-
     <section class="preview-section" aria-labelledby="people-heading">
       <h2 id="people-heading">Teamdaten</h2>
       <div class="preview-grid">
@@ -142,21 +129,9 @@ function labelFromMap<T extends { title?: string; name?: string }>(map: Map<stri
         ))}
       </div>
     </section>
-  </main>
-  <Footer />
-</BaseLayout>
+</SeoPreviewLayout>
 
 <style>
-  .preview-shell {
-    width: min(1180px, calc(100% - 2rem));
-    margin: 0 auto 5rem;
-  }
-
-  .preview-hero {
-    padding: 2rem 0 3rem;
-    border-bottom: 1px solid var(--c-background-gray);
-  }
-
   .preview-section {
     padding: 2.5rem 0;
     border-bottom: 1px solid var(--c-background-gray);

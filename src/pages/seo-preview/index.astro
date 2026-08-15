@@ -1,0 +1,103 @@
+---
+import { getCollection } from 'astro:content';
+import SeoPreviewLayout from '../../layouts/SeoPreviewLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const [people, services, locations, certifications] = await Promise.all([
+  getCollection('people'),
+  getCollection('services'),
+  getCollection('locations'),
+  getCollection('certifications'),
+]);
+
+const visibleServices = services.filter((service) => service.data.previewPage);
+const visibleLocations = locations.filter((location) => location.data.previewPage);
+const visiblePeople = people.filter((person) => person.data.showDetailPage);
+const personalCertifications = certifications.filter((certification) => certification.data.belongsTo.length > 0);
+---
+
+<SeoPreviewLayout
+  title="Neue Website-Struktur"
+  description="Interne Vorschau, wie Projekt M Immobilien künftig mit Startseite, Leistungsseiten, Standortseiten, Teamprofilen und Kompetenzseiten aufgebaut sein könnte."
+  canonicalPath="/seo-preview/"
+  eyebrow="Strategische Vorschau"
+>
+  <section class="seo-preview-section">
+    <div class="seo-preview-section-header">
+      <h2>Gedanke der neuen Startseite</h2>
+      <p>Die Startseite bleibt der Einstieg, erklärt aber klarer, wohin Nutzer gehen sollen: verkaufen, bewerten lassen, Konflikt lösen oder Standortbezug prüfen.</p>
+    </div>
+    <div class="seo-preview-grid">
+      <article class="seo-preview-card seo-preview-card--dark">
+        <p class="seo-preview-eyebrow">Positionierung</p>
+        <h3>Boutique-Makler statt Immobilienportal</h3>
+        <p>Keine öffentliche Objektmasse, sondern diskrete Vermittlung, Bewertungskompetenz und persönliche Beratung in München und Landshut.</p>
+      </article>
+      <article class="seo-preview-card">
+        <p class="seo-preview-eyebrow">SEO/GEO</p>
+        <h3>Mehr klare Einstiege</h3>
+        <p>Suchmaschinen und AI Search sollen eindeutige Seiten zu Leistungen, Standorten, Personen und Qualifikationen finden.</p>
+      </article>
+      <article class="seo-preview-card">
+        <p class="seo-preview-eyebrow">Navigation</p>
+        <h3>Von Startseite zu Unterseiten</h3>
+        <p>Die Hauptnavigation führt künftig nicht nur zu Abschnitten, sondern zu eigenständigen Seiten mit interner Verlinkung.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="seo-preview-section">
+    <div class="seo-preview-section-header">
+      <h2>Geplante Hauptnavigation</h2>
+      <p>Das wäre die logische Struktur für die spätere Live-Navigation. In der Preview sind die Bereiche bereits klickbar.</p>
+    </div>
+    <div class="seo-preview-grid">
+      <a class="seo-preview-card seo-preview-card-link" href={`${base}seo-preview/leistungen/`}>
+        <span class="seo-preview-kicker">Leistungen</span>
+        <h3>Verkauf, Bewertung, Mediation</h3>
+        <p>{visibleServices.length} vorbereitete Leistungsseiten.</p>
+      </a>
+      <a class="seo-preview-card seo-preview-card-link" href={`${base}seo-preview/standorte/`}>
+        <span class="seo-preview-kicker">Standorte</span>
+        <h3>München und Landshut</h3>
+        <p>{visibleLocations.length} lokale Einstiegsseiten.</p>
+      </a>
+      <a class="seo-preview-card seo-preview-card-link" href={`${base}seo-preview/team/`}>
+        <span class="seo-preview-kicker">Team</span>
+        <h3>Personen und Expertise</h3>
+        <p>{visiblePeople.length} Personenprofile mit Leistungs- und Zertifikatsbezug.</p>
+      </a>
+      <a class="seo-preview-card seo-preview-card-link" href={`${base}seo-preview/zertifikate/`}>
+        <span class="seo-preview-kicker">Kompetenzen</span>
+        <h3>Zertifikate und Siegel</h3>
+        <p>{personalCertifications.length} direkt zugeordnete Qualifikationssignale.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="seo-preview-section">
+    <div class="seo-preview-section-header">
+      <h2>Startseiten-Aufbau</h2>
+      <p>So würde ich die neue Startseite gedanklich gliedern, bevor wir finale Texte schreiben.</p>
+    </div>
+    <div class="seo-preview-grid">
+      <article class="seo-preview-card">
+        <h3>1. Einstieg</h3>
+        <p>Projekt M Immobilien als diskreter Boutique-Makler und Bewertungs-Spezialist für München und Landshut.</p>
+      </article>
+      <article class="seo-preview-card">
+        <h3>2. Entscheidungswege</h3>
+        <p>Direkte Einstiege zu Immobilienverkauf, Immobilienbewertung, Immobilienmediation und Standorten.</p>
+      </article>
+      <article class="seo-preview-card">
+        <h3>3. Vertrauen</h3>
+        <p>Rüdiger Neuer, Team, Zertifizierungen, Siegel, Bewertungen und fachliche Nachweise klar verbinden.</p>
+      </article>
+      <article class="seo-preview-card">
+        <h3>4. Kontakt</h3>
+        <p>Persönliche Kontaktaufnahme als Ziel, nicht das Durchsuchen von Immobilienangeboten.</p>
+      </article>
+    </div>
+  </section>
+</SeoPreviewLayout>

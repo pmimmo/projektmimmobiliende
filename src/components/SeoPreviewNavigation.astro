@@ -2,19 +2,19 @@
 const base = import.meta.env.BASE_URL;
 
 const sections = [
-  { href: `${base}seo-preview/content-model/`, label: 'Übersicht' },
-  { href: `${base}seo-preview/team/ruediger-neuer/`, label: 'Team' },
-  { href: `${base}seo-preview/leistungen/immobilienbewertung/`, label: 'Leistungen' },
-  { href: `${base}seo-preview/standorte/muenchen/`, label: 'Standorte' },
-  { href: `${base}seo-preview/zertifikate/dekra-d1/`, label: 'Kompetenzen' },
+  { href: `${base}seo-preview/`, label: 'Start' },
+  { href: `${base}seo-preview/leistungen/`, label: 'Leistungen' },
+  { href: `${base}seo-preview/standorte/`, label: 'Standorte' },
+  { href: `${base}seo-preview/team/`, label: 'Team' },
+  { href: `${base}seo-preview/zertifikate/`, label: 'Kompetenzen' },
 ];
 ---
 
 <header class="seo-preview-nav">
   <div class="seo-preview-nav__inner">
-    <a class="seo-preview-nav__brand" href={`${base}seo-preview/content-model/`}>
+    <a class="seo-preview-nav__brand" href={`${base}seo-preview/`}>
       <img src={`${base}img/logo_pmi_web.svg`} alt="Projekt M Immobilien GmbH – Logo" width="3220" height="1099" />
-      <span>SEO Preview</span>
+      <span>Neue Struktur</span>
     </a>
     <nav aria-label="Preview Navigation">
       {
@@ -23,7 +23,7 @@ const sections = [
         ))
       }
     </nav>
-    <a class="seo-preview-nav__live" href={base}>Aktuelle Seite</a>
+    <a class="seo-preview-nav__live" href={`${base}seo-preview/content-model/`}>Datenmodell</a>
   </div>
 </header>
 
