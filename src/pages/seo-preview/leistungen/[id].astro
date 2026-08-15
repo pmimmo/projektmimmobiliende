@@ -28,6 +28,29 @@ const base = import.meta.env.BASE_URL;
 
 const title = service.data.title;
 const description = service.data.primarySearchIntent;
+
+const serviceDrafts = {
+  immobilienbewertung: {
+    intro: 'Für Eigentümer, Erbengemeinschaften oder Verkaufsentscheidungen ist eine belastbare Immobilienbewertung oft der erste sinnvolle Schritt. Die Seite sollte klar zwischen schneller Einschätzung, Marktwert und fachlich begründetem Gutachten unterscheiden.',
+    situations: ['Verkaufsvorbereitung mit realistischer Preisfindung', 'Erbe, Nachlass oder Vermögensauseinandersetzung', 'Scheidung, Miteigentum oder strittige Wertfragen', 'Plausibilisierung einer vorhandenen Bewertung'],
+    process: ['Anliegen und Bewertungszweck klären', 'Objektunterlagen und Lage einordnen', 'Besichtigung und fachliche Prüfung', 'Ergebnis verständlich besprechen'],
+    cta: 'Immobilienwert fachlich einschätzen lassen',
+  },
+  immobilienverkauf: {
+    intro: 'Beim Verkauf steht nicht die öffentliche Menge an Inseraten im Vordergrund, sondern ein sauber vorbereiteter, diskreter und nachvollziehbarer Prozess. Die Seite sollte erklären, warum gerade nicht jedes Objekt öffentlich gezeigt werden muss.',
+    situations: ['Diskreter Verkauf ohne breite öffentliche Vermarktung', 'Verkauf nach Bewertung oder Gutachten', 'Verkauf im Zusammenhang mit Erbe oder Veränderung', 'Auswahl passender Interessenten statt maximaler Sichtbarkeit'],
+    process: ['Ziel, Zeitrahmen und Diskretionsgrad klären', 'Objekt und Unterlagen vorbereiten', 'Vermarktungsweg bewusst festlegen', 'Gespräche, Prüfung und Abschluss begleiten'],
+    cta: 'Diskreten Immobilienverkauf besprechen',
+  },
+  immobilienmediation: {
+    intro: 'Immobilienkonflikte brauchen oft zuerst Struktur, bevor über Verkauf, Bewertung oder Aufteilung entschieden werden kann. Die Seite sollte Projekt M als neutrale, fachlich versierte Begleitung positionieren.',
+    situations: ['Erbengemeinschaften mit unterschiedlichen Interessen', 'Trennung oder Scheidung mit gemeinsamer Immobilie', 'Miteigentümer mit blockierten Entscheidungen', 'Konflikte vor Verkauf, Bewertung oder Nutzung'],
+    process: ['Konfliktlage vertraulich einordnen', 'Beteiligte und Entscheidungsfragen strukturieren', 'Optionen sachlich vorbereiten', 'Nächsten Schritt gemeinsam festlegen'],
+    cta: 'Immobilienkonflikt vertraulich einordnen',
+  },
+};
+
+const draft = serviceDrafts[service.id as keyof typeof serviceDrafts];
 ---
 
 <SeoPreviewLayout
@@ -37,16 +60,41 @@ const description = service.data.primarySearchIntent;
   eyebrow="Leistungsseite Vorschau"
 >
   <section class="seo-preview-section">
-    <div class="seo-preview-grid">
-      <article class="seo-preview-card seo-preview-card--dark">
-        <p class="seo-preview-eyebrow">SEO-Aufgabe dieser Seite</p>
-        <h2>Suchintention abholen</h2>
-        <p>Diese Seite soll später eine konkrete Eigentümerfrage beantworten und daraus zur Kontaktaufnahme oder Bewertung führen.</p>
+    <div class="seo-preview-split">
+      <article class="seo-preview-panel">
+        <p class="seo-preview-eyebrow">Seitenentwurf</p>
+        <h2>{draft?.cta || service.data.title}</h2>
+        <p>{draft?.intro || 'Diese Seite soll später eine konkrete Eigentümerfrage beantworten und daraus zur Kontaktaufnahme führen.'}</p>
+        <div class="seo-preview-actions">
+          <a class="button" href={`${base}#callToAction`}>Kontakt aufnehmen</a>
+          <a class="seo-preview-secondary-link" href={`${base}seo-preview/leistungen/`}>Alle Leistungen</a>
+        </div>
       </article>
       <article class="seo-preview-card">
-        <p class="seo-preview-eyebrow">GEO-Aufgabe dieser Seite</p>
-        <h2>Zitierfähige Leistung erklären</h2>
-        <p>Die Seite soll präzise Begriffe, Zuständigkeiten, Zertifikate und regionale Kontexte liefern, die auch AI Search zuverlässig auslesen kann.</p>
+        <p class="seo-preview-eyebrow">SEO/GEO-Aufgabe</p>
+        <h2>Konkrete Suchintention</h2>
+        <p>{service.data.primarySearchIntent}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="seo-preview-section">
+    <div class="seo-preview-section-header">
+      <h2>Typische Situationen</h2>
+      <p>Dieser Block macht aus einer abstrakten Leistung eine Seite für konkrete Eigentümeranliegen.</p>
+    </div>
+    <div class="seo-preview-grid seo-preview-grid--two">
+      <article class="seo-preview-card">
+        <h3>Für wen ist das relevant?</h3>
+        <ul class="seo-preview-check-list">
+          {(draft?.situations || ['Eigentümer mit konkretem Beratungsbedarf']).map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+      <article class="seo-preview-card">
+        <h3>Wie Projekt M vorgeht</h3>
+        <ul class="seo-preview-check-list">
+          {(draft?.process || ['Anliegen klären', 'Situation fachlich einordnen', 'Nächsten Schritt festlegen']).map((item) => <li>{item}</li>)}
+        </ul>
       </article>
     </div>
   </section>
@@ -74,27 +122,6 @@ const description = service.data.primarySearchIntent;
         <dd>{service.data.relatedCertifications.map((id) => certificationsById.get(id)?.title || id).join(', ') || 'Keine direkte Zuordnung'}</dd>
       </div>
     </dl>
-  </section>
-
-  <section class="seo-preview-section">
-    <div class="seo-preview-section-header">
-      <h2>Beispielhafte Seitenstruktur</h2>
-      <p>Die Blöcke sind als redaktionelles Gerüst gedacht; finale Texte kommen erst nach Freigabe der Struktur.</p>
-    </div>
-    <div class="seo-preview-grid">
-      <article class="seo-preview-card">
-        <h3>Einstieg</h3>
-        <p>Problem, Situation und Nutzen der Leistung in München und Landshut klar benennen.</p>
-      </article>
-      <article class="seo-preview-card">
-        <h3>Fachlichkeit</h3>
-        <p>Zertifikate, Arbeitsweise und Abgrenzung zu reinen Portal- oder Schnellbewertungen erklären.</p>
-      </article>
-      <article class="seo-preview-card">
-        <h3>Diskrete Beratung</h3>
-        <p>Für Boutique-Makler besonders wichtig: individuelle Prüfung statt öffentlicher Objektmasse.</p>
-      </article>
-    </div>
   </section>
 
   <section class="seo-preview-section">

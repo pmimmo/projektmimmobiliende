@@ -114,6 +114,17 @@ const site = import.meta.env.SITE;
     gap: 1rem;
   }
 
+  :global(.seo-preview-grid--two) {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+
+  :global(.seo-preview-split) {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
   :global(.seo-preview-card) {
     display: block;
     padding: 1.25rem;
@@ -147,6 +158,17 @@ const site = import.meta.env.SITE;
     color: var(--c-text-light);
   }
 
+  :global(.seo-preview-panel) {
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border-radius: 8px;
+    background: var(--c-background-dark);
+    color: var(--c-text-light);
+  }
+
+  :global(.seo-preview-panel a) {
+    color: var(--c-text-light);
+  }
+
   :global(.seo-preview-kicker) {
     color: var(--c-primary-dark);
     font-size: 0.9rem;
@@ -166,6 +188,28 @@ const site = import.meta.env.SITE;
     font-weight: 700;
   }
 
+  :global(.seo-preview-actions) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  :global(.seo-preview-secondary-link) {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--c-background-gray);
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  :global(.seo-preview-secondary-link:hover) {
+    background: var(--c-gray-100);
+    text-decoration: none;
+  }
+
   :global(.seo-preview-list) {
     display: grid;
     gap: 0.65rem;
@@ -176,6 +220,31 @@ const site = import.meta.env.SITE;
   :global(.seo-preview-list li) {
     margin: 0;
     list-style: none;
+  }
+
+  :global(.seo-preview-check-list) {
+    display: grid;
+    gap: 0.85rem;
+    margin: 1rem 0 0;
+    list-style: none;
+  }
+
+  :global(.seo-preview-check-list li) {
+    position: relative;
+    margin: 0;
+    padding-left: 1.35rem;
+    list-style: none;
+  }
+
+  :global(.seo-preview-check-list li::before) {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: var(--c-primary);
   }
 
   :global(.seo-preview-pill-list) {
@@ -215,6 +284,10 @@ const site = import.meta.env.SITE;
     .seo-preview-hero {
       grid-template-columns: 1fr;
       padding-top: 2.5rem;
+    }
+
+    :global(.seo-preview-split) {
+      grid-template-columns: 1fr;
     }
 
     .seo-preview-section-header {

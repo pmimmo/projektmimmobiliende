@@ -15,6 +15,7 @@ const visibleServices = services.filter((service) => service.data.previewPage);
 const visibleLocations = locations.filter((location) => location.data.previewPage);
 const visiblePeople = people.filter((person) => person.data.showDetailPage);
 const personalCertifications = certifications.filter((certification) => certification.data.belongsTo.length > 0);
+const primaryServices = visibleServices.filter((service) => ['immobilienverkauf', 'immobilienbewertung', 'immobilienmediation'].includes(service.id));
 ---
 
 <SeoPreviewLayout
@@ -24,44 +25,50 @@ const personalCertifications = certifications.filter((certification) => certific
   eyebrow="Strategische Vorschau"
 >
   <section class="seo-preview-section">
-    <div class="seo-preview-section-header">
-      <h2>Gedanke der neuen Startseite</h2>
-      <p>Die Startseite bleibt der Einstieg, erklärt aber klarer, wohin Nutzer gehen sollen: verkaufen, bewerten lassen, Konflikt lösen oder Standortbezug prüfen.</p>
-    </div>
-    <div class="seo-preview-grid">
-      <article class="seo-preview-card seo-preview-card--dark">
-        <p class="seo-preview-eyebrow">Positionierung</p>
-        <h3>Boutique-Makler statt Immobilienportal</h3>
-        <p>Keine öffentliche Objektmasse, sondern diskrete Vermittlung, Bewertungskompetenz und persönliche Beratung in München und Landshut.</p>
-      </article>
-      <article class="seo-preview-card">
-        <p class="seo-preview-eyebrow">SEO/GEO</p>
-        <h3>Mehr klare Einstiege</h3>
-        <p>Suchmaschinen und AI Search sollen eindeutige Seiten zu Leistungen, Standorten, Personen und Qualifikationen finden.</p>
-      </article>
-      <article class="seo-preview-card">
-        <p class="seo-preview-eyebrow">Navigation</p>
-        <h3>Von Startseite zu Unterseiten</h3>
-        <p>Die Hauptnavigation führt künftig nicht nur zu Abschnitten, sondern zu eigenständigen Seiten mit interner Verlinkung.</p>
-      </article>
+    <div class="seo-preview-split">
+      <div class="seo-preview-panel">
+        <p class="seo-preview-eyebrow">Startseiten-Entwurf</p>
+        <h2>Diskret verkaufen, belastbar bewerten, persönlich beraten lassen.</h2>
+        <p>Die neue Startseite sollte nicht wie ein Immobilienportal wirken. Sie sollte sofort erklären, dass Projekt M Immobilien für Eigentümer arbeitet, die fachliche Einschätzung und vertrauliche Begleitung suchen.</p>
+        <div class="seo-preview-actions">
+          <a class="button" href={`${base}seo-preview/leistungen/immobilienverkauf/`}>Immobilie verkaufen</a>
+          <a class="seo-preview-secondary-link" href={`${base}seo-preview/leistungen/immobilienbewertung/`}>Bewertung prüfen</a>
+        </div>
+      </div>
+      <aside class="seo-preview-card">
+        <p class="seo-preview-kicker">Warum so?</p>
+        <h3>Die Startseite soll Entscheidungen führen</h3>
+        <p>Besucher kommen meist mit einem konkreten Anlass: Verkauf, Bewertung, Konflikt oder Standortsuche. Die neue Struktur macht diese Wege sichtbar.</p>
+      </aside>
     </div>
   </section>
 
   <section class="seo-preview-section">
     <div class="seo-preview-section-header">
-      <h2>Geplante Hauptnavigation</h2>
-      <p>Das wäre die logische Struktur für die spätere Live-Navigation. In der Preview sind die Bereiche bereits klickbar.</p>
+      <h2>Direkte Wege für Eigentümer</h2>
+      <p>Diese drei Einstiege sollten auf der Startseite deutlich weiter oben sichtbar sein als eine vollständige Leistungsauflistung.</p>
+    </div>
+    <div class="seo-preview-grid seo-preview-grid--two">
+      {primaryServices.map((service) => (
+        <a class="seo-preview-card seo-preview-card-link" href={`${base}seo-preview/leistungen/${service.id}/`}>
+          <span class="seo-preview-kicker">{service.data.shortTitle || 'Leistung'}</span>
+          <h3>{service.data.title}</h3>
+          <p>{service.data.primarySearchIntent}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="seo-preview-section">
+    <div class="seo-preview-section-header">
+      <h2>Regionale und fachliche Signale</h2>
+      <p>Die Startseite sollte nach den Hauptwegen Vertrauen und lokale Relevanz aufbauen.</p>
     </div>
     <div class="seo-preview-grid">
-      <a class="seo-preview-card seo-preview-card-link" href={`${base}seo-preview/leistungen/`}>
-        <span class="seo-preview-kicker">Leistungen</span>
-        <h3>Verkauf, Bewertung, Mediation</h3>
-        <p>{visibleServices.length} vorbereitete Leistungsseiten.</p>
-      </a>
       <a class="seo-preview-card seo-preview-card-link" href={`${base}seo-preview/standorte/`}>
         <span class="seo-preview-kicker">Standorte</span>
         <h3>München und Landshut</h3>
-        <p>{visibleLocations.length} lokale Einstiegsseiten.</p>
+        <p>{visibleLocations.length} lokale Einstiegsseiten für regionale Sichtbarkeit.</p>
       </a>
       <a class="seo-preview-card seo-preview-card-link" href={`${base}seo-preview/team/`}>
         <span class="seo-preview-kicker">Team</span>
@@ -78,25 +85,25 @@ const personalCertifications = certifications.filter((certification) => certific
 
   <section class="seo-preview-section">
     <div class="seo-preview-section-header">
-      <h2>Startseiten-Aufbau</h2>
-      <p>So würde ich die neue Startseite gedanklich gliedern, bevor wir finale Texte schreiben.</p>
+      <h2>Vorgeschlagener Startseitenfluss</h2>
+      <p>Das ist die Reihenfolge, in der ich die spätere Live-Startseite umbauen würde.</p>
     </div>
     <div class="seo-preview-grid">
       <article class="seo-preview-card">
-        <h3>1. Einstieg</h3>
-        <p>Projekt M Immobilien als diskreter Boutique-Makler und Bewertungs-Spezialist für München und Landshut.</p>
+        <h3>1. Positionierung</h3>
+        <p>Boutique-Makler, diskrete Vermittlung, belastbare Bewertung, München und Landshut.</p>
       </article>
       <article class="seo-preview-card">
-        <h3>2. Entscheidungswege</h3>
-        <p>Direkte Einstiege zu Immobilienverkauf, Immobilienbewertung, Immobilienmediation und Standorten.</p>
+        <h3>2. Nutzerwege</h3>
+        <p>Verkaufen, bewerten lassen, Konflikt lösen. Jeder Weg führt auf eine starke Unterseite.</p>
       </article>
       <article class="seo-preview-card">
         <h3>3. Vertrauen</h3>
-        <p>Rüdiger Neuer, Team, Zertifizierungen, Siegel, Bewertungen und fachliche Nachweise klar verbinden.</p>
+        <p>Rüdiger Neuer, Zertifizierungen, Mitgliedschaften, Bewertungen und klare Zuständigkeit.</p>
       </article>
       <article class="seo-preview-card">
         <h3>4. Kontakt</h3>
-        <p>Persönliche Kontaktaufnahme als Ziel, nicht das Durchsuchen von Immobilienangeboten.</p>
+        <p>Persönliche Erstberatung statt Objektkatalog. Das passt besser zum Geschäftsmodell.</p>
       </article>
     </div>
   </section>
