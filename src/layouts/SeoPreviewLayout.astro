@@ -11,9 +11,10 @@ interface Props {
   description: string;
   canonicalPath: string;
   eyebrow?: string;
+  heroVariant?: 'compact' | 'home';
 }
 
-const { title, description, canonicalPath, eyebrow = 'Interne SEO-Vorschau' } = Astro.props;
+const { title, description, canonicalPath, eyebrow = 'Interne SEO-Vorschau', heroVariant = 'compact' } = Astro.props;
 const site = import.meta.env.SITE;
 ---
 
@@ -25,25 +26,43 @@ const site = import.meta.env.SITE;
   schema="none"
 >
   <SeoPreviewNavigation />
-  <header class="seo-preview-visual-hero">
-    <Picture src={bannerOper} formats={['avif', 'webp']} alt="" class="seo-preview-visual-hero__image" loading="eager" decoding="async" fetchpriority="high" />
-    <div class="seo-preview-visual-hero__shade"></div>
-    <div class="seo-preview-visual-hero__badge">
-      <Picture src={diaSeal} formats={['avif', 'webp']} alt="Immobilienmakler zertifiziert nach DIN EN 15733" loading="eager" decoding="async" />
-    </div>
-    <div class="seo-preview-visual-hero__inner">
-      <img class="seo-preview-visual-hero__logo" src={`${import.meta.env.BASE_URL}img/logo_pmi_web.svg`} alt="Projekt M Immobilien GmbH - Logo" width="3220" height="1099" decoding="async" fetchpriority="high" />
-      <div class="seo-preview-visual-hero__copy">
-        <p class="seo-preview-eyebrow">{eyebrow}</p>
-        <h1>{title}</h1>
-        <p class="lead">{description}</p>
-      </div>
-      <aside class="seo-preview-hero__aside" aria-label="Preview Status">
-        <strong>Interner Entwurf</strong>
-        <span>Nicht indexierbar, geschützt und noch nicht Teil der Live-Navigation.</span>
-      </aside>
-    </div>
-  </header>
+  {
+    heroVariant === 'home' ? (
+      <header class="seo-preview-visual-hero">
+        <Picture src={bannerOper} formats={['avif', 'webp']} alt="" class="seo-preview-visual-hero__image" loading="eager" decoding="async" fetchpriority="high" />
+        <div class="seo-preview-visual-hero__shade"></div>
+        <div class="seo-preview-visual-hero__badge">
+          <Picture src={diaSeal} formats={['avif', 'webp']} alt="Immobilienmakler zertifiziert nach DIN EN 15733" loading="eager" decoding="async" />
+        </div>
+        <div class="seo-preview-visual-hero__inner">
+          <img class="seo-preview-visual-hero__logo" src={`${import.meta.env.BASE_URL}img/logo_pmi_web.svg`} alt="Projekt M Immobilien GmbH - Logo" width="3220" height="1099" decoding="async" fetchpriority="high" />
+          <div class="seo-preview-visual-hero__copy">
+            <p class="seo-preview-eyebrow">{eyebrow}</p>
+            <h1>{title}</h1>
+            <p class="lead">{description}</p>
+          </div>
+          <aside class="seo-preview-hero__aside" aria-label="Preview Status">
+            <strong>Interner Entwurf</strong>
+            <span>Nicht indexierbar, geschützt und noch nicht Teil der Live-Navigation.</span>
+          </aside>
+        </div>
+      </header>
+    ) : (
+      <header class="seo-preview-compact-hero">
+        <div class="seo-preview-compact-hero__inner">
+          <div>
+            <p class="seo-preview-eyebrow">{eyebrow}</p>
+            <h1>{title}</h1>
+            <p class="lead">{description}</p>
+          </div>
+          <aside class="seo-preview-compact-hero__aside" aria-label="Preview Status">
+            <strong>Interner Entwurf</strong>
+            <span>Dev-Bereich, noindex und noch nicht Teil der Live-Navigation.</span>
+          </aside>
+        </div>
+      </header>
+    )
+  }
   <main id="main-content" class="seo-preview-shell">
     <slot />
   </main>
@@ -152,6 +171,52 @@ const site = import.meta.env.SITE;
   .seo-preview-shell {
     width: min(1180px, calc(100% - 2rem));
     margin: 0 auto 5rem;
+  }
+
+  .seo-preview-compact-hero {
+    border-bottom: 1px solid var(--c-background-gray);
+    background:
+      linear-gradient(135deg, rgba(112, 172, 31, 0.12), rgba(255, 255, 255, 0) 42%),
+      var(--c-gray-100);
+  }
+
+  .seo-preview-compact-hero__inner {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: clamp(3rem, 6vw, 5rem) 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 340px);
+    gap: 2rem;
+    align-items: end;
+  }
+
+  .seo-preview-compact-hero h1 {
+    max-width: 20ch;
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 4vw, 3.6rem);
+    line-height: 1.06;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .seo-preview-compact-hero .lead {
+    max-width: 760px;
+    margin: 0;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .seo-preview-compact-hero__aside {
+    box-sizing: border-box;
+    padding: 1rem 1.1rem;
+    border-left: 4px solid var(--c-primary);
+    background: white;
+    font-size: 1rem;
+  }
+
+  .seo-preview-compact-hero__aside strong,
+  .seo-preview-compact-hero__aside span {
+    display: block;
   }
 
   .seo-preview-hero__aside {
@@ -371,6 +436,64 @@ const site = import.meta.env.SITE;
     margin-top: 0;
   }
 
+  :global(.seo-preview-media-card) {
+    overflow: hidden;
+    border: 1px solid var(--c-background-gray);
+    border-radius: 8px;
+    background: white;
+  }
+
+  :global(.seo-preview-media-card__image) {
+    display: grid;
+    place-items: center;
+    min-height: 240px;
+    padding: 1.5rem;
+    background: var(--c-gray-100);
+  }
+
+  :global(.seo-preview-media-card__image img) {
+    max-width: 100%;
+    max-height: 260px;
+    object-fit: contain;
+  }
+
+  :global(.seo-preview-media-card__body) {
+    padding: 1.25rem;
+  }
+
+  :global(.seo-preview-person-intro) {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.3fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: center;
+  }
+
+  :global(.seo-preview-person-intro__image img) {
+    width: min(320px, 100%);
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+  }
+
+  :global(.seo-preview-person-intro__image) {
+    display: grid;
+    justify-items: center;
+  }
+
+  :global(.seo-preview-location-intro) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: center;
+  }
+
+  :global(.seo-preview-location-intro__map img) {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: var(--shadow-highlight);
+  }
+
   :global(.seo-preview-link) {
     display: inline-flex;
     align-items: center;
@@ -511,8 +634,21 @@ const site = import.meta.env.SITE;
 
     :global(.seo-preview-highlight),
     :global(.seo-preview-feature-tiles),
-    :global(.seo-preview-statement) {
+    :global(.seo-preview-statement),
+    :global(.seo-preview-person-intro),
+    :global(.seo-preview-location-intro),
+    .seo-preview-compact-hero__inner {
       grid-template-columns: 1fr;
+    }
+
+    .seo-preview-compact-hero h1 {
+      font-size: clamp(1.9rem, 9vw, 2.65rem);
+      max-width: 100%;
+    }
+
+    .seo-preview-compact-hero .lead {
+      font-size: 1.1rem;
+      line-height: 1.5;
     }
 
     :global(.seo-preview-highlight) {

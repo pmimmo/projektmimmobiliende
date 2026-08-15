@@ -1,6 +1,9 @@
 ---
+import { Picture } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import SeoPreviewLayout from '../../../layouts/SeoPreviewLayout.astro';
+import mapLandshut from '../../../assets/img/map-landshut.png';
+import mapMuenchen from '../../../assets/img/map-muenchen.png';
 
 export async function getStaticPaths() {
   const locations = await getCollection('locations');
@@ -26,6 +29,11 @@ const base = import.meta.env.BASE_URL;
 
 const title = `Immobilienmakler und Immobilienbewertung in ${location.data.title}`;
 const description = `Interne Vorschau für eine Standortseite zu Projekt M Immobilien in ${location.data.region}.`;
+const mapByLocation = {
+  landshut: mapLandshut,
+  muenchen: mapMuenchen,
+};
+const locationMap = mapByLocation[location.id as keyof typeof mapByLocation];
 ---
 
 <SeoPreviewLayout
@@ -35,12 +43,25 @@ const description = `Interne Vorschau für eine Standortseite zu Projekt M Immob
   eyebrow={location.data.office ? 'Standortseite Büro' : 'Standortseite Region'}
 >
   <section class="seo-preview-section">
-    <div class="seo-preview-grid">
-      <article class="seo-preview-card seo-preview-card--dark">
+    <div class="seo-preview-location-intro">
+      <article class="seo-preview-card">
         <p class="seo-preview-eyebrow">SEO-Aufgabe dieser Seite</p>
         <h2>Lokale Relevanz bündeln</h2>
         <p>Diese Seite soll später erklären, welche Leistungen Projekt M Immobilien in {location.data.title} anbietet und warum die regionale Erfahrung relevant ist.</p>
+        <div class="seo-preview-pill-list">
+          {location.data.services.slice(0, 4).map((id) => <span class="seo-preview-pill">{servicesById.get(id)?.shortTitle || servicesById.get(id)?.title || id}</span>)}
+        </div>
       </article>
+      {locationMap && (
+        <div class="seo-preview-location-intro__map">
+          <Picture src={locationMap} formats={['avif', 'webp']} alt={`Karte ${location.data.title}`} loading="eager" decoding="async" />
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="seo-preview-section">
+    <div class="seo-preview-grid">
       <article class="seo-preview-card">
         <p class="seo-preview-eyebrow">Local SEO</p>
         <h2>NAP und Leistungsbezug stärken</h2>

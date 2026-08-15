@@ -1,6 +1,10 @@
 ---
+import { Picture } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import SeoPreviewLayout from '../../../layouts/SeoPreviewLayout.astro';
+import bannerOper from '../../../assets/img/banner-oper-erweitert.jpg';
+import dekraSeal from '../../../assets/img/DekraImmobilienbewertungD1.png';
+import portraitNeuer from '../../../assets/img/portrait-neuer.jpg';
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
@@ -51,6 +55,13 @@ const serviceDrafts = {
 };
 
 const draft = serviceDrafts[service.id as keyof typeof serviceDrafts];
+const serviceImageById = {
+  immobilienbewertung: dekraSeal,
+  immobilienverkauf: bannerOper,
+  immobilienmediation: portraitNeuer,
+  wohnflaechenberechnung: dekraSeal,
+};
+const serviceImage = serviceImageById[service.id as keyof typeof serviceImageById];
 ---
 
 <SeoPreviewLayout
@@ -61,7 +72,7 @@ const draft = serviceDrafts[service.id as keyof typeof serviceDrafts];
 >
   <section class="seo-preview-section">
     <div class="seo-preview-split">
-      <article class="seo-preview-panel">
+      <article class="seo-preview-card">
         <p class="seo-preview-eyebrow">Seitenentwurf</p>
         <h2>{draft?.cta || service.data.title}</h2>
         <p>{draft?.intro || 'Diese Seite soll später eine konkrete Eigentümerfrage beantworten und daraus zur Kontaktaufnahme führen.'}</p>
@@ -70,10 +81,15 @@ const draft = serviceDrafts[service.id as keyof typeof serviceDrafts];
           <a class="seo-preview-secondary-link" href={`${base}seo-preview/leistungen/`}>Alle Leistungen</a>
         </div>
       </article>
-      <article class="seo-preview-card">
-        <p class="seo-preview-eyebrow">SEO/GEO-Aufgabe</p>
-        <h2>Konkrete Suchintention</h2>
-        <p>{service.data.primarySearchIntent}</p>
+      <article class="seo-preview-media-card">
+        <div class="seo-preview-media-card__image">
+          {serviceImage && <Picture src={serviceImage} formats={['avif', 'webp']} alt="" loading="eager" decoding="async" />}
+        </div>
+        <div class="seo-preview-media-card__body">
+          <p class="seo-preview-eyebrow">SEO/GEO-Aufgabe</p>
+          <h2>Konkrete Suchintention</h2>
+          <p>{service.data.primarySearchIntent}</p>
+        </div>
       </article>
     </div>
   </section>

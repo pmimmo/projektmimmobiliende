@@ -1,6 +1,21 @@
 ---
+import { Picture } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import SeoPreviewLayout from '../../../layouts/SeoPreviewLayout.astro';
+import dekraD1 from '../../../assets/img/DekraImmobilienbewertungD1.png';
+import diaAbsolvent from '../../../assets/img/DiaAbsolvent.jpeg';
+import diaZertMakler from '../../../assets/img/DIAZertMakler.png';
+import diaZertS from '../../../assets/img/DIAZertSrnSmall-ohneSchatten.png';
+import hausGrund from '../../../assets/img/haus+grund.png';
+import immoscout24Silber from '../../../assets/img/immoscout24SilberPartnerSeit2025.png';
+import immoweltPremium from '../../../assets/img/immoWeltPremiumPartner.png';
+import ivd from '../../../assets/img/mitgliedImIvd.png';
+import ivdMarktforschung from '../../../assets/img/2026 - Siegel Partner-Marktforschung ivd schmal.png';
+import ivdWeiterbildung from '../../../assets/img/IVD_2025.png';
+import sprengnetterBesichtiger from '../../../assets/img/SprengnetterImmoBesichtiger-Schadenerkennung.png';
+import sprengnetterMediator from '../../../assets/img/SpregnetterImmoMediator.png';
+import sprengnetterWert from '../../../assets/img/SprengnetterGesicherterImmobilienwert-3D.png';
+import vdiv from '../../../assets/img/vdivImmobilienverwalterBayern.png';
 
 export async function getStaticPaths() {
   const certifications = await getCollection('certifications');
@@ -22,6 +37,25 @@ const belongsTo = certification.data.belongsTo
 
 const title = certification.data.title;
 const description = certification.data.desc;
+const certificationImageById = {
+  'dekra-d1': dekraD1,
+  'dia-absolvent': diaAbsolvent,
+  'dia-zert-din15733': diaZertMakler,
+  'dia-zert-dipl-sach': diaZertS,
+  'dia-zert-s': diaZertS,
+  din15733: diaZertMakler,
+  hausgrund: hausGrund,
+  'immoscout24-silber': immoscout24Silber,
+  'immowelt-premium': immoweltPremium,
+  ivd,
+  'ivd-marktforschung': ivdMarktforschung,
+  'ivd-weiterbildung': ivdWeiterbildung,
+  'sprengnetter-immobesichtiger': sprengnetterBesichtiger,
+  'sprengnetter-immomediator': sprengnetterMediator,
+  'sprengnetter-immowert': sprengnetterWert,
+  vdiv,
+};
+const certificationImage = certificationImageById[certification.id as keyof typeof certificationImageById];
 ---
 
 <SeoPreviewLayout
@@ -31,8 +65,22 @@ const description = certification.data.desc;
   eyebrow="Zertifikat / Siegel Vorschau"
 >
   <section class="seo-preview-section">
-    <div class="seo-preview-grid">
-      <article class="seo-preview-card seo-preview-card--dark">
+    <div class="seo-preview-split">
+      <article class="seo-preview-media-card">
+        <div class="seo-preview-media-card__image">
+          {certificationImage ? (
+            <Picture src={certificationImage} formats={['avif', 'webp']} alt={certification.data.title} loading="eager" decoding="async" />
+          ) : (
+            <strong>{certification.data.issuer || 'Projekt M Immobilien'}</strong>
+          )}
+        </div>
+        <div class="seo-preview-media-card__body">
+          <p class="seo-preview-kicker">{certification.data.category}</p>
+          <h2>{certification.data.issuer || 'Projekt M Immobilien'}</h2>
+          <p>{belongsTo}</p>
+        </div>
+      </article>
+      <article class="seo-preview-card">
         <p class="seo-preview-eyebrow">SEO-Aufgabe dieser Seite</p>
         <h2>Vertrauenssignal erklärbar machen</h2>
         <p>Diese Detailseite kann später erklären, was ein Siegel bedeutet, von wem es stammt und ob es einer Person oder dem Unternehmen zugeordnet ist.</p>

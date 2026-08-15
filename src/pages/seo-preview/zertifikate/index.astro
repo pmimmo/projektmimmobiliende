@@ -1,10 +1,44 @@
 ---
+import { Picture } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import SeoPreviewLayout from '../../../layouts/SeoPreviewLayout.astro';
+import dekraD1 from '../../../assets/img/DekraImmobilienbewertungD1.png';
+import diaAbsolvent from '../../../assets/img/DiaAbsolvent.jpeg';
+import diaZertMakler from '../../../assets/img/DIAZertMakler.png';
+import diaZertS from '../../../assets/img/DIAZertSrnSmall-ohneSchatten.png';
+import hausGrund from '../../../assets/img/haus+grund.png';
+import immoscout24Silber from '../../../assets/img/immoscout24SilberPartnerSeit2025.png';
+import immoweltPremium from '../../../assets/img/immoWeltPremiumPartner.png';
+import ivd from '../../../assets/img/mitgliedImIvd.png';
+import ivdMarktforschung from '../../../assets/img/2026 - Siegel Partner-Marktforschung ivd schmal.png';
+import ivdWeiterbildung from '../../../assets/img/IVD_2025.png';
+import sprengnetterBesichtiger from '../../../assets/img/SprengnetterImmoBesichtiger-Schadenerkennung.png';
+import sprengnetterMediator from '../../../assets/img/SpregnetterImmoMediator.png';
+import sprengnetterWert from '../../../assets/img/SprengnetterGesicherterImmobilienwert-3D.png';
+import vdiv from '../../../assets/img/vdivImmobilienverwalterBayern.png';
 
 const base = import.meta.env.BASE_URL;
 const certifications = (await getCollection('certifications'))
   .sort((a, b) => a.data.title.localeCompare(b.data.title, 'de'));
+
+const certificationImageById = {
+  'dekra-d1': dekraD1,
+  'dia-absolvent': diaAbsolvent,
+  'dia-zert-din15733': diaZertMakler,
+  'dia-zert-dipl-sach': diaZertS,
+  'dia-zert-s': diaZertS,
+  din15733: diaZertMakler,
+  hausgrund: hausGrund,
+  'immoscout24-silber': immoscout24Silber,
+  'immowelt-premium': immoweltPremium,
+  ivd,
+  'ivd-marktforschung': ivdMarktforschung,
+  'ivd-weiterbildung': ivdWeiterbildung,
+  'sprengnetter-immobesichtiger': sprengnetterBesichtiger,
+  'sprengnetter-immomediator': sprengnetterMediator,
+  'sprengnetter-immowert': sprengnetterWert,
+  vdiv,
+};
 ---
 
 <SeoPreviewLayout
@@ -20,10 +54,19 @@ const certifications = (await getCollection('certifications'))
     </div>
     <div class="seo-preview-grid">
       {certifications.map((certification) => (
-        <a class="seo-preview-card seo-preview-card-link" href={`${base}seo-preview/zertifikate/${certification.id}/`}>
-          <span class="seo-preview-kicker">{certification.data.category}</span>
-          <h3>{certification.data.title}</h3>
-          <p>{certification.data.issuer || 'Projekt M Immobilien'}</p>
+        <a class="seo-preview-media-card seo-preview-card-link" href={`${base}seo-preview/zertifikate/${certification.id}/`}>
+          <div class="seo-preview-media-card__image">
+            {certificationImageById[certification.id as keyof typeof certificationImageById] ? (
+              <Picture src={certificationImageById[certification.id as keyof typeof certificationImageById]} formats={['avif', 'webp']} alt={certification.data.title} loading="lazy" decoding="async" />
+            ) : (
+              <strong>{certification.data.issuer || 'Projekt M Immobilien'}</strong>
+            )}
+          </div>
+          <div class="seo-preview-media-card__body">
+            <span class="seo-preview-kicker">{certification.data.category}</span>
+            <h3>{certification.data.title}</h3>
+            <p>{certification.data.issuer || 'Projekt M Immobilien'}</p>
+          </div>
         </a>
       ))}
     </div>
