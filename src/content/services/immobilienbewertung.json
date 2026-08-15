@@ -1,0 +1,10 @@
+{
+  "title": "Immobilienbewertung und Gutachten",
+  "shortTitle": "Immobiliengutachter",
+  "status": "active",
+  "locations": ["muenchen", "landshut"],
+  "relatedCertifications": ["dekra-d1", "dia-zert-s", "dia-zert-dipl-sach", "hypzert-s", "sprengnetter-immowert"],
+  "relatedPeople": ["ruediger-neuer"],
+  "primarySearchIntent": "Eigentümer suchen eine fachlich belastbare Immobilienbewertung, ein Marktwertgutachten oder Verkehrswertgutachten.",
+  "previewPage": true
+}

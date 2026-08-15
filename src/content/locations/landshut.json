@@ -1,0 +1,8 @@
+{
+  "title": "Landshut",
+  "region": "Landshut und Umgebung",
+  "office": false,
+  "services": ["immobilienbewertung", "immobilienverkauf", "immobilienmediation", "wohnflaechenberechnung"],
+  "relatedPeople": ["ruediger-neuer", "juergen-gebhard"],
+  "previewPage": true
+}

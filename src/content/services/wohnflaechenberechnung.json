@@ -1,0 +1,10 @@
+{
+  "title": "Wohnflächenberechnung",
+  "shortTitle": "Wohnflächenberechnung",
+  "status": "planned",
+  "locations": ["muenchen", "landshut"],
+  "relatedCertifications": [],
+  "relatedPeople": ["ruediger-neuer"],
+  "primarySearchIntent": "Eigentümer benötigen eine nachvollziehbare Berechnung oder Prüfung der Wohnfläche.",
+  "previewPage": false
+}

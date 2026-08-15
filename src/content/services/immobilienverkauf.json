@@ -1,0 +1,10 @@
+{
+  "title": "Immobilienverkauf und diskrete Vermittlung",
+  "shortTitle": "Immobilienmakler",
+  "status": "active",
+  "locations": ["muenchen", "landshut"],
+  "relatedCertifications": ["din15733", "dia-zert-din15733", "ivd", "vdiv", "hausgrund"],
+  "relatedPeople": ["ruediger-neuer", "juergen-gebhard"],
+  "primarySearchIntent": "Eigentümer suchen einen Immobilienmakler für diskreten Verkauf ohne öffentliches Objekt-Schaufenster.",
+  "previewPage": true
+}

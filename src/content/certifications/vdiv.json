@@ -1,0 +1,8 @@
+{
+  "title": "Mitglied im vdiv – Verband der Immobilienverwalter Bayern",
+  "desc": "Der vdiv Bayern ist Teil eines bundesweiten Netzwerks professioneller Haus- und Immobilienverwalter:innen.",
+  "issuer": "vdiv Bayern",
+  "category": "membership",
+  "belongsTo": ["projekt-m-immobilien"],
+  "visibleOnStartPage": true
+}

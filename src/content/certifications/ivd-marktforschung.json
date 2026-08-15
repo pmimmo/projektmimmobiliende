@@ -1,0 +1,8 @@
+{
+  "title": "Partner der IVD-Marktforschung",
+  "desc": "Dieses Siegel kennzeichnet Unternehmen, die aktiv an Datenerhebung und Marktanalyse im Immobiliensektor mitwirken.",
+  "issuer": "IVD-Marktforschung",
+  "category": "membership",
+  "belongsTo": ["projekt-m-immobilien"],
+  "visibleOnStartPage": true
+}

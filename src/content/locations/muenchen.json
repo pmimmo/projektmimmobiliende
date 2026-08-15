@@ -1,0 +1,8 @@
+{
+  "title": "München",
+  "region": "München und Umgebung",
+  "office": true,
+  "services": ["immobilienbewertung", "immobilienverkauf", "immobilienmediation", "wohnflaechenberechnung"],
+  "relatedPeople": ["ruediger-neuer", "juergen-gebhard"],
+  "previewPage": true
+}

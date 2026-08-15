@@ -1,0 +1,8 @@
+{
+  "title": "ImmoScout24 Silber Partner seit 2025",
+  "desc": "Das Silber-Siegel von ImmoScout24 wird an Partnerunternehmen verliehen, die durch Aktivität, Bewertungen und professionelle Objektpräsentation überzeugen.",
+  "issuer": "ImmoScout24",
+  "category": "platform",
+  "belongsTo": ["projekt-m-immobilien"],
+  "visibleOnStartPage": true
+}

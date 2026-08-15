@@ -1,0 +1,8 @@
+{
+  "title": "Wir beschäftigen HypZert-zertifizierte Gutachter:innen",
+  "desc": "HypZert ist eine führende Zertifizierungsstelle für Immobiliengutachter:innen in der Finanzwirtschaft.",
+  "issuer": "HypZert",
+  "category": "certification",
+  "belongsTo": ["ruediger-neuer"],
+  "visibleOnStartPage": true
+}

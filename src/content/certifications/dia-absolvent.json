@@ -1,0 +1,9 @@
+{
+  "title": "Absolvent/in der Deutschen Immobilien-Akademie (DIA)",
+  "desc": "Die Deutsche Immobilien-Akademie (DIA) ist eine der führenden Bildungseinrichtungen in der Immobilienwirtschaft.",
+  "issuer": "Deutsche Immobilien-Akademie",
+  "category": "education",
+  "holder": "Rüdiger Neuer",
+  "belongsTo": ["ruediger-neuer"],
+  "visibleOnStartPage": true
+}

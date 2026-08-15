@@ -1,0 +1,8 @@
+{
+  "title": "Immobilienmakler zertifiziert nach DIN EN 15733",
+  "desc": "DIN EN 15733 ist die europaweit gültige Norm für Immobilienmakler. Sie bestätigt Mindestqualifikation, regelt Informationspflichten und verpflichtet zu einem Moralkodex inklusive Versicherung und Beschwerdemanagement. Die Zertifizierung erfolgt auf freiwilliger Basis.",
+  "issuer": "DIA Consulting AG",
+  "category": "certification",
+  "belongsTo": ["ruediger-neuer"],
+  "visibleOnStartPage": true
+}

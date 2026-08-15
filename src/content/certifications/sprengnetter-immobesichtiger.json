@@ -1,0 +1,8 @@
+{
+  "title": "SPRENGNETTER ImmoBesichtiger – Schadenerkennung",
+  "desc": "Dieses Siegel bescheinigt die Qualifikation, bei Objektbesichtigungen Bau- und Instandhaltungsmängel zuverlässig zu erkennen und korrekt zu dokumentieren.",
+  "issuer": "Sprengnetter",
+  "category": "certification",
+  "belongsTo": ["ruediger-neuer"],
+  "visibleOnStartPage": true
+}

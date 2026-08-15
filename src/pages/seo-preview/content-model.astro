@@ -1,0 +1,230 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const site = import.meta.env.SITE;
+
+const [certifications, people, services, locations] = await Promise.all([
+  getCollection('certifications'),
+  getCollection('people'),
+  getCollection('services'),
+  getCollection('locations'),
+]);
+
+const peopleById = new Map(people.map((person) => [person.id, person.data]));
+const certificationsById = new Map(certifications.map((certification) => [certification.id, certification.data]));
+const locationsById = new Map(locations.map((location) => [location.id, location.data]));
+
+const sortedPeople = people.sort((a, b) => a.data.name.localeCompare(b.data.name, 'de'));
+const sortedServices = services.sort((a, b) => a.data.title.localeCompare(b.data.title, 'de'));
+const sortedLocations = locations.sort((a, b) => a.data.title.localeCompare(b.data.title, 'de'));
+const sortedCertifications = certifications.sort((a, b) => a.data.title.localeCompare(b.data.title, 'de'));
+
+function labelFromMap<T extends { title?: string; name?: string }>(map: Map<string, T>, id: string): string {
+  const entry = map.get(id);
+  return entry?.title || entry?.name || id;
+}
+---
+
+<BaseLayout
+  title="SEO Preview: Content-Modell – Projekt M Immobilien"
+  description="Interne Vorschau für das neue SEO-Content-Modell von Projekt M Immobilien."
+  canonical={`${site}/seo-preview/content-model/`}
+  robots="noindex, nofollow"
+  schema="none"
+>
+  <Navigation />
+  <main id="main-content" class="preview-shell">
+    <section class="preview-hero">
+      <p class="eyebrow">Interne Vorschau</p>
+      <h1>SEO-Content-Modell</h1>
+      <p class="lead">Diese Seite zeigt die neue Datenbasis für Zertifizierungen, Personen, Leistungen und Standorte. Sie ist nicht für die öffentliche Navigation gedacht.</p>
+    </section>
+
+    <section class="preview-section" aria-labelledby="people-heading">
+      <h2 id="people-heading">Teamdaten</h2>
+      <div class="preview-grid">
+        {sortedPeople.map((person) => (
+          <article class="preview-card">
+            <p class="eyebrow">{person.data.role === 'owner' ? 'Inhaber' : 'Team'}</p>
+            <h3>{person.data.name}</h3>
+            <p>{person.data.jobTitle}</p>
+            {person.data.shortBio && <p>{person.data.shortBio}</p>}
+            <dl>
+              <div>
+                <dt>Standorte</dt>
+                <dd>{person.data.locations.map((id) => labelFromMap(locationsById, id)).join(', ') || 'Noch nicht zugeordnet'}</dd>
+              </div>
+              <div>
+                <dt>Zertifizierungen</dt>
+                <dd>{person.data.certifications.map((id) => labelFromMap(certificationsById, id)).join(', ') || 'Keine personenbezogenen Zertifikate hinterlegt'}</dd>
+              </div>
+            </dl>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="preview-section" aria-labelledby="services-heading">
+      <h2 id="services-heading">Leistungsmodell</h2>
+      <div class="preview-grid">
+        {sortedServices.map((service) => (
+          <article class="preview-card">
+            <p class="eyebrow">{service.data.status === 'active' ? 'Aktiv' : 'Geplant'}</p>
+            <h3>{service.data.title}</h3>
+            <p>{service.data.primarySearchIntent}</p>
+            <dl>
+              <div>
+                <dt>Personen</dt>
+                <dd>{service.data.relatedPeople.map((id) => labelFromMap(peopleById, id)).join(', ') || 'Noch nicht zugeordnet'}</dd>
+              </div>
+              <div>
+                <dt>Zertifikate</dt>
+                <dd>{service.data.relatedCertifications.map((id) => labelFromMap(certificationsById, id)).join(', ') || 'Keine direkte Zuordnung'}</dd>
+              </div>
+            </dl>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="preview-section" aria-labelledby="locations-heading">
+      <h2 id="locations-heading">Standorte</h2>
+      <div class="preview-grid two">
+        {sortedLocations.map((location) => (
+          <article class="preview-card">
+            <p class="eyebrow">{location.data.office ? 'Bürostandort' : 'Einzugsgebiet'}</p>
+            <h3>{location.data.title}</h3>
+            <p>{location.data.region}</p>
+            <dl>
+              <div>
+                <dt>Leistungen</dt>
+                <dd>{location.data.services.map((id) => labelFromMap(new Map(services.map((service) => [service.id, service.data])), id)).join(', ')}</dd>
+              </div>
+              <div>
+                <dt>Personen</dt>
+                <dd>{location.data.relatedPeople.map((id) => labelFromMap(peopleById, id)).join(', ')}</dd>
+              </div>
+            </dl>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="preview-section" aria-labelledby="certifications-heading">
+      <h2 id="certifications-heading">Zertifikate, Siegel und Mitgliedschaften</h2>
+      <div class="certification-table" role="table" aria-label="Zertifikate und Zuordnungen">
+        <div class="table-row table-head" role="row">
+          <span role="columnheader">Name</span>
+          <span role="columnheader">Kategorie</span>
+          <span role="columnheader">Herausgeber</span>
+          <span role="columnheader">Zuordnung</span>
+        </div>
+        {sortedCertifications.map((certification) => (
+          <div class="table-row" role="row">
+            <span role="cell">{certification.data.title}</span>
+            <span role="cell">{certification.data.category}</span>
+            <span role="cell">{certification.data.issuer || 'Nicht hinterlegt'}</span>
+            <span role="cell">{certification.data.belongsTo.map((id) => labelFromMap(peopleById, id)).join(', ') || 'Projekt M Immobilien'}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .preview-shell {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto 5rem;
+  }
+
+  .preview-hero {
+    padding: 2rem 0 3rem;
+    border-bottom: 1px solid var(--c-background-gray);
+  }
+
+  .preview-section {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--c-background-gray);
+  }
+
+  .eyebrow {
+    margin-bottom: 0.5rem;
+    color: var(--c-primary-dark);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .preview-grid.two {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+
+  .preview-card {
+    padding: 1.25rem;
+    border: 1px solid var(--c-background-gray);
+    border-radius: 8px;
+    background: var(--c-gray-100);
+  }
+
+  dl {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+
+  dt {
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  .certification-table {
+    display: grid;
+    border: 1px solid var(--c-background-gray);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .table-row {
+    display: grid;
+    grid-template-columns: minmax(220px, 1.5fr) minmax(120px, 0.65fr) minmax(160px, 0.85fr) minmax(180px, 1fr);
+    gap: 1rem;
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid var(--c-background-gray);
+  }
+
+  .table-row:last-child {
+    border-bottom: 0;
+  }
+
+  .table-head {
+    background: var(--c-background-dark);
+    color: var(--c-text-light);
+    font-weight: 700;
+  }
+
+  @media (max-width: 800px) {
+    .table-row {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+
+    .table-head {
+      display: none;
+    }
+  }
+</style>

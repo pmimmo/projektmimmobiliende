@@ -1,0 +1,8 @@
+{
+  "title": "DIA Zert – Zertifiziert nach EU-Norm DIN EN 15733",
+  "desc": "Das DIA-Zertifikat nach DIN EN 15733 bestätigt die Einhaltung europäischer Qualitätsstandards für Immobilienmakler.",
+  "issuer": "DIA Consulting AG",
+  "category": "certification",
+  "belongsTo": ["ruediger-neuer"],
+  "visibleOnStartPage": true
+}

@@ -1,0 +1,8 @@
+{
+  "title": "HypZert S – Real Estate Valuer for Standard Properties",
+  "desc": "Das HypZert S-Zertifikat bestätigt Qualifikation für Markt- und Beleihungswertermittlungen standardisierter Wohnimmobilien.",
+  "issuer": "HypZert",
+  "category": "certification",
+  "belongsTo": ["ruediger-neuer"],
+  "visibleOnStartPage": true
+}

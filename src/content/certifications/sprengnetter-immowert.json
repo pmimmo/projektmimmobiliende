@@ -1,0 +1,8 @@
+{
+  "title": "SPRENGNETTER Gesicherter ImmoWert",
+  "desc": "Dieses Qualitätssiegel bestätigt, dass die Wertermittlung auf standardisierten, geprüften Verfahren und aktueller Marktkenntnis basiert.",
+  "issuer": "Sprengnetter",
+  "category": "certification",
+  "belongsTo": ["ruediger-neuer"],
+  "visibleOnStartPage": true
+}

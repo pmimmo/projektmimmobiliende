@@ -1,0 +1,8 @@
+{
+  "title": "immowelt Premium Partner",
+  "desc": "Das Premium-Siegel von Immowelt kennzeichnet Immobilienunternehmen mit hoher Servicequalität und starker Präsenz auf der Plattform.",
+  "issuer": "immowelt",
+  "category": "platform",
+  "belongsTo": ["projekt-m-immobilien"],
+  "visibleOnStartPage": true
+}

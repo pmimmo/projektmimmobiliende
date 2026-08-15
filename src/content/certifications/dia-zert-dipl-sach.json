@@ -1,0 +1,10 @@
+{
+  "title": "Diplom-Sachverständige/r (DIA)",
+  "desc": "Der Titel Diplom-Sachverständige/r (DIA) steht für umfassende Fachkompetenz in der Bewertung bebauter und unbebauter Grundstücke sowie der Bewertung von Mieten und Pachten.",
+  "issuer": "Deutsche Immobilien-Akademie",
+  "category": "education",
+  "holder": "Rüdiger Neuer",
+  "belongsTo": ["ruediger-neuer"],
+  "link": "https://www.dia.de/de/657/?credential=6b8e7a13-3e59-4930-a8ee-e2c27078db58",
+  "visibleOnStartPage": true
+}

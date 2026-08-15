@@ -1,0 +1,9 @@
+{
+  "title": "DEKRA Sachverständige/r Immobilienbewertung D1",
+  "desc": "Das D1-Zertifikat bestätigt besondere Fachkompetenz bei der Bewertung von Standard-Ein- und Zweifamilienhäusern. Geprüfte Sachverständige verfügen über fundiertes Fachwissen, rechtliche Kenntnisse und praktische Erfahrung in der Wertermittlung.",
+  "issuer": "DEKRA",
+  "category": "certification",
+  "holder": "Rüdiger Neuer",
+  "belongsTo": ["ruediger-neuer"],
+  "visibleOnStartPage": true
+}

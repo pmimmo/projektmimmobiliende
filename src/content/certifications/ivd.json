@@ -1,0 +1,8 @@
+{
+  "title": "Mitglied im IVD",
+  "desc": "Mitglieder im Immobilienverband Deutschland (IVD) verpflichten sich zu Berufs- und Wettbewerbsregeln, fortlaufender Weiterbildung und transparenter Kundenkommunikation.",
+  "issuer": "Immobilienverband Deutschland",
+  "category": "membership",
+  "belongsTo": ["projekt-m-immobilien"],
+  "visibleOnStartPage": true
+}

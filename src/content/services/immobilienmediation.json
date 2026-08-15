@@ -1,0 +1,10 @@
+{
+  "title": "Immobilienmediation",
+  "shortTitle": "Immobilienmediator",
+  "status": "active",
+  "locations": ["muenchen", "landshut"],
+  "relatedCertifications": ["sprengnetter-immomediator"],
+  "relatedPeople": ["ruediger-neuer"],
+  "primarySearchIntent": "Parteien mit Immobilienkonflikten suchen neutrale Begleitung bei Erbe, Scheidung, Miteigentum oder Verkauf.",
+  "previewPage": true
+}

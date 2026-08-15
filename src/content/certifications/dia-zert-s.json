@@ -1,0 +1,10 @@
+{
+  "title": "Zertifizierter Immobiliengutachter S (DIAZert)",
+  "desc": "Zertifizierter Gutachter für Markt- und Beleihungswertermittlung von Standardimmobilien (S) gemäß ImmoWertV und BelWertV.",
+  "issuer": "DIA Consulting AG",
+  "category": "certification",
+  "holder": "Rüdiger Neuer",
+  "belongsTo": ["ruediger-neuer"],
+  "link": "https://www.diaconsulting.de/de/140/?credential=f2930293-be2a-4652-8850-f588d017f5fb",
+  "visibleOnStartPage": true
+}

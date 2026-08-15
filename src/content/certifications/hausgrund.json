@@ -1,0 +1,8 @@
+{
+  "title": "HAUS+GRUND MÜNCHEN – Haus- und Grundbesitzerverein München und Umgebung e. V.",
+  "desc": "HAUS+GRUND München ist die unabhängige Interessenvertretung für Eigentümer:innen von Häusern, Wohnungen und Grundstücken.",
+  "issuer": "HAUS+GRUND München",
+  "category": "membership",
+  "belongsTo": ["projekt-m-immobilien"],
+  "visibleOnStartPage": true
+}

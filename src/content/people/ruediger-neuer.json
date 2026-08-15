@@ -1,0 +1,21 @@
+{
+  "name": "Rüdiger Neuer",
+  "jobTitle": "Inhaber und Geschäftsführer, Immobiliengutachter und Immobilienmediator",
+  "role": "owner",
+  "locations": ["muenchen", "landshut"],
+  "serviceFocus": ["immobilienbewertung", "immobilienverkauf", "immobilienmediation"],
+  "certifications": [
+    "dekra-d1",
+    "dia-zert-s",
+    "dia-zert-dipl-sach",
+    "sprengnetter-immowert",
+    "sprengnetter-immomediator",
+    "sprengnetter-immobesichtiger",
+    "dia-absolvent",
+    "dia-zert-din15733",
+    "din15733"
+  ],
+  "image": "../assets/img/portrait-neuer.jpg",
+  "shortBio": "Fachlicher Ansprechpartner für Immobilienbewertung, Gutachten, diskrete Vermittlung und Immobilienmediation.",
+  "showDetailPage": true
+}

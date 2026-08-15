@@ -1,0 +1,11 @@
+{
+  "name": "Jürgen Gebhard",
+  "jobTitle": "Immobilienmakler",
+  "role": "team",
+  "locations": ["landshut", "muenchen"],
+  "serviceFocus": ["immobilienverkauf"],
+  "certifications": [],
+  "image": "../assets/img/portrait-gebhard.jpg",
+  "shortBio": "Ansprechpartner für Immobilienvermittlung mit regionalem Netzwerk, insbesondere im Raum Landshut.",
+  "showDetailPage": true
+}

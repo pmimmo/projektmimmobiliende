@@ -1,0 +1,8 @@
+{
+  "title": "IVD-Immobilien-Weiterbildungssiegel",
+  "desc": "Das Siegel bestätigt kontinuierliche Qualifizierung durch anerkannte Fortbildung.",
+  "issuer": "Immobilienverband Deutschland",
+  "category": "education",
+  "belongsTo": ["projekt-m-immobilien"],
+  "visibleOnStartPage": true
+}

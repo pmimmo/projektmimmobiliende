@@ -1,0 +1,8 @@
+{
+  "title": "SPRENGNETTER ImmoMediator",
+  "desc": "Dieses Siegel steht für geprüfte Kompetenz in Mediation und Konfliktlösung im Immobilienbereich.",
+  "issuer": "Sprengnetter",
+  "category": "certification",
+  "belongsTo": ["ruediger-neuer"],
+  "visibleOnStartPage": true
+}
