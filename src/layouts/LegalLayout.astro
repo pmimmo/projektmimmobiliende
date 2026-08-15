@@ -8,9 +8,11 @@ interface Props {
   description?: string;
   canonical?: string;
   breadcrumbTitle?: string;
+  robots?: string;
+  schema?: 'business' | 'none';
 }
 
-const { title, description, canonical, breadcrumbTitle } = Astro.props;
+const { title, description, canonical, breadcrumbTitle, robots, schema = 'none' } = Astro.props;
 ---
 <BaseLayout
   title={title}
@@ -19,6 +21,8 @@ const { title, description, canonical, breadcrumbTitle } = Astro.props;
   ogType="website"
   dataPage="legal"
   breadcrumbTitle={breadcrumbTitle}
+  robots={robots}
+  schema={schema}
 >
   <Navigation />
   <main id="main-content" class="container">

@@ -14,6 +14,7 @@ interface Props {
   dataPage?: string;
   breadcrumbTitle?: string;
   robots?: string;
+  schema?: 'business' | 'none';
 }
 
 const {
@@ -26,6 +27,7 @@ const {
   dataPage,
   breadcrumbTitle,
   robots = 'index, follow',
+  schema = 'business',
 } = Astro.props;
 
 const site = import.meta.env.SITE;
@@ -68,7 +70,7 @@ const isDev = import.meta.env.BASE_URL !== '/';
   {canonical && <meta property="og:url" content={canonical} />}
   {ogImage && <meta property="og:image" content={ogImage} />}
   <meta property="og:site_name" content="Projekt M Immobilien GmbH" />
-  <meta property="og:logo" content={`${site}/img/logo.png`} />
+  <meta property="og:logo" content={`${site}/img/logo_pmi_web.svg`} />
 
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -77,14 +79,15 @@ const isDev = import.meta.env.BASE_URL !== '/';
   {ogImage && <meta name="twitter:image" content={ogImage} />}
 
   <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json" set:html={JSON.stringify({
+  {schema === 'business' && (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "name": "Projekt M Immobilien GmbH",
     "image": [
       `${site}/img/openGraph.png`,
       `${site}/img/portrait-neuer.jpg`,
-      `${site}/img/logo.png`
+      `${site}/img/logo_pmi_web.svg`
     ],
     "description": description || "",
     "address": {
@@ -177,15 +180,16 @@ const isDev = import.meta.env.BASE_URL !== '/';
         }
       ]
     }
-  })} />
+    })} />
+  )}
 
   {breadcrumbTitle && (
-    <script type="application/ld+json" set:html={JSON.stringify({
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Startseite", "item": `${site}/` },
-        { "@type": "ListItem", "position": 2, "name": breadcrumbTitle }
+        { "@type": "ListItem", "position": 2, "name": breadcrumbTitle, "item": canonical || `${site}/` }
       ]
     })} />
   )}

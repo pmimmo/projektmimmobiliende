@@ -13,7 +13,13 @@ export default defineConfig({
   server: {
     host: true,
   },
-  integrations: process.env.ASTRO_BASE ? [] : [sitemap()],
+  integrations: process.env.ASTRO_BASE
+    ? []
+    : [
+        sitemap({
+          filter: (page) => !page.includes('/widerruf/danke/'),
+        }),
+      ],
   image: {
     service: {
       entrypoint: 'astro/assets/services/sharp',
