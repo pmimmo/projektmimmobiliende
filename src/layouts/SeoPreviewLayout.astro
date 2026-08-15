@@ -1,0 +1,100 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  eyebrow?: string;
+}
+
+const { title, description, canonicalPath, eyebrow = 'Interne SEO-Vorschau' } = Astro.props;
+const site = import.meta.env.SITE;
+---
+
+<BaseLayout
+  title={`${title} – Projekt M Immobilien`}
+  description={description}
+  canonical={`${site}${canonicalPath}`}
+  robots="noindex, nofollow"
+  schema="none"
+>
+  <Navigation />
+  <main id="main-content" class="seo-preview-shell">
+    <section class="seo-preview-hero">
+      <p class="seo-preview-eyebrow">{eyebrow}</p>
+      <h1>{title}</h1>
+      <p class="lead">{description}</p>
+    </section>
+    <slot />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .seo-preview-shell {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto 5rem;
+  }
+
+  .seo-preview-hero {
+    padding: 2rem 0 3rem;
+    border-bottom: 1px solid var(--c-background-gray);
+  }
+
+  .seo-preview-eyebrow,
+  :global(.seo-preview-eyebrow) {
+    margin-bottom: 0.5rem;
+    color: var(--c-primary-dark);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  :global(.seo-preview-section) {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--c-background-gray);
+  }
+
+  :global(.seo-preview-grid) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  :global(.seo-preview-card) {
+    padding: 1.25rem;
+    border: 1px solid var(--c-background-gray);
+    border-radius: 8px;
+    background: var(--c-gray-100);
+  }
+
+  :global(.seo-preview-card h2),
+  :global(.seo-preview-card h3) {
+    margin-top: 0;
+  }
+
+  :global(.seo-preview-link) {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0.75rem;
+    font-weight: 700;
+  }
+
+  :global(.seo-preview-dl) {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+
+  :global(.seo-preview-dl dt) {
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  :global(.seo-preview-dl dd) {
+    margin: 0;
+  }
+</style>

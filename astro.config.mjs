@@ -17,7 +17,7 @@ export default defineConfig({
     ? []
     : [
         sitemap({
-          filter: (page) => !page.includes('/widerruf/danke/'),
+          filter: (page) => !page.includes('/widerruf/danke/') && !page.includes('/seo-preview/'),
         }),
       ],
   image: {

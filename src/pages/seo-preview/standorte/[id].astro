@@ -1,0 +1,86 @@
+---
+import { getCollection } from 'astro:content';
+import SeoPreviewLayout from '../../../layouts/SeoPreviewLayout.astro';
+
+export async function getStaticPaths() {
+  const locations = await getCollection('locations');
+
+  return locations
+    .filter((location) => location.data.previewPage)
+    .map((location) => ({
+      params: { id: location.id },
+      props: { location },
+    }));
+}
+
+const { location } = Astro.props;
+
+const [services, people] = await Promise.all([
+  getCollection('services'),
+  getCollection('people'),
+]);
+
+const servicesById = new Map(services.map((service) => [service.id, service.data]));
+const peopleById = new Map(people.map((person) => [person.id, person.data]));
+
+const title = `Immobilienmakler und Immobilienbewertung in ${location.data.title}`;
+const description = `Interne Vorschau für eine Standortseite zu Projekt M Immobilien in ${location.data.region}.`;
+---
+
+<SeoPreviewLayout
+  title={title}
+  description={description}
+  canonicalPath={`/seo-preview/standorte/${location.id}/`}
+  eyebrow={location.data.office ? 'Standortseite Büro' : 'Standortseite Region'}
+>
+  <section class="seo-preview-section">
+    <div class="seo-preview-grid">
+      <article class="seo-preview-card">
+        <p class="seo-preview-eyebrow">SEO-Aufgabe dieser Seite</p>
+        <h2>Lokale Relevanz bündeln</h2>
+        <p>Diese Seite soll später erklären, welche Leistungen Projekt M Immobilien in {location.data.title} anbietet und warum die regionale Erfahrung relevant ist.</p>
+      </article>
+      <article class="seo-preview-card">
+        <p class="seo-preview-eyebrow">Local SEO</p>
+        <h2>NAP und Leistungsbezug stärken</h2>
+        <p>Der Standort soll mit Leistungen, Ansprechpartnern, Google Business Profile und konsistenten Unternehmensdaten verbunden werden.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="seo-preview-section">
+    <h2>Daten aus der Collection</h2>
+    <dl class="seo-preview-dl">
+      <div>
+        <dt>Region</dt>
+        <dd>{location.data.region}</dd>
+      </div>
+      <div>
+        <dt>Bürostandort</dt>
+        <dd>{location.data.office ? 'Ja' : 'Nein, Einzugsgebiet / regionale Zielseite'}</dd>
+      </div>
+      <div>
+        <dt>Leistungen</dt>
+        <dd>{location.data.services.map((id) => servicesById.get(id)?.title || id).join(', ')}</dd>
+      </div>
+      <div>
+        <dt>Ansprechpartner</dt>
+        <dd>{location.data.relatedPeople.map((id) => peopleById.get(id)?.name || id).join(', ')}</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="seo-preview-section">
+    <h2>Beispielhafte Inhaltsmodule</h2>
+    <div class="seo-preview-grid">
+      <article class="seo-preview-card">
+        <h3>Leistungen vor Ort</h3>
+        <p>Immobilienverkauf, Immobilienbewertung, Mediation und Wohnflächenprüfung werden auf den lokalen Kontext bezogen.</p>
+      </article>
+      <article class="seo-preview-card">
+        <h3>Regionale Situationen</h3>
+        <p>Erbe, Scheidung, diskreter Verkauf, Gutachten oder Vorbereitung eines Verkaufs können als konkrete Anlässe erklärt werden.</p>
+      </article>
+    </div>
+  </section>
+</SeoPreviewLayout>

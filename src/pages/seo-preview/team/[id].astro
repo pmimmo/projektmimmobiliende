@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import SeoPreviewLayout from '../../../layouts/SeoPreviewLayout.astro';
+
+export async function getStaticPaths() {
+  const people = await getCollection('people');
+
+  return people
+    .filter((person) => person.data.showDetailPage)
+    .map((person) => ({
+      params: { id: person.id },
+      props: { person },
+    }));
+}
+
+const { person } = Astro.props;
+
+const [certifications, services, locations] = await Promise.all([
+  getCollection('certifications'),
+  getCollection('services'),
+  getCollection('locations'),
+]);
+
+const certificationsById = new Map(certifications.map((certification) => [certification.id, certification.data]));
+const servicesById = new Map(services.map((service) => [service.id, service.data]));
+const locationsById = new Map(locations.map((location) => [location.id, location.data]));
+
+const title = `${person.data.name}: ${person.data.jobTitle}`;
+const description = person.data.shortBio || `${person.data.name} bei Projekt M Immobilien.`;
+---
+
+<SeoPreviewLayout
+  title={title}
+  description={description}
+  canonicalPath={`/seo-preview/team/${person.id}/`}
+  eyebrow={person.data.role === 'owner' ? 'Personenprofil Inhaber' : 'Personenprofil Team'}
+>
+  <section class="seo-preview-section">
+    <div class="seo-preview-grid">
+      <article class="seo-preview-card">
+        <p class="seo-preview-eyebrow">SEO-Aufgabe dieser Seite</p>
+        <h2>Expertise sichtbar machen</h2>
+        <p>Diese Seite soll später personenbezogene Erfahrung, Rollen, Zertifizierungen und regionale Zuständigkeit bündig erklären.</p>
+      </article>
+      <article class="seo-preview-card">
+        <p class="seo-preview-eyebrow">Geplanter Seitentyp</p>
+        <h2>Team-Detailseite</h2>
+        <p>Geeignet für E-E-A-T-Signale, interne Verlinkung und klare Zuordnung von Gutachter-, Makler- und Mediationskompetenz.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="seo-preview-section">
+    <h2>Daten aus der Collection</h2>
+    <dl class="seo-preview-dl">
+      <div>
+        <dt>Rolle</dt>
+        <dd>{person.data.role === 'owner' ? 'Inhaber / Geschäftsführung' : 'Team'}</dd>
+      </div>
+      <div>
+        <dt>Standorte</dt>
+        <dd>{person.data.locations.map((id) => locationsById.get(id)?.title || id).join(', ')}</dd>
+      </div>
+      <div>
+        <dt>Leistungsfokus</dt>
+        <dd>{person.data.serviceFocus.map((id) => servicesById.get(id)?.title || id).join(', ') || 'Noch nicht hinterlegt'}</dd>
+      </div>
+      <div>
+        <dt>Zertifizierungen</dt>
+        <dd>{person.data.certifications.map((id) => certificationsById.get(id)?.title || id).join(', ') || 'Keine personenbezogenen Zertifikate hinterlegt'}</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="seo-preview-section">
+    <h2>Beispielhafte Inhaltsmodule</h2>
+    <div class="seo-preview-grid">
+      <article class="seo-preview-card">
+        <h3>Profiltext</h3>
+        <p>{person.data.shortBio}</p>
+      </article>
+      <article class="seo-preview-card">
+        <h3>Verknüpfungen</h3>
+        <p>Von hier aus können später passende Leistungsseiten, Standortseiten und Zertifikatsseiten automatisch verlinkt werden.</p>
+      </article>
+    </div>
+  </section>
+</SeoPreviewLayout>

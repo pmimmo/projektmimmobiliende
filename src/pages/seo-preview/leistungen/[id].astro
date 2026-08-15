@@ -1,0 +1,92 @@
+---
+import { getCollection } from 'astro:content';
+import SeoPreviewLayout from '../../../layouts/SeoPreviewLayout.astro';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+
+  return services
+    .filter((service) => service.data.previewPage)
+    .map((service) => ({
+      params: { id: service.id },
+      props: { service },
+    }));
+}
+
+const { service } = Astro.props;
+
+const [certifications, people, locations] = await Promise.all([
+  getCollection('certifications'),
+  getCollection('people'),
+  getCollection('locations'),
+]);
+
+const certificationsById = new Map(certifications.map((certification) => [certification.id, certification.data]));
+const peopleById = new Map(people.map((person) => [person.id, person.data]));
+const locationsById = new Map(locations.map((location) => [location.id, location.data]));
+
+const title = service.data.title;
+const description = service.data.primarySearchIntent;
+---
+
+<SeoPreviewLayout
+  title={title}
+  description={description}
+  canonicalPath={`/seo-preview/leistungen/${service.id}/`}
+  eyebrow="Leistungsseite Vorschau"
+>
+  <section class="seo-preview-section">
+    <div class="seo-preview-grid">
+      <article class="seo-preview-card">
+        <p class="seo-preview-eyebrow">SEO-Aufgabe dieser Seite</p>
+        <h2>Suchintention abholen</h2>
+        <p>Diese Seite soll später eine konkrete Eigentümerfrage beantworten und daraus zur Kontaktaufnahme oder Bewertung führen.</p>
+      </article>
+      <article class="seo-preview-card">
+        <p class="seo-preview-eyebrow">GEO-Aufgabe dieser Seite</p>
+        <h2>Zitierfähige Leistung erklären</h2>
+        <p>Die Seite soll präzise Begriffe, Zuständigkeiten, Zertifikate und regionale Kontexte liefern, die auch AI Search zuverlässig auslesen kann.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="seo-preview-section">
+    <h2>Daten aus der Collection</h2>
+    <dl class="seo-preview-dl">
+      <div>
+        <dt>Status</dt>
+        <dd>{service.data.status === 'active' ? 'Aktiv' : 'Geplant'}</dd>
+      </div>
+      <div>
+        <dt>Standorte</dt>
+        <dd>{service.data.locations.map((id) => locationsById.get(id)?.title || id).join(', ')}</dd>
+      </div>
+      <div>
+        <dt>Ansprechpartner</dt>
+        <dd>{service.data.relatedPeople.map((id) => peopleById.get(id)?.name || id).join(', ') || 'Noch nicht zugeordnet'}</dd>
+      </div>
+      <div>
+        <dt>Relevante Zertifizierungen</dt>
+        <dd>{service.data.relatedCertifications.map((id) => certificationsById.get(id)?.title || id).join(', ') || 'Keine direkte Zuordnung'}</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="seo-preview-section">
+    <h2>Beispielhafte Seitenstruktur</h2>
+    <div class="seo-preview-grid">
+      <article class="seo-preview-card">
+        <h3>Einstieg</h3>
+        <p>Problem, Situation und Nutzen der Leistung in München und Landshut klar benennen.</p>
+      </article>
+      <article class="seo-preview-card">
+        <h3>Fachlichkeit</h3>
+        <p>Zertifikate, Arbeitsweise und Abgrenzung zu reinen Portal- oder Schnellbewertungen erklären.</p>
+      </article>
+      <article class="seo-preview-card">
+        <h3>Diskrete Beratung</h3>
+        <p>Für Boutique-Makler besonders wichtig: individuelle Prüfung statt öffentlicher Objektmasse.</p>
+      </article>
+    </div>
+  </section>
+</SeoPreviewLayout>

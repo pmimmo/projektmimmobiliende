@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+import SeoPreviewLayout from '../../../layouts/SeoPreviewLayout.astro';
+
+export async function getStaticPaths() {
+  const certifications = await getCollection('certifications');
+
+  return certifications.map((certification) => ({
+    params: { id: certification.id },
+    props: { certification },
+  }));
+}
+
+const { certification } = Astro.props;
+
+const people = await getCollection('people');
+const peopleById = new Map(people.map((person) => [person.id, person.data]));
+const belongsTo = certification.data.belongsTo
+  .map((id) => peopleById.get(id)?.name || id)
+  .join(', ') || certification.data.holder || 'Projekt M Immobilien';
+
+const title = certification.data.title;
+const description = certification.data.desc;
+---
+
+<SeoPreviewLayout
+  title={title}
+  description={description}
+  canonicalPath={`/seo-preview/zertifikate/${certification.id}/`}
+  eyebrow="Zertifikat / Siegel Vorschau"
+>
+  <section class="seo-preview-section">
+    <div class="seo-preview-grid">
+      <article class="seo-preview-card">
+        <p class="seo-preview-eyebrow">SEO-Aufgabe dieser Seite</p>
+        <h2>Vertrauenssignal erklärbar machen</h2>
+        <p>Diese Detailseite kann später erklären, was ein Siegel bedeutet, von wem es stammt und ob es einer Person oder dem Unternehmen zugeordnet ist.</p>
+      </article>
+      <article class="seo-preview-card">
+        <p class="seo-preview-eyebrow">Nutzung im Frontend</p>
+        <h2>Quelle für Popover und Detailseite</h2>
+        <p>Dieselbe Collection kann kurze Popover-Texte und ausführlichere Zertifikatsseiten speisen.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="seo-preview-section">
+    <h2>Daten aus der Collection</h2>
+    <dl class="seo-preview-dl">
+      <div>
+        <dt>Kategorie</dt>
+        <dd>{certification.data.category}</dd>
+      </div>
+      <div>
+        <dt>Herausgeber</dt>
+        <dd>{certification.data.issuer || 'Noch nicht hinterlegt'}</dd>
+      </div>
+      <div>
+        <dt>Zuordnung</dt>
+        <dd>{belongsTo}</dd>
+      </div>
+      <div>
+        <dt>Auf Startseite sichtbar</dt>
+        <dd>{certification.data.visibleOnStartPage ? 'Ja' : 'Nein'}</dd>
+      </div>
+      {certification.data.link && (
+        <div>
+          <dt>Externer Link</dt>
+          <dd><a href={certification.data.link}>{certification.data.link}</a></dd>
+        </div>
+      )}
+    </dl>
+  </section>
+
+  <section class="seo-preview-section">
+    <h2>Erklärung</h2>
+    <p>{certification.data.desc}</p>
+  </section>
+</SeoPreviewLayout>
