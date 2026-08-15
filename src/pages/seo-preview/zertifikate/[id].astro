@@ -15,6 +15,7 @@ const { certification } = Astro.props;
 
 const people = await getCollection('people');
 const peopleById = new Map(people.map((person) => [person.id, person.data]));
+const base = import.meta.env.BASE_URL;
 const belongsTo = certification.data.belongsTo
   .map((id) => peopleById.get(id)?.name || id)
   .join(', ') || certification.data.holder || 'Projekt M Immobilien';
@@ -31,7 +32,7 @@ const description = certification.data.desc;
 >
   <section class="seo-preview-section">
     <div class="seo-preview-grid">
-      <article class="seo-preview-card">
+      <article class="seo-preview-card seo-preview-card--dark">
         <p class="seo-preview-eyebrow">SEO-Aufgabe dieser Seite</p>
         <h2>Vertrauenssignal erklärbar machen</h2>
         <p>Diese Detailseite kann später erklären, was ein Siegel bedeutet, von wem es stammt und ob es einer Person oder dem Unternehmen zugeordnet ist.</p>
@@ -45,7 +46,10 @@ const description = certification.data.desc;
   </section>
 
   <section class="seo-preview-section">
-    <h2>Daten aus der Collection</h2>
+    <div class="seo-preview-section-header">
+      <h2>Einordnung</h2>
+      <p>Zertifikate und Siegel sollen nicht nur Logos sein, sondern als nachvollziehbare Vertrauenssignale erklärt werden.</p>
+    </div>
     <dl class="seo-preview-dl">
       <div>
         <dt>Kategorie</dt>
@@ -73,7 +77,37 @@ const description = certification.data.desc;
   </section>
 
   <section class="seo-preview-section">
-    <h2>Erklärung</h2>
-    <p>{certification.data.desc}</p>
+    <div class="seo-preview-section-header">
+      <h2>Erklärung</h2>
+      <p>Diese Erklärung kann später direkt im Popover und auf Detailseiten verwendet werden.</p>
+    </div>
+    <article class="seo-preview-card">
+      <p>{certification.data.desc}</p>
+    </article>
+  </section>
+
+  <section class="seo-preview-section">
+    <div class="seo-preview-section-header">
+      <h2>Zuordnung</h2>
+      <p>Wichtig für Vertrauen und AI Search: klar benennen, ob das Signal zur Person oder zur Firma gehört.</p>
+    </div>
+    <div class="seo-preview-grid">
+      <article class="seo-preview-card">
+        <h3>Gehört zu</h3>
+        <div class="seo-preview-pill-list">
+          {
+            certification.data.belongsTo.length
+              ? certification.data.belongsTo.map((id) => (
+                  <a class="seo-preview-pill" href={`${base}seo-preview/team/${id}/`}>{peopleById.get(id)?.name || id}</a>
+                ))
+              : <span class="seo-preview-pill">Projekt M Immobilien</span>
+          }
+        </div>
+      </article>
+      <article class="seo-preview-card">
+        <h3>Nächste Nutzung</h3>
+        <p>Dieses Zertifikat kann in Teamprofilen, Leistungsseiten und auf der Startseite aus derselben Datenquelle angezeigt werden.</p>
+      </article>
+    </div>
   </section>
 </SeoPreviewLayout>

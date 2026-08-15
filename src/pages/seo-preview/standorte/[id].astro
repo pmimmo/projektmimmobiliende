@@ -22,6 +22,7 @@ const [services, people] = await Promise.all([
 
 const servicesById = new Map(services.map((service) => [service.id, service.data]));
 const peopleById = new Map(people.map((person) => [person.id, person.data]));
+const base = import.meta.env.BASE_URL;
 
 const title = `Immobilienmakler und Immobilienbewertung in ${location.data.title}`;
 const description = `Interne Vorschau für eine Standortseite zu Projekt M Immobilien in ${location.data.region}.`;
@@ -35,7 +36,7 @@ const description = `Interne Vorschau für eine Standortseite zu Projekt M Immob
 >
   <section class="seo-preview-section">
     <div class="seo-preview-grid">
-      <article class="seo-preview-card">
+      <article class="seo-preview-card seo-preview-card--dark">
         <p class="seo-preview-eyebrow">SEO-Aufgabe dieser Seite</p>
         <h2>Lokale Relevanz bündeln</h2>
         <p>Diese Seite soll später erklären, welche Leistungen Projekt M Immobilien in {location.data.title} anbietet und warum die regionale Erfahrung relevant ist.</p>
@@ -49,7 +50,10 @@ const description = `Interne Vorschau für eine Standortseite zu Projekt M Immob
   </section>
 
   <section class="seo-preview-section">
-    <h2>Daten aus der Collection</h2>
+    <div class="seo-preview-section-header">
+      <h2>Standortprofil</h2>
+      <p>Der Standort verknüpft regionale Sichtbarkeit mit konkreten Leistungen und Ansprechpartnern.</p>
+    </div>
     <dl class="seo-preview-dl">
       <div>
         <dt>Region</dt>
@@ -71,7 +75,10 @@ const description = `Interne Vorschau für eine Standortseite zu Projekt M Immob
   </section>
 
   <section class="seo-preview-section">
-    <h2>Beispielhafte Inhaltsmodule</h2>
+    <div class="seo-preview-section-header">
+      <h2>Beispielhafte Inhaltsmodule</h2>
+      <p>Die Module schaffen lokale Relevanz, ohne künstliche Stadtteil- oder Keyword-Seiten zu bauen.</p>
+    </div>
     <div class="seo-preview-grid">
       <article class="seo-preview-card">
         <h3>Leistungen vor Ort</h3>
@@ -82,5 +89,39 @@ const description = `Interne Vorschau für eine Standortseite zu Projekt M Immob
         <p>Erbe, Scheidung, diskreter Verkauf, Gutachten oder Vorbereitung eines Verkaufs können als konkrete Anlässe erklärt werden.</p>
       </article>
     </div>
+  </section>
+
+  <section class="seo-preview-section">
+    <div class="seo-preview-section-header">
+      <h2>Lokale Verlinkung</h2>
+      <p>Von der Standortseite führen Nutzer und Suchmaschinen zu den fachlich passenden Unterseiten.</p>
+    </div>
+    <div class="seo-preview-grid">
+      <article class="seo-preview-card">
+        <h3>Leistungen in {location.data.title}</h3>
+        <ul class="seo-preview-list">
+          {location.data.services.map((id) => (
+            <li><a href={`${base}seo-preview/leistungen/${id}/`}>{servicesById.get(id)?.title || id}</a></li>
+          ))}
+        </ul>
+      </article>
+      <article class="seo-preview-card">
+        <h3>Ansprechpartner</h3>
+        <ul class="seo-preview-list">
+          {location.data.relatedPeople.map((id) => (
+            <li><a href={`${base}seo-preview/team/${id}/`}>{peopleById.get(id)?.name || id}</a></li>
+          ))}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="seo-preview-section">
+    <article class="seo-preview-card">
+      <p class="seo-preview-kicker">Geplanter CTA</p>
+      <h2>Immobilienanliegen in {location.data.title} besprechen</h2>
+      <p>Der CTA kann später lokal formuliert werden und trotzdem auf denselben zentralen Kontaktprozess einzahlen.</p>
+      <a class="seo-preview-link" href={`${base}#callToAction`}>Kontaktbereich der aktuellen Seite ansehen</a>
+    </article>
   </section>
 </SeoPreviewLayout>
