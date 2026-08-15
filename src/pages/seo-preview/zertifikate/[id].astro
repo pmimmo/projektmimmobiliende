@@ -62,7 +62,7 @@ const certificationImage = certificationImageById[certification.id as keyof type
   title={title}
   description={description}
   canonicalPath={`/seo-preview/zertifikate/${certification.id}/`}
-  eyebrow="Zertifikat / Siegel Vorschau"
+  eyebrow="Qualifikation und Vertrauen"
 >
   <section class="seo-preview-section">
     <div class="seo-preview-split">
@@ -81,14 +81,14 @@ const certificationImage = certificationImageById[certification.id as keyof type
         </div>
       </article>
       <article class="seo-preview-card">
-        <p class="seo-preview-eyebrow">SEO-Aufgabe dieser Seite</p>
-        <h2>Vertrauenssignal erklärbar machen</h2>
-        <p>Diese Detailseite kann später erklären, was ein Siegel bedeutet, von wem es stammt und ob es einer Person oder dem Unternehmen zugeordnet ist.</p>
+        <p class="seo-preview-eyebrow">Bedeutung</p>
+        <h2>Was dieses Siegel aussagt</h2>
+        <p>{certification.data.desc}</p>
       </article>
       <article class="seo-preview-card">
-        <p class="seo-preview-eyebrow">Nutzung im Frontend</p>
-        <h2>Quelle für Popover und Detailseite</h2>
-        <p>Dieselbe Collection kann kurze Popover-Texte und ausführlichere Zertifikatsseiten speisen.</p>
+        <p class="seo-preview-eyebrow">Zuordnung</p>
+        <h2>Wem die Qualifikation zugeordnet ist</h2>
+        <p>{belongsTo}</p>
       </article>
     </div>
   </section>
@@ -96,7 +96,7 @@ const certificationImage = certificationImageById[certification.id as keyof type
   <section class="seo-preview-section">
     <div class="seo-preview-section-header">
       <h2>Einordnung</h2>
-      <p>Zertifikate und Siegel sollen nicht nur Logos sein, sondern als nachvollziehbare Vertrauenssignale erklärt werden.</p>
+      <p>Damit Sie Zertifikate, Mitgliedschaften und Plattform-Siegel besser einordnen können.</p>
     </div>
     <dl class="seo-preview-dl">
       <div>
@@ -126,8 +126,8 @@ const certificationImage = certificationImageById[certification.id as keyof type
 
   <section class="seo-preview-section">
     <div class="seo-preview-section-header">
-      <h2>Erklärung</h2>
-      <p>Diese Erklärung kann später direkt im Popover und auf Detailseiten verwendet werden.</p>
+      <h2>Warum das für Eigentümer relevant ist</h2>
+      <p>Qualifikationen schaffen Orientierung, wenn es um Bewertung, Vermittlung oder vertrauliche Immobilienentscheidungen geht.</p>
     </div>
     <article class="seo-preview-card">
       <p>{certification.data.desc}</p>
@@ -136,8 +136,8 @@ const certificationImage = certificationImageById[certification.id as keyof type
 
   <section class="seo-preview-section">
     <div class="seo-preview-section-header">
-      <h2>Zuordnung</h2>
-      <p>Wichtig für Vertrauen und AI Search: klar benennen, ob das Signal zur Person oder zur Firma gehört.</p>
+      <h2>Verknüpfte Ansprechpartner</h2>
+      <p>Hier sehen Sie, ob das Signal einer Person oder dem Unternehmen zugeordnet ist.</p>
     </div>
     <div class="seo-preview-grid">
       <article class="seo-preview-card">
@@ -153,8 +153,8 @@ const certificationImage = certificationImageById[certification.id as keyof type
         </div>
       </article>
       <article class="seo-preview-card">
-        <h3>Nächste Nutzung</h3>
-        <p>Dieses Zertifikat kann in Teamprofilen, Leistungsseiten und auf der Startseite aus derselben Datenquelle angezeigt werden.</p>
+        <h3>Persönlich einordnen lassen</h3>
+        <p>Wenn Sie wissen möchten, welche Qualifikation für Ihr Anliegen relevant ist, klären wir das gern im persönlichen Gespräch.</p>
       </article>
     </div>
   </section>

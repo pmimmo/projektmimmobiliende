@@ -31,6 +31,17 @@ const base = import.meta.env.BASE_URL;
 
 const title = `${person.data.name}: ${person.data.jobTitle}`;
 const description = person.data.shortBio || `${person.data.name} bei Projekt M Immobilien.`;
+const profileCopyById = {
+  'ruediger-neuer': {
+    intro: 'Rüdiger Neuer verbindet Immobilienvermittlung mit besonderer Gutachter- und Mediationskompetenz. Für Eigentümer bedeutet das: Entscheidungen werden nicht nur vertrieblich begleitet, sondern fachlich vorbereitet und nachvollziehbar eingeordnet.',
+    responsibility: 'Er ist erster Ansprechpartner für Immobilienbewertung, diskrete Vermittlung und Immobilienmediation in München und Landshut.',
+  },
+  'juergen-gebhard': {
+    intro: 'Jürgen Gebhard unterstützt Eigentümer bei der Immobilienvermittlung mit regionalem Blick und persönlicher Begleitung. Im Mittelpunkt steht ein klarer, verlässlicher Prozess vom ersten Gespräch bis zur nächsten Entscheidung.',
+    responsibility: 'Sein Schwerpunkt liegt auf der Vermittlung von Immobilien, insbesondere mit Bezug zum Raum Landshut.',
+  },
+};
+const profileCopy = profileCopyById[person.id as keyof typeof profileCopyById];
 const portraitByPerson = {
   'ruediger-neuer': portraitNeuer,
   'juergen-gebhard': portraitGebhard,
@@ -54,7 +65,7 @@ const portrait = portraitByPerson[person.id as keyof typeof portraitByPerson];
       <article class="seo-preview-card">
         <p class="seo-preview-eyebrow">{person.data.role === 'owner' ? 'Inhaberprofil' : 'Teamprofil'}</p>
         <h2>{person.data.name}</h2>
-        <p class="lead">{person.data.shortBio}</p>
+        <p class="lead">{profileCopy?.intro || person.data.shortBio}</p>
         <div class="seo-preview-pill-list">
           {person.data.locations.map((id) => <span class="seo-preview-pill">{locationsById.get(id)?.title || id}</span>)}
           {person.data.serviceFocus.map((id) => <span class="seo-preview-pill">{servicesById.get(id)?.shortTitle || servicesById.get(id)?.title || id}</span>)}
@@ -66,14 +77,14 @@ const portrait = portraitByPerson[person.id as keyof typeof portraitByPerson];
   <section class="seo-preview-section">
     <div class="seo-preview-grid">
       <article class="seo-preview-card">
-        <p class="seo-preview-eyebrow">SEO-Aufgabe dieser Seite</p>
-        <h2>Expertise sichtbar machen</h2>
-        <p>Diese Seite soll später personenbezogene Erfahrung, Rollen, Zertifizierungen und regionale Zuständigkeit bündig erklären.</p>
+        <p class="seo-preview-eyebrow">Aufgabenbereich</p>
+        <h2>Wofür Sie diese Person ansprechen können</h2>
+        <p>{profileCopy?.responsibility || person.data.shortBio}</p>
       </article>
       <article class="seo-preview-card">
-        <p class="seo-preview-eyebrow">Geplanter Seitentyp</p>
-        <h2>Team-Detailseite</h2>
-        <p>Geeignet für E-E-A-T-Signale, interne Verlinkung und klare Zuordnung von Gutachter-, Makler- und Mediationskompetenz.</p>
+        <p class="seo-preview-eyebrow">Region</p>
+        <h2>Beratung in {person.data.locations.map((id) => locationsById.get(id)?.title || id).join(' und ')}</h2>
+        <p>Die Beratung verbindet lokale Marktkenntnis mit einem vertraulichen Blick auf Ihre persönliche Situation.</p>
       </article>
     </div>
   </section>
@@ -81,7 +92,7 @@ const portrait = portraitByPerson[person.id as keyof typeof portraitByPerson];
   <section class="seo-preview-section">
     <div class="seo-preview-section-header">
       <h2>Profil und Zuständigkeit</h2>
-      <p>Diese Informationen kommen aus der Personen-Collection und können später automatisch auf Team-, Leistungs- und Standortseiten auftauchen.</p>
+      <p>Damit Sie schnell erkennen, wer fachlich zu welchem Anliegen passt.</p>
     </div>
     <dl class="seo-preview-dl">
       <div>
@@ -105,13 +116,13 @@ const portrait = portraitByPerson[person.id as keyof typeof portraitByPerson];
 
   <section class="seo-preview-section">
     <div class="seo-preview-section-header">
-      <h2>Verknüpfte Inhalte</h2>
-      <p>Die Seite soll nicht isoliert stehen, sondern fachliche und lokale Einstiege sinnvoll weiterführen.</p>
+      <h2>Passende Themen</h2>
+      <p>Von hier aus gelangen Sie direkt zu den Leistungen, Regionen und Qualifikationen, die mit diesem Profil verbunden sind.</p>
     </div>
     <div class="seo-preview-grid">
       <article class="seo-preview-card">
-        <h3>Profiltext</h3>
-        <p>{person.data.shortBio}</p>
+        <h3>Kurzprofil</h3>
+        <p>{profileCopy?.intro || person.data.shortBio}</p>
       </article>
       <article class="seo-preview-card">
         <h3>Leistungsseiten</h3>
@@ -146,10 +157,10 @@ const portrait = portraitByPerson[person.id as keyof typeof portraitByPerson];
 
   <section class="seo-preview-section">
     <article class="seo-preview-card">
-      <p class="seo-preview-kicker">Geplanter CTA</p>
+      <p class="seo-preview-kicker">Persönlich sprechen</p>
       <h2>Persönliche Einschätzung anfragen</h2>
-      <p>Später kann hier ein direkter Kontaktpunkt für Bewertung, Verkauf oder Mediation stehen, ohne die Seite mit Objektangeboten zu vermischen.</p>
-      <a class="seo-preview-link" href={`${base}#callToAction`}>Kontaktbereich der aktuellen Seite ansehen</a>
+      <p>Schildern Sie Ihr Anliegen vertraulich. Gemeinsam klären wir, ob Bewertung, Verkauf, Mediation oder ein anderer Schritt sinnvoll ist.</p>
+      <a class="seo-preview-link" href={`${base}#callToAction`}>Kontakt aufnehmen</a>
     </article>
   </section>
 </SeoPreviewLayout>

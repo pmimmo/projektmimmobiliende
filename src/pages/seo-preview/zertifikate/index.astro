@@ -43,18 +43,18 @@ const certificationImageById = {
 
 <SeoPreviewLayout
   title="Kompetenzen, Zertifikate und Siegel"
-  description="Vorschau der künftigen Kompetenzstruktur: Zertifizierungen, Mitgliedschaften und Plattform-Siegel werden erklärbar und intern verlinkbar."
+  description="Zertifizierungen, Mitgliedschaften und Qualitätssiegel von Projekt M Immobilien: nachvollziehbare Vertrauenssignale für Bewertung, Vermittlung und Beratung."
   canonicalPath="/seo-preview/zertifikate/"
-  eyebrow="Bereichsseite"
+  eyebrow="Kompetenzen"
 >
   <section class="seo-preview-section">
     <div class="seo-preview-section-header">
-      <h2>Vertrauenssignale erklären</h2>
-      <p>Siegel sollen nicht nur Logos sein. Sie sollen verständlich machen, welche Qualifikation oder Zugehörigkeit dahintersteht.</p>
+      <h2>Qualifikation sichtbar und verständlich gemacht</h2>
+      <p>Zertifikate und Mitgliedschaften sind nur dann hilfreich, wenn klar ist, wofür sie stehen und wem sie zugeordnet sind.</p>
     </div>
-    <div class="seo-preview-grid">
+    <div class="seo-preview-grid seo-preview-cert-grid">
       {certifications.map((certification) => (
-        <a class="seo-preview-media-card seo-preview-card-link" href={`${base}seo-preview/zertifikate/${certification.id}/`}>
+        <a class="seo-preview-media-card seo-preview-card-link seo-preview-cert-card" href={`${base}seo-preview/zertifikate/${certification.id}/`}>
           <div class="seo-preview-media-card__image">
             {certificationImageById[certification.id as keyof typeof certificationImageById] ? (
               <Picture src={certificationImageById[certification.id as keyof typeof certificationImageById]} formats={['avif', 'webp']} alt={certification.data.title} loading="lazy" decoding="async" />

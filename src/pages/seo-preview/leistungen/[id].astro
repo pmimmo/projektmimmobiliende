@@ -62,20 +62,26 @@ const serviceImageById = {
   wohnflaechenberechnung: dekraSeal,
 };
 const serviceImage = serviceImageById[service.id as keyof typeof serviceImageById];
+const serviceEyebrowById = {
+  immobilienbewertung: 'Immobilienbewertung',
+  immobilienverkauf: 'Immobilienverkauf',
+  immobilienmediation: 'Immobilienmediation',
+  wohnflaechenberechnung: 'Wohnflächenberechnung',
+};
 ---
 
 <SeoPreviewLayout
   title={title}
   description={description}
   canonicalPath={`/seo-preview/leistungen/${service.id}/`}
-  eyebrow="Leistungsseite Vorschau"
+  eyebrow={serviceEyebrowById[service.id as keyof typeof serviceEyebrowById] || 'Leistung'}
 >
   <section class="seo-preview-section">
     <div class="seo-preview-split">
       <article class="seo-preview-card">
-        <p class="seo-preview-eyebrow">Seitenentwurf</p>
+        <p class="seo-preview-eyebrow">Für Eigentümer</p>
         <h2>{draft?.cta || service.data.title}</h2>
-        <p>{draft?.intro || 'Diese Seite soll später eine konkrete Eigentümerfrage beantworten und daraus zur Kontaktaufnahme führen.'}</p>
+        <p>{draft?.intro || 'Wir klären Ihre Eigentümerfrage persönlich, fachlich und mit Blick auf die konkrete Immobilie.'}</p>
         <div class="seo-preview-actions">
           <a class="button" href={`${base}#callToAction`}>Kontakt aufnehmen</a>
           <a class="seo-preview-secondary-link" href={`${base}seo-preview/leistungen/`}>Alle Leistungen</a>
@@ -86,8 +92,8 @@ const serviceImage = serviceImageById[service.id as keyof typeof serviceImageByI
           {serviceImage && <Picture src={serviceImage} formats={['avif', 'webp']} alt="" loading="eager" decoding="async" />}
         </div>
         <div class="seo-preview-media-card__body">
-          <p class="seo-preview-eyebrow">SEO/GEO-Aufgabe</p>
-          <h2>Konkrete Suchintention</h2>
+          <p class="seo-preview-eyebrow">Worum es geht</p>
+          <h2>Eine klare Grundlage für Ihre Entscheidung</h2>
           <p>{service.data.primarySearchIntent}</p>
         </div>
       </article>
@@ -97,7 +103,7 @@ const serviceImage = serviceImageById[service.id as keyof typeof serviceImageByI
   <section class="seo-preview-section">
     <div class="seo-preview-section-header">
       <h2>Typische Situationen</h2>
-      <p>Dieser Block macht aus einer abstrakten Leistung eine Seite für konkrete Eigentümeranliegen.</p>
+      <p>Viele Immobilienfragen beginnen mit Unsicherheit. Wir helfen, die Situation fachlich und menschlich sauber einzuordnen.</p>
     </div>
     <div class="seo-preview-grid seo-preview-grid--two">
       <article class="seo-preview-card">
@@ -117,13 +123,13 @@ const serviceImage = serviceImageById[service.id as keyof typeof serviceImageByI
 
   <section class="seo-preview-section">
     <div class="seo-preview-section-header">
-      <h2>Leistungsprofil</h2>
-      <p>Diese Basisdaten steuern später Navigation, interne Links, strukturierte Daten und passende Vertrauenssignale.</p>
+      <h2>Beratung mit regionalem Bezug</h2>
+      <p>Die Leistung wird dort erbracht, wo Sie eine belastbare Einschätzung brauchen: in München, Landshut und der jeweiligen Umgebung.</p>
     </div>
     <dl class="seo-preview-dl">
       <div>
-        <dt>Status</dt>
-        <dd>{service.data.status === 'active' ? 'Aktiv' : 'Geplant'}</dd>
+        <dt>Leistung</dt>
+        <dd>{service.data.status === 'active' ? 'Verfügbar' : 'Nach persönlicher Abstimmung'}</dd>
       </div>
       <div>
         <dt>Standorte</dt>
@@ -142,8 +148,8 @@ const serviceImage = serviceImageById[service.id as keyof typeof serviceImageByI
 
   <section class="seo-preview-section">
     <div class="seo-preview-section-header">
-      <h2>Interne Verlinkung</h2>
-      <p>Jede Leistungsseite soll Personen, Standorte und Kompetenzsignale miteinander verbinden.</p>
+      <h2>Ansprechpartner und Kompetenz</h2>
+      <p>Je nach Anliegen verbinden wir regionale Erfahrung mit passenden Qualifikationen und persönlicher Zuständigkeit.</p>
     </div>
     <div class="seo-preview-grid">
       <article class="seo-preview-card">
@@ -175,10 +181,10 @@ const serviceImage = serviceImageById[service.id as keyof typeof serviceImageByI
 
   <section class="seo-preview-section">
     <article class="seo-preview-card">
-      <p class="seo-preview-kicker">Geplanter CTA</p>
-      <h2>Beratung ohne öffentliches Objekt-Schaufenster</h2>
-      <p>Der CTA sollte zur Boutique-Positionierung passen: diskret, fachlich und persönlich statt portalartig.</p>
-      <a class="seo-preview-link" href={`${base}#callToAction`}>Kontaktbereich der aktuellen Seite ansehen</a>
+      <p class="seo-preview-kicker">Persönlich sprechen</p>
+      <h2>Ihr Anliegen vertraulich einordnen lassen</h2>
+      <p>Ob Verkauf, Bewertung oder Konfliktsituation: Der erste Schritt ist ein vertrauliches Gespräch über Ziele, Rahmenbedingungen und sinnvolle Optionen.</p>
+      <a class="seo-preview-link" href={`${base}#callToAction`}>Kontakt aufnehmen</a>
     </article>
   </section>
 </SeoPreviewLayout>

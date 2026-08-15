@@ -28,7 +28,22 @@ const peopleById = new Map(people.map((person) => [person.id, person.data]));
 const base = import.meta.env.BASE_URL;
 
 const title = `Immobilienmakler und Immobilienbewertung in ${location.data.title}`;
-const description = `Interne Vorschau für eine Standortseite zu Projekt M Immobilien in ${location.data.region}.`;
+const description = `Projekt M Immobilien begleitet Eigentümer in ${location.data.region} bei Immobilienverkauf, Immobilienbewertung und vertraulichen Immobilienfragen.`;
+const locationCopyById = {
+  muenchen: {
+    eyebrow: 'Immobilienberatung in München',
+    introTitle: 'Immobilienentscheidungen in München brauchen Marktkenntnis und Ruhe.',
+    intro: 'Der Münchner Immobilienmarkt ist anspruchsvoll, vielfältig und oft emotional. Projekt M Immobilien unterstützt Eigentümer dabei, Wert, Vermarktungsweg und nächsten Schritt sauber einzuordnen.',
+    localContext: 'Ob Wohnung, Haus oder Mehrfamilienhaus: In München zählen Lage, Mikrolage, Zustand, Unterlagen und Diskretionswunsch besonders stark zusammen.',
+  },
+  landshut: {
+    eyebrow: 'Immobilienberatung in Landshut',
+    introTitle: 'Persönliche Immobilienberatung für Landshut und Umgebung.',
+    intro: 'In Landshut und der Region zählt ein gutes Netzwerk ebenso wie eine realistische Einschätzung. Projekt M Immobilien begleitet Eigentümer vertraulich vom ersten Gespräch bis zur nächsten Entscheidung.',
+    localContext: 'Gerade bei Verkauf, Erbe oder familiären Veränderungen hilft ein strukturierter Blick auf Wert, Nachfrage und passende Interessenten.',
+  },
+};
+const locationCopy = locationCopyById[location.id as keyof typeof locationCopyById];
 const mapByLocation = {
   landshut: mapLandshut,
   muenchen: mapMuenchen,
@@ -40,14 +55,14 @@ const locationMap = mapByLocation[location.id as keyof typeof mapByLocation];
   title={title}
   description={description}
   canonicalPath={`/seo-preview/standorte/${location.id}/`}
-  eyebrow={location.data.office ? 'Standortseite Büro' : 'Standortseite Region'}
+  eyebrow={locationCopy?.eyebrow || 'Regionale Immobilienberatung'}
 >
   <section class="seo-preview-section">
     <div class="seo-preview-location-intro">
       <article class="seo-preview-card">
-        <p class="seo-preview-eyebrow">SEO-Aufgabe dieser Seite</p>
-        <h2>Lokale Relevanz bündeln</h2>
-        <p>Diese Seite soll später erklären, welche Leistungen Projekt M Immobilien in {location.data.title} anbietet und warum die regionale Erfahrung relevant ist.</p>
+        <p class="seo-preview-eyebrow">{location.data.region}</p>
+        <h2>{locationCopy?.introTitle || `Immobilienberatung in ${location.data.title}`}</h2>
+        <p>{locationCopy?.intro || `Projekt M Immobilien berät Eigentümer in ${location.data.title} persönlich und vertraulich.`}</p>
         <div class="seo-preview-pill-list">
           {location.data.services.slice(0, 4).map((id) => <span class="seo-preview-pill">{servicesById.get(id)?.shortTitle || servicesById.get(id)?.title || id}</span>)}
         </div>
@@ -63,17 +78,17 @@ const locationMap = mapByLocation[location.id as keyof typeof mapByLocation];
   <section class="seo-preview-section">
     <div class="seo-preview-grid">
       <article class="seo-preview-card">
-        <p class="seo-preview-eyebrow">Local SEO</p>
-        <h2>NAP und Leistungsbezug stärken</h2>
-        <p>Der Standort soll mit Leistungen, Ansprechpartnern, Google Business Profile und konsistenten Unternehmensdaten verbunden werden.</p>
+        <p class="seo-preview-eyebrow">Regionaler Markt</p>
+        <h2>Warum lokale Erfahrung wichtig ist</h2>
+        <p>{locationCopy?.localContext || 'Immobilienentscheidungen hängen immer vom konkreten Objekt, der Lage und der persönlichen Situation ab.'}</p>
       </article>
     </div>
   </section>
 
   <section class="seo-preview-section">
     <div class="seo-preview-section-header">
-      <h2>Standortprofil</h2>
-      <p>Der Standort verknüpft regionale Sichtbarkeit mit konkreten Leistungen und Ansprechpartnern.</p>
+      <h2>Leistungen in {location.data.title}</h2>
+      <p>Für Eigentümer stehen Bewertung, Verkauf, Mediation und fachliche Prüfung als persönliche Beratung zur Verfügung.</p>
     </div>
     <dl class="seo-preview-dl">
       <div>
@@ -97,25 +112,25 @@ const locationMap = mapByLocation[location.id as keyof typeof mapByLocation];
 
   <section class="seo-preview-section">
     <div class="seo-preview-section-header">
-      <h2>Beispielhafte Inhaltsmodule</h2>
-      <p>Die Module schaffen lokale Relevanz, ohne künstliche Stadtteil- oder Keyword-Seiten zu bauen.</p>
+      <h2>Typische Anliegen in {location.data.title}</h2>
+      <p>Viele Eigentümer melden sich nicht mit einer fertigen Entscheidung, sondern mit einer Frage, die zuerst eingeordnet werden muss.</p>
     </div>
     <div class="seo-preview-grid">
       <article class="seo-preview-card">
         <h3>Leistungen vor Ort</h3>
-        <p>Immobilienverkauf, Immobilienbewertung, Mediation und Wohnflächenprüfung werden auf den lokalen Kontext bezogen.</p>
+        <p>Wir prüfen Wert, Unterlagen und Vermarktungsweg, bevor eine Immobilie sichtbar angeboten wird.</p>
       </article>
       <article class="seo-preview-card">
         <h3>Regionale Situationen</h3>
-        <p>Erbe, Scheidung, diskreter Verkauf, Gutachten oder Vorbereitung eines Verkaufs können als konkrete Anlässe erklärt werden.</p>
+        <p>Erbe, Trennung, Miteigentum oder ein geplanter Verkauf brauchen eine ruhige, fachliche Einordnung.</p>
       </article>
     </div>
   </section>
 
   <section class="seo-preview-section">
     <div class="seo-preview-section-header">
-      <h2>Lokale Verlinkung</h2>
-      <p>Von der Standortseite führen Nutzer und Suchmaschinen zu den fachlich passenden Unterseiten.</p>
+      <h2>Passende Ansprechpartner und Themen</h2>
+      <p>Je nach Anliegen gelangen Sie direkt zu den relevanten Leistungen und Personen.</p>
     </div>
     <div class="seo-preview-grid">
       <article class="seo-preview-card">
@@ -139,10 +154,10 @@ const locationMap = mapByLocation[location.id as keyof typeof mapByLocation];
 
   <section class="seo-preview-section">
     <article class="seo-preview-card">
-      <p class="seo-preview-kicker">Geplanter CTA</p>
+      <p class="seo-preview-kicker">Persönlich sprechen</p>
       <h2>Immobilienanliegen in {location.data.title} besprechen</h2>
-      <p>Der CTA kann später lokal formuliert werden und trotzdem auf denselben zentralen Kontaktprozess einzahlen.</p>
-      <a class="seo-preview-link" href={`${base}#callToAction`}>Kontaktbereich der aktuellen Seite ansehen</a>
+      <p>Schildern Sie kurz Ihre Situation. Wir klären vertraulich, ob Bewertung, Verkauf, Mediation oder eine andere Vorbereitung sinnvoll ist.</p>
+      <a class="seo-preview-link" href={`${base}#callToAction`}>Kontakt aufnehmen</a>
     </article>
   </section>
 </SeoPreviewLayout>

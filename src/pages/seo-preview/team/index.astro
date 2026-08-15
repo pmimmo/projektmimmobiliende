@@ -8,7 +8,11 @@ import portraitNeuer from '../../../assets/img/portrait-neuer.jpg';
 const base = import.meta.env.BASE_URL;
 const people = (await getCollection('people'))
   .filter((person) => person.data.showDetailPage)
-  .sort((a, b) => a.data.name.localeCompare(b.data.name, 'de'));
+  .sort((a, b) => {
+    if (a.id === 'ruediger-neuer') return -1;
+    if (b.id === 'ruediger-neuer') return 1;
+    return a.data.name.localeCompare(b.data.name, 'de');
+  });
 const portraitByPerson = {
   'ruediger-neuer': portraitNeuer,
   'juergen-gebhard': portraitGebhard,
@@ -16,15 +20,15 @@ const portraitByPerson = {
 ---
 
 <SeoPreviewLayout
-  title="Team und Expertise"
-  description="Vorschau der künftigen Teamstruktur mit Personenprofilen, Rollen, Leistungsfokus und Zertifikatsbezug."
+  title="Team und Ansprechpartner"
+  description="Lernen Sie die Ansprechpartner von Projekt M Immobilien kennen: persönliche Beratung für Immobilienverkauf, Immobilienbewertung und Vermittlung in München und Landshut."
   canonicalPath="/seo-preview/team/"
-  eyebrow="Bereichsseite"
+  eyebrow="Team"
 >
   <section class="seo-preview-section">
     <div class="seo-preview-section-header">
-      <h2>Personen als Vertrauensanker</h2>
-      <p>Gerade bei Bewertung, Mediation und diskreter Vermittlung sollte sichtbar sein, wer fachlich wofür steht.</p>
+      <h2>Persönliche Beratung statt anonymer Objektabwicklung</h2>
+      <p>Bei Projekt M Immobilien sprechen Sie mit Menschen, die Verantwortung übernehmen, Einschätzungen begründen und den nächsten Schritt nachvollziehbar machen.</p>
     </div>
     <div class="seo-preview-grid">
       {people.map((person) => (

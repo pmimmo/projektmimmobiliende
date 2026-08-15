@@ -7,25 +7,23 @@ import dekraSeal from '../../assets/img/DekraImmobilienbewertungD1.png';
 
 const base = import.meta.env.BASE_URL;
 
-const [people, services, locations, certifications] = await Promise.all([
+const [people, services, certifications] = await Promise.all([
   getCollection('people'),
   getCollection('services'),
-  getCollection('locations'),
   getCollection('certifications'),
 ]);
 
 const visibleServices = services.filter((service) => service.data.previewPage);
-const visibleLocations = locations.filter((location) => location.data.previewPage);
 const visiblePeople = people.filter((person) => person.data.showDetailPage);
 const personalCertifications = certifications.filter((certification) => certification.data.belongsTo.length > 0);
 const primaryServices = visibleServices.filter((service) => ['immobilienverkauf', 'immobilienbewertung', 'immobilienmediation'].includes(service.id));
 ---
 
 <SeoPreviewLayout
-  title="Neue Website-Struktur"
-  description="Interne Vorschau, wie Projekt M Immobilien künftig mit Startseite, Leistungsseiten, Standortseiten, Teamprofilen und Kompetenzseiten aufgebaut sein könnte."
+  title="Projekt M Immobilien"
+  description="Ihr Immobilienmakler für München und Landshut: diskrete Immobilienvermittlung, fundierte Immobilienbewertung und persönliche Beratung durch erfahrene Ansprechpartner."
   canonicalPath="/seo-preview/"
-  eyebrow="Strategische Vorschau"
+  eyebrow="Immobilienmakler in München und Landshut"
   heroVariant="home"
 >
   <section class="seo-preview-section">
@@ -34,12 +32,12 @@ const primaryServices = visibleServices.filter((service) => ['immobilienverkauf'
         <Picture src={portraitNeuer} formats={['avif', 'webp']} alt="Rüdiger Neuer" loading="lazy" decoding="async" />
       </div>
       <div class="seo-preview-highlight__text">
-        <p class="seo-preview-eyebrow">Startseiten-Entwurf</p>
+        <p class="seo-preview-eyebrow">Persönlich. Fachlich. Diskret.</p>
         <h2>Diskret verkaufen, belastbar bewerten, persönlich beraten lassen.</h2>
-        <p class="lead">Die neue Startseite sollte nicht wie ein Immobilienportal wirken. Sie sollte sofort erklären, dass Projekt M Immobilien für Eigentümer arbeitet, die fachliche Einschätzung und vertrauliche Begleitung suchen.</p>
+        <p class="lead">Projekt M Immobilien begleitet Eigentümer, Erbengemeinschaften und Familien bei Entscheidungen rund um Immobilien in München und Landshut. Im Mittelpunkt stehen eine realistische Einschätzung, ein sauber vorbereiteter Prozess und vertrauliche Gespräche statt öffentlicher Massenvermarktung.</p>
         <div class="seo-preview-actions">
           <a class="button" href={`${base}seo-preview/leistungen/immobilienverkauf/`}>Immobilie verkaufen</a>
-          <a class="seo-preview-secondary-link" href={`${base}seo-preview/leistungen/immobilienbewertung/`}>Bewertung prüfen</a>
+          <a class="seo-preview-secondary-link" href={`${base}seo-preview/leistungen/immobilienbewertung/`}>Immobilie bewerten lassen</a>
         </div>
       </div>
       <div class="seo-preview-highlight__badge">
@@ -50,8 +48,8 @@ const primaryServices = visibleServices.filter((service) => ['immobilienverkauf'
 
   <section class="seo-preview-band seo-preview-band--gray">
     <div class="seo-preview-section-header">
-      <h2>Direkte Wege für Eigentümer</h2>
-      <p>Diese drei Einstiege sollten auf der Startseite deutlich weiter oben sichtbar sein als eine vollständige Leistungsauflistung.</p>
+      <h2>Wobei wir Sie unterstützen</h2>
+      <p>Ob Verkauf, Bewertung oder Konfliktsituation: Sie sprechen direkt mit erfahrenen Ansprechpartnern, die Ihre Immobilie und Ihre Entscheidungssituation ernst nehmen.</p>
     </div>
     <div class="seo-preview-feature-tiles">
       {primaryServices.map((service) => (
@@ -68,62 +66,62 @@ const primaryServices = visibleServices.filter((service) => ['immobilienverkauf'
     <div class="seo-preview-statement">
       <div class="seo-preview-statement__copy">
         <p class="seo-preview-eyebrow">Boutique statt Objektportal</p>
-        <h2>Diskretion wird als Stärke sichtbar, nicht als fehlender Objektbestand.</h2>
-        <p>Die spätere Startseite sollte klar sagen, warum keine öffentlichen Immobilienangebote im Mittelpunkt stehen: Projekt M Immobilien verkauft vertraulich, persönlich und mit fachlicher Vorprüfung.</p>
+        <h2>Nicht jede Immobilie gehört sofort ins öffentliche Schaufenster.</h2>
+        <p>Viele Eigentümer wünschen zuerst eine vertrauliche Einschätzung: Was ist realistisch? Welche Unterlagen fehlen? Wie sichtbar soll die Immobilie werden? Projekt M Immobilien steht für einen bewussten Vermittlungsweg, bei dem Diskretion, Qualität der Interessenten und ein belastbarer Wertansatz zusammengehören.</p>
       </div>
       <aside class="seo-preview-statement__note">
-        <p class="seo-preview-kicker">Warum so?</p>
-        <h3>Die Startseite soll Entscheidungen führen</h3>
-        <p>Besucher kommen meist mit einem konkreten Anlass: Verkauf, Bewertung, Konflikt oder Standortsuche. Die neue Struktur macht diese Wege sichtbar.</p>
+        <p class="seo-preview-kicker">Unser Ansatz</p>
+        <h3>Erst verstehen, dann vermitteln</h3>
+        <p>Wir klären Ziel, Zeitrahmen, Bewertungsgrundlage und Diskretionswunsch, bevor wir über Vermarktung sprechen. So entsteht ein Prozess, der zur Immobilie und zu den beteiligten Menschen passt.</p>
       </aside>
     </div>
   </section>
 
   <section class="seo-preview-section">
     <div class="seo-preview-section-header">
-      <h2>Regionale und fachliche Signale</h2>
-      <p>Die Startseite sollte nach den Hauptwegen Vertrauen und lokale Relevanz aufbauen.</p>
+      <h2>Regionale Nähe und geprüfte Kompetenz</h2>
+      <p>Projekt M Immobilien verbindet lokale Marktkenntnis in München und Landshut mit zertifizierter Bewertungs- und Vermittlungskompetenz.</p>
     </div>
     <div class="seo-preview-grid">
       <a class="seo-preview-card seo-preview-card-link" href={`${base}seo-preview/standorte/`}>
         <span class="seo-preview-kicker">Standorte</span>
         <h3>München und Landshut</h3>
-        <p>{visibleLocations.length} lokale Einstiegsseiten für regionale Sichtbarkeit.</p>
+        <p>Beratung für Eigentümer in München, Landshut und der jeweiligen Umgebung.</p>
       </a>
       <a class="seo-preview-card seo-preview-card-link" href={`${base}seo-preview/team/`}>
         <span class="seo-preview-kicker">Team</span>
-        <h3>Personen und Expertise</h3>
-        <p>{visiblePeople.length} Personenprofile mit Leistungs- und Zertifikatsbezug.</p>
+        <h3>Persönliche Ansprechpartner</h3>
+        <p>{visiblePeople.length} Profile mit klarer Zuständigkeit für Bewertung, Vermittlung und regionale Beratung.</p>
       </a>
       <a class="seo-preview-card seo-preview-card-link" href={`${base}seo-preview/zertifikate/`}>
         <span class="seo-preview-kicker">Kompetenzen</span>
         <h3>Zertifikate und Siegel</h3>
-        <p>{personalCertifications.length} direkt zugeordnete Qualifikationssignale.</p>
+        <p>{personalCertifications.length} Qualifikations- und Vertrauenssignale, verständlich erklärt und Personen zugeordnet.</p>
       </a>
     </div>
   </section>
 
   <section class="seo-preview-section">
     <div class="seo-preview-section-header">
-      <h2>Vorgeschlagener Startseitenfluss</h2>
-      <p>Das ist die Reihenfolge, in der ich die spätere Live-Startseite umbauen würde.</p>
+      <h2>Der nächste Schritt</h2>
+      <p>Ein gutes Gespräch beginnt nicht mit einem Formular, sondern mit einer ehrlichen Einordnung Ihrer Situation.</p>
     </div>
     <div class="seo-preview-grid">
       <article class="seo-preview-card">
-        <h3>1. Positionierung</h3>
-        <p>Boutique-Makler, diskrete Vermittlung, belastbare Bewertung, München und Landshut.</p>
+        <h3>Immobilie verkaufen</h3>
+        <p>Wir bereiten Verkauf, Unterlagen, Wertansatz und Vermarktungsweg strukturiert vor.</p>
       </article>
       <article class="seo-preview-card">
-        <h3>2. Nutzerwege</h3>
-        <p>Verkaufen, bewerten lassen, Konflikt lösen. Jeder Weg führt auf eine starke Unterseite.</p>
+        <h3>Immobilie bewerten</h3>
+        <p>Sie erhalten eine fachliche Einschätzung als Grundlage für Verkauf, Erbe, Trennung oder Vermögensfragen.</p>
       </article>
       <article class="seo-preview-card">
-        <h3>3. Vertrauen</h3>
-        <p>Rüdiger Neuer, Zertifizierungen, Mitgliedschaften, Bewertungen und klare Zuständigkeit.</p>
+        <h3>Konflikte lösen</h3>
+        <p>Bei Erbengemeinschaft, Trennung oder Miteigentum helfen wir, Optionen sachlich zu sortieren.</p>
       </article>
       <article class="seo-preview-card">
-        <h3>4. Kontakt</h3>
-        <p>Persönliche Erstberatung statt Objektkatalog. Das passt besser zum Geschäftsmodell.</p>
+        <h3>Persönlich sprechen</h3>
+        <p>Wir klären vertraulich, welcher nächste Schritt für Ihre Immobilie sinnvoll ist.</p>
       </article>
     </div>
   </section>

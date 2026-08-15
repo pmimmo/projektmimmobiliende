@@ -14,7 +14,7 @@ const sections = [
   <div class="seo-preview-nav__inner">
     <a class="seo-preview-nav__brand" href={`${base}seo-preview/`}>
       <img src={`${base}img/logo_pmi_web.svg`} alt="Projekt M Immobilien GmbH – Logo" width="3220" height="1099" />
-      <span>Neue Struktur</span>
+      <span>Projekt M Immobilien</span>
     </a>
     <nav aria-label="Preview Navigation">
       {
@@ -23,7 +23,6 @@ const sections = [
         ))
       }
     </nav>
-    <a class="seo-preview-nav__live" href={`${base}seo-preview/content-model/`}>Datenmodell</a>
   </div>
 </header>
 
@@ -41,15 +40,17 @@ const sections = [
 
   .seo-preview-nav__inner {
     width: min(1180px, calc(100% - 2rem));
+    max-width: 100%;
     min-height: 74px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr;
     gap: 1rem;
     align-items: center;
   }
 
   .seo-preview-nav__brand {
+    min-width: 0;
     display: inline-flex;
     align-items: center;
     gap: 0.8rem;
@@ -62,14 +63,14 @@ const sections = [
   }
 
   .seo-preview-nav nav {
+    min-width: 0;
     display: flex;
     justify-content: center;
     gap: 0.35rem;
     flex-wrap: wrap;
   }
 
-  .seo-preview-nav nav a,
-  .seo-preview-nav__live {
+  .seo-preview-nav nav a {
     padding: 0.45rem 0.75rem;
     border-radius: 999px;
     color: var(--c-text);
@@ -79,14 +80,9 @@ const sections = [
     text-decoration: none;
   }
 
-  .seo-preview-nav nav a:hover,
-  .seo-preview-nav__live:hover {
+  .seo-preview-nav nav a:hover {
     background: var(--c-gray-200);
     text-decoration: none;
-  }
-
-  .seo-preview-nav__live {
-    border: 1px solid var(--c-background-gray);
   }
 
   @media (max-width: 820px) {
@@ -94,6 +90,15 @@ const sections = [
       grid-template-columns: 1fr;
       gap: 0.5rem;
       padding: 0.75rem 0;
+    }
+
+    .seo-preview-nav__brand {
+      gap: 0.65rem;
+      font-size: 1rem;
+    }
+
+    .seo-preview-nav__brand img {
+      width: 112px;
     }
 
     .seo-preview-nav nav {
@@ -105,10 +110,6 @@ const sections = [
 
     .seo-preview-nav nav a {
       white-space: nowrap;
-    }
-
-    .seo-preview-nav__live {
-      justify-self: start;
     }
   }
 </style>
