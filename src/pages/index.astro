@@ -14,6 +14,8 @@ import Footer from "../components/Footer.astro";
 import portraitNeuer1zu1 from "../assets/img/portrait-neuer-1zu1.jpg";
 import portraitNeuer from "../assets/img/portrait-neuer.jpg";
 import portraitGebhard from "../assets/img/portrait-gebhard.jpg";
+import portraitFisch from "../assets/img/portrait-fisch.jpeg";
+import portraitGermer from "../assets/img/portrait-germer.jpeg";
 
 // Siegel
 import dekraD1 from "../assets/img/DekraImmobilienbewertungD1.png";
@@ -119,6 +121,20 @@ const site = import.meta.env.SITE;
                             <Picture class="portrait scale-up" src={portraitGebhard} formats={["avif", "webp"]} alt="Jürgen Gebhard" width={534} height={800} loading="lazy" decoding="async" />
                             <h3>Jürgen Gebhard</h3>
                             <p>Immobilienmakler</p>
+                        </div>
+                    </div>
+                    <div class="person">
+                        <div class="person-info">
+                            <Picture class="portrait scale-up" src={portraitFisch} formats={["avif", "webp"]} alt="Jürgen Gebhard" width={534} height={800} loading="lazy" decoding="async" />
+                            <h3>Claudia Fisch</h3>
+                            <p>Immobilienmakler (DIA)</p>
+                        </div>
+                    </div>
+                    <div class="person">
+                        <div class="person-info">
+                            <Picture class="portrait scale-up" src={portraitGermer} formats={["avif", "webp"]} alt="Jürgen Gebhard" width={534} height={800} loading="lazy" decoding="async" />
+                            <h3>Tristan Germer</h3>
+                            <p>Digitalisierung und Technik</p>
                         </div>
                     </div>
                 </div>
