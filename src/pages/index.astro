@@ -298,7 +298,25 @@ const site = import.meta.env.SITE;
             </div>
             <!-- ProvenExpert Bewertungssiegel -->
             <script is:inline type="text/x-ccm-loader" data-ccm-loader-src="https://www.provenexpert.com/widget/landing_projekt-m-immobilien-gmbh.js?feedback=1&avatar=1&competence=1&style=white" async></script>
-            <link rel="stylesheet" type="text/css" href="https://www.provenexpert.com/css/widget_landing.css" media="screen,print" />
+            {/*
+                Das Stylesheet des Siegels darf genauso wenig vor der Einwilligung
+                geladen werden wie das Skript daneben — sonst kennt ProvenExpert die
+                IP-Adresse jedes Besuchers, bevor der Dialog beantwortet ist. Ein
+                link-Element laesst sich aber nicht mit `text/x-ccm-loader` sperren:
+                Der Browser holt Stylesheets, bevor ueberhaupt ein Skript eingreifen
+                kann. Deshalb wird es erst nach der Zustimmung erzeugt — aus einem
+                gesperrten Skript heraus, so wie es die Karte weiter unten auch macht.
+            */}
+            <script is:inline type="text/x-ccm-loader">
+                (function () {
+                    var l = document.createElement("link");
+                    l.rel = "stylesheet";
+                    l.type = "text/css";
+                    l.media = "screen,print";
+                    l.href = "https://www.provenexpert.com/css/widget_landing.css";
+                    document.head.appendChild(l);
+                })();
+            </script>
             <!-- ProvenExpert Bewertungssiegel Ende -->
         </aside>
 

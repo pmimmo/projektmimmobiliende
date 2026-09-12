@@ -48,7 +48,12 @@ const isDev = import.meta.env.BASE_URL !== '/';
   {canonical && <link rel="canonical" href={canonical} />}
 
   <link rel="preconnect" href="https://cloud.ccm19.de" />
-  <link rel="preconnect" href="https://www.provenexpert.com" />
+  {/*
+    Kein preconnect auf provenexpert.com: Das baut eine TLS-Verbindung dorthin auf,
+    noch bevor jemand eingewilligt hat — ProvenExpert saehe damit die IP-Adresse.
+    Der dns-prefetch darunter bleibt, der fragt nur den Namen beim DNS-Server des
+    Besuchers ab und erreicht ProvenExpert gar nicht.
+  */}
   <link rel="dns-prefetch" href="https://cloud.ccm19.de" />
   <link rel="dns-prefetch" href="https://www.provenexpert.com" />
 
